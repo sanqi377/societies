@@ -1,10 +1,11 @@
 ## 目录结构
 
 ```
+.
 ├── frontend # 前台（小程序端）
 ├── backend # 后台管理系统
 ├── server # 服务端
-├── database # 数据库
+└── database # 数据库
 ```
 
 ## frontend 后端部署
@@ -32,8 +33,12 @@ npm run dev
 ### 目录结构
 
 ```
+.
 ├── app.ts
 ├── package.json
+├── config
+|    └── setting.ts
+|    └── api.ts
 ├── controller
 │    └── index
 |       ├── index.ts
@@ -45,7 +50,7 @@ npm run dev
 │    └── users
 |       ├── users.ts
 ├── middleware
-|    └── Cors.ts
+|    └── cors.ts
 |    └── checkLogin.ts
 │    └── index
 |       ├── index.ts
