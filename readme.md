@@ -1,14 +1,23 @@
+## 目录结构
+
+```
+├── frontend # 前台（小程序端）
+├── backend # 后台管理系统
+├── server # 服务端
+├── database # 数据库
+```
+
 ## frontend 后端部署
 
 ### 安装依赖
 
-```bash
+```
 npm i
 ```
 
 ### 编译命令
 
-```bash
+```
 npm run build
 ```
 
@@ -16,7 +25,7 @@ npm run build
 
 ### 运行命令
 
-```bash
+```
 npm run dev
 ```
 
