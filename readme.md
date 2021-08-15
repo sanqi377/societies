@@ -6,6 +6,20 @@
 npm i
 ```
 
+### 编译命令
+
+```bash
+npm run build
+```
+
+编译在 `./dist`
+
+### 运行命令
+
+```bash
+npm run dev
+```
+
 ### 目录结构
 
 ```
@@ -22,6 +36,8 @@ npm i
 │    └── users
 |       ├── users.ts
 ├── middleware
+|    └── Cors.ts
+|    └── checkLogin.ts
 │    └── index
 |       ├── index.ts
 │    └── users
