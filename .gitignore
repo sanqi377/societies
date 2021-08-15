@@ -1,2 +1,5 @@
 # package
 node_modules
+
+# build
+dist
