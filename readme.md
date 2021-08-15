@@ -11,7 +11,26 @@ npm i
 ```
 ├── app.ts
 ├── package.json
+├── controller
+│    └── index
+|       ├── index.ts
+│    └── users
+|       ├── users.ts
+├── model
+│    └── index
+|       ├── index.ts
+│    └── users
+|       ├── users.ts
+├── middleware
+│    └── index
+|       ├── index.ts
+│    └── users
+|       ├── users.ts
 ├── routes
-│   ├── index.ts
-│   └── users.ts
+|    └── index
+|       ├── index.ts
+│    └── users
+|       ├── users.ts
+├── util
+│    └── util.ts
 ```
