@@ -5,6 +5,7 @@
 ├── frontend # 前台（小程序端）
 ├── backend # 后台管理系统
 ├── server # 服务端
+├── material # 素材（内含 icon、img、ui）
 └── database # 数据库
 ```
 
