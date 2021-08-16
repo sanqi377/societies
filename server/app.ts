@@ -6,5 +6,5 @@ const autoLoadRouter = require('./util/authLoader')
 autoLoadRouter(app, path.join(__dirname, 'controller'))
 
 app.listen(3000, () => {
-  console.log("OK!")
+  console.log("server start! OK!")
 })
