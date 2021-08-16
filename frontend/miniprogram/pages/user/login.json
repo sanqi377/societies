@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "s-input":"../../components/s-input/index"
-  },
+  "usingComponents": {},
   "navigationStyle": "custom"
 }

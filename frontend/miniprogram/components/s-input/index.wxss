@@ -14,13 +14,13 @@
   width: 10%;
 }
 
-.item input {
+.item .input {
   display: flex;
   align-items: center;
   width: 90%;
 }
 
-.item .icon image {
+.item .icon .icons {
   width: 28px;
   height: 28px;
 }
