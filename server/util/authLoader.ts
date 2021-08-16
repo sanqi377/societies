@@ -1,5 +1,8 @@
 const glob = require('glob');
 
+/**
+ * 自动加载 Controller
+ */
 const autoLoader = (app: any, root: any) => {
   glob.sync(`${root}/**/*.js`).forEach((file: any) => {
     let filePath = file.replace(/\.[^.]*$/, '');
@@ -20,4 +23,4 @@ const autoLoader = (app: any, root: any) => {
   })
 }
 
-module.exports = autoLoader;
+module.exports = { autoLoadRouter: autoLoader };

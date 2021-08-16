@@ -1,9 +1,11 @@
+let model = require(__filename.replace(/controller/, 'model'))
 module.exports = {
   getInfo(req: any, res: any) {
-    res.send({ data: 666 })
+    model.getInfo().then((resp: any) => {
+      res.send({ data: resp })
+    })
   },
   getMenu(req: any, res: any) {
-    console.log(req.query,req.method)
     res.send({ data: 777 })
   }
 }
