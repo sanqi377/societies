@@ -1,17 +1,6 @@
 <view class="container">
-  <view class="head_pic">
-    <image src="../../public/img/logo-bg.png"></image>
-  </view>
   <view class="form">
-    <view class="title">登录</view>
-    <view class="item">
-      <s-input type="number" icon="phone" placeholder="账号" bind:getValue="getPhone"></s-input>
-    </view>
-    <view class="item">
-      <s-input type="password" icon="password" placeholder="密码" bind:getValue="getPassword"></s-input>
-    </view>
-    <view class="btn {{active?'active':''}}" bindtap="login">登录</view>
-    <view class="wx">
+    <view class="wx" bindtap="login">
       <view>
         <image src="../../public/icon/wx.png"></image>
       </view>

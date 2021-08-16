@@ -106,7 +106,7 @@ Page({
                 duration: 2000,
                 success: () => {
                   setTimeout(() => {
-                    wx.reLaunch({ url: '/pages/index/index' })
+                    wx.reLaunch({ url: '/pages/user/login' })
                   }, 2000)
                 }
               })

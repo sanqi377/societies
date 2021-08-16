@@ -2,40 +2,9 @@ var { ajax } = require('../../utils/util')
 Page({
   data: {
     form: {
-      phone: '',
-      password: '',
       code: ''
     },
     active: false
-  },
-
-  /**
-   * 获取手机号
-   * @param val 手机号
-   */
-  getPhone(val: any) {
-    this.setData({
-      ['form.phone']: val.detail
-    })
-    this.changeActive()
-  },
-
-  /**
-   * 获取密码
-   * @param val 密码
-   */
-  getPassword(val: any) {
-    this.setData({
-      ['form.password']: val.detail
-    })
-    this.changeActive()
-  },
-
-  /**
-   * 更改登录按钮状态
-   */
-  changeActive() {
-    this.data.form.phone && this.data.form.password ? this.setData({ active: true }) : this.setData({ active: false })
   },
 
   /**
