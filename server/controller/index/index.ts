@@ -1,4 +1,4 @@
-let model = require(__filename.replace(/controller/, 'model'))
+var model = require(__filename.replace(/controller/, 'model'))
 module.exports = {
   getInfo(req: any, res: any) {
     model.getInfo().then((resp: any) => {

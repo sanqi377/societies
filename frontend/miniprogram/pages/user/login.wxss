@@ -1,0 +1,48 @@
+.head_pic {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.form {
+  margin: 0 30px;
+}
+
+.form .title {
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+.form .item {
+  margin-bottom: 30px;
+}
+
+.form .btn {
+  background: #838C9B;
+  text-align: center;
+  padding: 15px 0;
+  color: #fff;
+  border-radius: 30px;
+}
+
+.form .btn.active {
+  background: #0165FF;
+}
+
+.form .wx {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.form .wx>view {
+  border: 1px solid #A2A9B4;
+  padding: 10px 25px;
+  border-radius: 20px;
+}
+
+.form .wx image {
+  display: flex;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+}

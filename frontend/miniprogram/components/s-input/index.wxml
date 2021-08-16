@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="item">
+    <span class="icon">
+      <image src="../../public/icon/{{icon}}.png"></image>
+    </span>
+    <input type="{{type}}" placeholder="{{placeholder}}" value="{{val}}" bindinput="getVal" />
+  </view>
+</view>

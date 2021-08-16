@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="head_pic">
+    <image src="../../public/img/reg-bg.png"></image>
+  </view>
+  <view class="form">
+    <view class="title">信息完善</view>
+    <view class="item">
+      <s-input type="number" icon="phone" placeholder="手机号" bind:getValue="getPhone"></s-input>
+    </view>
+    <view class="item">
+      <s-input type="password" icon="password" placeholder="密码" bind:getValue="getPassword"></s-input>
+    </view>
+    <view class="item">
+      <s-input type="text" icon="name" placeholder="姓名" bind:getValue="getName"></s-input>
+    </view>
+    <view class="item">
+      <s-input type="number" icon="student-id" placeholder="学号" bind:getValue="getStudentId"></s-input>
+    </view>
+    <view class="item">
+      <s-input type="text" icon="departments" placeholder="系部" bind:getValue="getDepartments"></s-input>
+    </view>
+    <view class="item">
+      <s-input type="text" icon="class" placeholder="班级" bind:getValue="getClass"></s-input>
+    </view>
+    <view class="btn {{active?'active':''}}" bindtap="reg">注册</view>
+  </view>
+</view>
