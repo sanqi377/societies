@@ -1,9 +1,10 @@
 <view class="container">
-  <view class="form">
-    <view class="wx" bindtap="login">
-      <view>
-        <image src="../../public/icon/wx.png"></image>
-      </view>
+    <view class="top">
+        <view>圈子</view>
+        <view>欢迎来到圈子</view>
     </view>
-  </view>
+    <view class="bottom">
+        <view bindtap="login">授权登录</view>
+        <view bindtap="back">暂不登录</view>
+    </view>
 </view>

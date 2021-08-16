@@ -1,18 +1,55 @@
-.form .wx {
-  margin-top: 40px;
+.container {
+  background: url("https://p.ananas.chaoxing.com/star3/origin/7ea2bcfbaa434fee4bad0ff47d8cb39c.png");
+  background-size: 100% 100%;
+  height: 100vh;
+}
+
+view {
+  color: #ffffff;
+}
+
+.container .top {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 50%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.container .top view {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.form .wx>view {
-  border: 1px solid #A2A9B4;
-  padding: 10px 25px;
-  border-radius: 20px;
+.container .top view:first-child {
+  font-weight: 800;
+  font-size: 25px;
 }
 
-.form .wx image {
+.container .top view:last-child {
+  font-size: 14px;
+}
+
+.container .bottom {
   display: flex;
-  align-items: center;
-  width: 35px;
-  height: 35px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 105%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.container .bottom view {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 25px;
+  width: 75%;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  padding: 15px 0;
+  font-weight: 800;
 }
