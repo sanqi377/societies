@@ -14,7 +14,6 @@ class Mysql {
   table: string
   wheres: string
   limits: string
-  sets: string
 
   /**
    * 构造函数
@@ -23,11 +22,10 @@ class Mysql {
    * @param limits 限制结果数量
    * @param sets 更新时的 value
    */
-  constructor(table: string, wheres?: string, limits?: string, sets?: string) {
+  constructor(table: string, wheres?: string, limits?: string) {
     this.table = table
     this.wheres = wheres as string
     this.limits = limits as string
-    this.sets = sets as string
   }
 
   /**
@@ -90,10 +88,10 @@ class Mysql {
         }
       })
     })
-    this.sets = arrs.toString()
+    let sets = arrs.toString()
     var sql: string = 'update'
     if (this.table) sql += ` ${this.table}`
-    if (this.sets) sql += ` set ${this.sets}`
+    if (sets) sql += ` set ${sets}`
     if (this.wheres) sql += ` where ${this.wheres}`
     return querys(sql)
   }
@@ -106,6 +104,30 @@ class Mysql {
     var sql: string = 'delete'
     if (this.table) sql += ` from ${this.table}`
     if (this.wheres) sql += ` where ${this.wheres}`
+    return querys(sql)
+  }
+
+  /**
+   * 新增数据
+   * @param arr 
+   */
+  insert(...arr: any) {
+    arr = arr[0]
+    let key: string[] = [], val: string[] = []
+    Object.keys(arr).forEach((item: any) => {
+      key.push(item)
+    })
+
+    Object.values(arr).forEach((item: any) => {
+      if (typeof (item) === 'string') item = `'${item}'`
+      val.push(item)
+    })
+    let keys = key.toString()
+    let vals = val.toString()
+    var sql: string = 'insert into'
+    if (this.table) sql += ` ${this.table}`
+    if (keys) sql += ` (${keys})`
+    if (vals) sql += ` values (${vals})`
     return querys(sql)
   }
 }
@@ -137,6 +159,8 @@ let querys = (sql: string, type?: string) => {
 let db = (table: string) => {
   return new Mysql(table)
 }
+
+db('s_remember').where({ id: 6 }).update({ 'nickname': '嘻嘻' })
 
 module.exports = {
   db
