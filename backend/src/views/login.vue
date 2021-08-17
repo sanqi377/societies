@@ -70,7 +70,6 @@ export default {
                 this.loading = true;
                 this.$api.user.login(this.form).then((res) => {
                     this.loading = false;
-                    console.log(res)
                     if (res.type == "success") {
                         this.$store.dispatch("setToken", res.token).then(() => {
                             this.$store
