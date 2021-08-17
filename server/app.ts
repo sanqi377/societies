@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+
 // 跨域处理中间件
 const core = require('./middleware/Core')
 core.init(app)
