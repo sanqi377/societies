@@ -41,6 +41,12 @@
           "pathName": "pages/societies/info/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/user/login/index",
+          "pathName": "pages/user/login/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
