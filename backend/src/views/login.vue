@@ -75,16 +75,7 @@ export default {
                             this.$store
                                 .dispatch("setUser", res.data)
                                 .then(() => {
-                                    this.$api.system
-                                        .getSystem()
-                                        .then((resp) => {
-                                            console.log(resp);
-                                            this.$store
-                                                .dispatch("setSystem", resp)
-                                                .then(() => {
-                                                    this.$router.push("/");
-                                                });
-                                        });
+                                    this.$router.push("/");
                                 });
                         });
                         this.$message({

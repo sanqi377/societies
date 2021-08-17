@@ -25,10 +25,8 @@ axios.interceptors.request.use(config => {
 
 // 添加响应拦截器
 axios.interceptors.response.use(res => {
-    console.log(res.data)
     switch (res.data.ret) {
         case 200:
-            
             return res.data.data
         case 401:
             Message({

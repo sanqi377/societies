@@ -24,5 +24,8 @@ module.exports = {
         resolve(status)
       })
     })
+  },
+  getUserInfo(username: string) {
+    return query('s_remember', '', `username='${username}'`)
   }
 }

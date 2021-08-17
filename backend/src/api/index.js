@@ -13,8 +13,14 @@ const api = {
         },
     },
     system: {
-        menu: (param) => {
-            return ajax.post("system/menu", param);
+        getMenu: (param) => {
+            return ajax.post("system/getMenu", param);
+        },
+        deleteMenu: (param) => {
+            return ajax.post("system/deleteMenu", param);
+        },
+        saveMenu: (param) => {
+            return ajax.post("system/saveMenu", param);
         },
         loginlog: (param) => {
             return ajax.post("system/loginlog", param);
@@ -38,6 +44,12 @@ const api = {
         },
     },
     article: {
+        getClassification: () => {
+            return ajax.post("article/getClassification");
+        },
+        deleteClassification: (param) => {
+            return ajax.post("article/deleteClassification", param);
+        },
         cats: (param) => {
             return ajax.post("article/cats", param);
         },

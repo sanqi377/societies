@@ -315,7 +315,7 @@ export default {
     methods: {
         isNo(res) {
             this.$api.article
-                .cats({ status: res.status, id: res.id })
+                .getClassification({ status: res.status, id: res.id })
                 .then((res) => {
                     this.$message({
                         type: "success",
@@ -327,7 +327,7 @@ export default {
         query() {
             this.loading = true;
             this.$api.article
-                .cats(this.where)
+                .getClassification(this.where)
                 .then((res) => {
                     this.loading = false;
                     this.data = this.$util.toTreeData(res, "id", "pid");
@@ -409,12 +409,12 @@ export default {
                 return this.$message.error("请先删除子节点");
             const loading = this.$loading({ lock: true });
             this.$api.article
-                .deleteCat({ id: row.id })
+                .deleteClassification({ id: row.id })
                 .then((res) => {
                     loading.close();
                     this.$message({
-                        type: "success",
-                        message: res,
+                        type: res.type,
+                        message: res.msg,
                         onClose: () => {
                             location.reload();
                         },

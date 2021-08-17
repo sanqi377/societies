@@ -12,7 +12,9 @@ module.exports = {
       model.login(data).then((status: boolean) => {
         if (!status) res.send({ ret: 200, data: { type: 'error', msg: '密码错误' } })
         let token = createJwtToken(data.username)
-        console.log(token, data.username)
+        model.getUserInfo(data.username).then((userInfo: any) => {
+          res.send({ ret: 200, data: { type: 'success', token, data: userInfo, msg: '登录成功' } })
+        })
       })
     })
   }
