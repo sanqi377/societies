@@ -29,7 +29,7 @@ var mysqlQuery = (table: string, field?: string, where?: string, order?: string)
         reject(err);
         return;
       }
-      resolve(res[0]);
+      resolve(res);
     });
   })
 }
