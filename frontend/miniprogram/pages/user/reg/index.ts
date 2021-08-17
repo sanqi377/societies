@@ -1,4 +1,4 @@
-var { ajax } = require('../../utils/util')
+var { ajax } = require('../../../utils/util')
 Page({
   data: {
     form: {
@@ -106,7 +106,7 @@ Page({
                 duration: 2000,
                 success: () => {
                   setTimeout(() => {
-                    wx.reLaunch({ url: '/pages/user/login' })
+                    wx.reLaunch({ url: '/pages/user/login/index' })
                   }, 2000)
                 }
               })

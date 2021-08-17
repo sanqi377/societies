@@ -142,7 +142,7 @@ page {
   margin-right: 10px;
 }
 
-.dynamic .card .info .avatar image{
+.dynamic .card .info .avatar image {
   width: 40px;
   height: 40px;
   border-radius: 6px;
@@ -158,12 +158,22 @@ page {
   border-radius: 3px;
 }
 
+.dynamic .card .btns {
+  display: flex;
+  justify-content: space-between;
+}
+
 .dynamic .card .btns image {
   width: 20px;
   height: 20px;
+  margin-right: 3px;
 }
 
-.dynamic .card .btns .admits {
+.dynamic .card .btns>view {
   display: flex;
   align-items: center;
+}
+
+.dynamic .card .btns .admits span {
+  font-size: 16px;
 }

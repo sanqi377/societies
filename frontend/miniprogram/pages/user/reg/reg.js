@@ -1,5 +1,5 @@
 "use strict";
-var ajax = require('../../utils/util').ajax;
+var ajax = require('../../../utils/util').ajax;
 Page({
     data: {
         form: {

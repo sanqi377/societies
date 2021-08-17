@@ -1,0 +1,104 @@
+.container {
+  padding-top: 40px;
+  margin: 0 15px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.user-card {
+  padding: 20px 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+  margin-bottom: 30px;
+}
+
+.user-card .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card .info .names {
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.user-card .info .id {
+  color: #98989F;
+}
+
+.user-card .info .avatar image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.statistics {
+  border-top: 1px solid #98989F;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.statistics .info {
+  justify-content: flex-start;
+  position: relative;
+}
+
+.statistics .info>view {
+  margin-right: 10px;
+}
+
+.statistics .btns {
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.statistics .btns>view {
+  background: #F5F6FA;
+  font-size: 14px;
+  padding: 5px 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.statistics .info>view .num {
+  margin-bottom: 5px;
+}
+
+.statistics .info>view .name {
+  font-size: 14px;
+}
+
+.menu-list .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.menu-list .item:last-child {
+  margin-bottom: 0;
+}
+
+.menu-list .item image {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.menu-list .item .info {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.menu-list .item .more {
+  display: flex;
+  align-items: center;
+}

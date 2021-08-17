@@ -1,0 +1,27 @@
+.container {
+  padding-top: 55px;
+  margin: 0 15px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.head image {
+  width: 16px;
+  height: 16px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.bg image {
+  width: 100%;
+}

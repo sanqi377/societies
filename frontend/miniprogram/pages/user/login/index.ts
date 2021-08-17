@@ -1,4 +1,4 @@
-var { ajax } = require('../../utils/util')
+var { ajax } = require('../../../utils/util')
 Page({
   data: {},
 

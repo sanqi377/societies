@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="head">
+    <view class="back">
+      <image src="../../../public/icon/back.png"></image>
+    </view>
+    <view class="title">个人信息</view>
+    <view class="more"></view>
+  </view>
+  <view class="bg">
+    <image src="../../../public/img/swiper-1.jpg"></image>
+  </view>
+  <view class="userInfo">
+    11
+  </view>
+</view>

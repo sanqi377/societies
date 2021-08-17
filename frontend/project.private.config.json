@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,24 @@
         {
           "name": "pages/user/login",
           "pathName": "pages/user/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/societies/index/index",
+          "pathName": "pages/societies/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/my/index",
+          "pathName": "pages/user/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/info/index",
+          "pathName": "pages/user/info/index",
           "query": "",
           "scene": null
         }
