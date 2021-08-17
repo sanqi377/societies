@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.title .item {
+  margin-right: 30px;
+  font-size: 14px;
+  position: relative;
+}
+
+.title .item.active {
+  font-weight: bold;
+}
+
+.title .item.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 16px;
+  height: 4px;
+  border-radius: 3px;
+  background: #FED838;
+}

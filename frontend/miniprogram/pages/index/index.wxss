@@ -1,19 +1,169 @@
-/**index.wxss**/
-.userinfo {
+page {
+  background: #F5F6FA;
+}
+
+.container:first-child {
+  padding-top: 40px;
+}
+
+.container {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.header .title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.swiper {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.swiper .swiper-img {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.btns {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.btns .item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.btns image {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
 }
 
-.usermotto {
-  margin-top: 200px;
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.societies .title {
+  font-size: 20px;
+}
+
+.more image {
+  width: 31px;
+  height: 31px;
+}
+
+.societies .list {
+  display: flex;
+}
+
+.societies .list .item {
+  margin: 15px 15px 5px 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+}
+
+.societies .list .item .logo {
+  width: 80px;
+  height: 80px;
+  background: red;
+}
+
+.societies .list .item .name {
+  text-align: center;
+  font-size: 14px;
+}
+
+.dynamic .title {
+  font-size: 20px;
+}
+
+.dynamic .tabs {
+  margin-top: 12px;
+}
+
+.dynamic .card {
+  padding: 10px 0;
+}
+
+.dynamic .card .info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dynamic .card .info .user {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .card .info .like {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .card .info .like>view {
+  background: #FFD943;
+  color: #333333;
+  padding: 4px 18px;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .card .info .like>view span {
+  font-size: 14px;
+}
+
+.dynamic .card .info .like>view image {
+  width: 13px;
+  height: 13px;
+  margin-right: 3px;
+}
+
+.dynamic .card .info .user .name {
+  font-size: 14px;
+}
+
+.dynamic .card .info .user .datetime {
+  margin-top: 5px;
+  color: #98989F;
+  font-size: 12px;
+}
+
+.dynamic .card .info .avatar {
+  margin-right: 10px;
+}
+
+.dynamic .card .info .avatar image{
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.dynamic .card .content {
+  margin-top: 12px;
+}
+
+.dynamic .card .content image {
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.dynamic .card .btns image {
+  width: 20px;
+  height: 20px;
+}
+
+.dynamic .card .btns .admits {
+  display: flex;
+  align-items: center;
 }

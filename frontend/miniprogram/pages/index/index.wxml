@@ -1,23 +1,108 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="header container">
+  <view class="title">清华大学</view>
+  <view class="swiper">
+    <swiper indicator-dots autoplay interval duration>
+      <block wx:for="{{swiper}}" wx:key="*this">
+        <swiper-item>
+          <image class="swiper-img" src="{{item.url}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="btns">
+    <view class="item">
+      <image src="../../public/icon/article.png"></image>
+      <span>社团文章</span>
+    </view>
+    <view class="item">
+      <image src="../../public/icon/activity.png"></image>
+      <span>社团活动</span>
+    </view>
+    <view class="item">
+      <image src="../../public/icon/classification.png"></image>
+      <span>社团分类</span>
+    </view>
+    <view class="item">
+      <image src="../../public/icon/sign-in.png"></image>
+      <span>每日签到</span>
+    </view>
+  </view>
+</view>
+<view class="societies container">
+  <view class="top">
+    <view class="title">全部社团</view>
+    <view class="more">
+      <image src="../../public/icon/more.png"></image>
+    </view>
+  </view>
+  <scroll-view scroll-x="true">
+    <view class="list">
+      <view class="item">
+        <view class="logo"></view>
+        <view class="name">计算机协会</view>
+      </view>
+      <view class="item">
+        <view class="logo"></view>
+        <view class="name">计算机协会</view>
+      </view>
+      <view class="item">
+        <view class="logo"></view>
+        <view class="name">计算机协会</view>
+      </view>
+      <view class="item">
+        <view class="logo"></view>
+        <view class="name">计算机协会</view>
+      </view>
+      <view class="item">
+        <view class="logo"></view>
+        <view class="name">计算机协会</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class="dynamic container">
+  <view class="title">社团动态</view>
+  <view class="tabs">
+    <s-tabs title="{{tabsTitle}}" bind:changeTabs="changeTabs">
+      <block wx:for="{{tabsTitle}}" wx:key="item">
+        <block wx:if="{{index === 0 && item.active}}">
+          <view class="card">
+            <view class="info">
+              <view class="user">
+                <view class="avatar">
+                  <image src="../../public/head_pic/avatar.jpg"></image>
+                </view>
+                <view class="date">
+                  <view class="name">计算机协会</view>
+                  <view class="datetime">11-24 08:25</view>
+                </view>
+              </view>
+              <view class="like">
+                <view>
+                  <image src="../../public/icon/like.png"></image>
+                  <span>关注</span>
+                </view>
+              </view>
+            </view>
+            <view class="content">
+              阿八八八二九我却极为哦请我喝酒欧文i去人家而我溶解无人机额外i进入
+              <image src="../../public/img/swiper-1.jpg"></image>
+            </view>
+            <view class="btns">
+              <view class="admits">
+                <image src="../../public/icon/give-lick.png"></image>
+                <span>100</span>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{index === 1 && item.active}}">
+          我加入的
+        </block>
+        <block wx:if="{{index === 2 && item.active}}">
+          我关注的
+        </block>
+      </block>
+    </s-tabs>
   </view>
 </view>
