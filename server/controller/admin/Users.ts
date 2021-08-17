@@ -1,4 +1,6 @@
 var model = require(__filename.replace(/controller/, 'model'))
+var { createJwtToken } = require('../../util/Jwt')
+
 module.exports = {
   /**
    * 后台登录
@@ -7,9 +9,10 @@ module.exports = {
     let data = req.body
     model.isReg(data.username).then((resp: any) => {
       if (!resp[0]) res.send({ ret: 200, data: { type: 'error', msg: '账户不存在' } })
-      model.login(data).then((status:boolean) => {
-        if(!status) res.send({ ret: 200, data: { type: 'error', msg: '密码错误' } })
-
+      model.login(data).then((status: boolean) => {
+        if (!status) res.send({ ret: 200, data: { type: 'error', msg: '密码错误' } })
+        let token = createJwtToken(data.username)
+        console.log(token, data.username)
       })
     })
   }

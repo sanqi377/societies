@@ -1,6 +1,6 @@
 var model = require(__filename.replace(/controller/, 'model'))
 var request = require('request')
-var {createJwtToken} =require('../../util/jwt')
+var { createJwtToken } = require('../../util/Jwt')
 module.exports = {
   /**
    * 用户登录接口
@@ -12,13 +12,13 @@ module.exports = {
 
       let status = model.isReg(openid)
 
-      var token=createJwtToken(openid)
+      var token = createJwtToken(openid)
 
       if (!status) {
         res.send({ code: 201, msg: '用户未注册' })
         return
       }
-      res.send({ msg: '用户已注册',token})
+      res.send({ msg: '用户已注册', token })
     })
   },
   /**

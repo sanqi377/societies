@@ -1,3 +1,4 @@
+var { Verification } = require("../../util/jwt");
 var init = (app: any) => {
   app.use((req: any, res: any, next: any) => {
     let token = req.query.token;
