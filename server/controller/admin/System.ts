@@ -38,7 +38,13 @@ module.exports = {
         }
       })
     } else {
-      model.addMenu(data)
+      model.addMenu(data).then((resp: any) => {
+        if (resp) {
+          res.send({ ret: 200, data: { type: 'success', msg: '添加成功' } })
+        } else {
+          res.send({ ret: 200, data: { type: 'error', msg: '添加失败' } })
+        }
+      })
     }
   }
 }

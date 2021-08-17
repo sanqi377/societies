@@ -14,6 +14,7 @@ class Mysql {
   table: string
   wheres: string
   limits: string
+  orders: string
 
   /**
    * 构造函数
@@ -22,10 +23,11 @@ class Mysql {
    * @param limits 限制结果数量
    * @param sets 更新时的 value
    */
-  constructor(table: string, wheres?: string, limits?: string) {
+  constructor(table: string, wheres?: string, limits?: string, orders?: string) {
     this.table = table
     this.wheres = wheres as string
     this.limits = limits as string
+    this.orders = orders as string
   }
 
   /**
@@ -69,6 +71,7 @@ class Mysql {
     var sql: string = 'select *'
     if (this.table) sql += ` from ${this.table}`
     if (this.wheres) sql += ` where ${this.wheres}`
+    if (this.orders) sql += ` ${this.orders}`
     return querys(sql, 'select')
   }
 
@@ -129,6 +132,24 @@ class Mysql {
     if (keys) sql += ` (${keys})`
     if (vals) sql += ` values (${vals})`
     return querys(sql)
+  }
+
+  /**
+   * 结果排序
+   * @param arr 
+   * @returns 
+   */
+  order(...arr: any) {
+    arr = arr[0]
+    let keys, vals
+    Object.keys(arr).forEach(item => {
+      keys = item
+    })
+    Object.values(arr).forEach(item => {
+      vals = item
+    })
+    this.orders = `ORDER BY ${keys} ${vals}`
+    return this
   }
 }
 

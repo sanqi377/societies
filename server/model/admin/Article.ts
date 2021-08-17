@@ -1,10 +1,10 @@
-var { query, remove } = require('../../util/mysqlInit')
+var { db } = require('../../util/mysqlInit')
 module.exports = {
   /**
    * 后台获取分类
    */
   getClassification() {
-    return query('s_classification', '', 'status=1', 'sort asc')
+    return db('s_classification').where({ status: 1 }).order({ sort: 'asc' }).select()
   },
 
   /**
@@ -12,6 +12,6 @@ module.exports = {
    * @param id 菜单id
    */
   deleteClassification(id: number) {
-    return remove('s_classification', `id=${id}`)
+    return db('s_classification').where({ id }).delete()
   }
 }

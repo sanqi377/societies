@@ -7,10 +7,7 @@ module.exports = {
    * @returns 
    */
   isReg(username: string) {
-    db('s_remember').where({ username }).find().then((res: any) => {
-      console.log(res)
-    })
-    // return query('s_remember', '', `username='${username}'`)
+    return db('s_remember').where({ username }).find()
   },
 
   /**
@@ -19,16 +16,15 @@ module.exports = {
    */
   login(data: any) {
     return new Promise((resolve) => {
-      query('s_remember', 'salt,password', `username='${data.username}'`).then((res: any) => {
-        let datas = res[0]
-        let password = md5(md5(data.password) + datas.salt)
+      db('s_remember').where({ username: data.username }).find().then((res: any) => {
+        let password = md5(md5(data.password) + res.salt)
         let status = false
-        password === datas.password ? status = true : status = false
+        password === res.password ? status = true : status = false
         resolve(status)
       })
     })
   },
   getUserInfo(username: string) {
-    return query('s_remember', '', `username='${username}'`)
+    return db('s_remember').where({ username }).find()
   }
 }
