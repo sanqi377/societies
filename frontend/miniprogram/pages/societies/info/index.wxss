@@ -1,0 +1,101 @@
+.container {
+  padding-top: 55px;
+  margin: 0 15px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.head image {
+  width: 16px;
+  height: 16px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 275px;
+}
+
+.bg image {
+  width: 100%;
+  height: 275px;
+}
+
+.info {
+  margin-top: 90px;
+  color: #fff;
+}
+
+.info .title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.main {
+  margin-top: 20px;
+  background: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 30px 15px;
+  padding-bottom: 0;
+}
+
+.main .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.main .header .more {
+  display: flex;
+  align-items: center;
+}
+
+.main .header image {
+  width: 25px;
+  height: 25px;
+}
+
+.main .name {
+  font-size: 20px;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.group>view {
+  width: 17%;
+  margin-bottom: 10px;
+}
+
+.group image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 3px;
+}
+
+.group .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group .user .name {
+  font-size: 16px;
+}
+
+.notice {
+  color: #98989F;
+}
