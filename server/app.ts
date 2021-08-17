@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-var { Verification } = require("./util/jwt");
 const { autoLoadRouter } = require("./util/authLoader");
 const core = require('./middleware/Core')
 core.init(app)
