@@ -156,12 +156,10 @@ let querys = (sql: string, type?: string) => {
  * @param table 
  * @returns 
  */
-let db = (table: string) => {
+let dbMysql = (table: string) => {
   return new Mysql(table)
 }
 
-db('s_remember').where({ id: 6 }).update({ 'nickname': '嘻嘻' })
-
 module.exports = {
-  db
+  db: dbMysql
 }
