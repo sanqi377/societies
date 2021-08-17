@@ -1,4 +1,4 @@
-var { query } = require('../../util/mysqlInit')
+var { db } = require('../../util/mysqlInit')
 var md5 = require('md5-node')
 module.exports = {
   /**
@@ -7,7 +7,10 @@ module.exports = {
    * @returns 
    */
   isReg(username: string) {
-    return query('s_remember', '', `username='${username}'`)
+    db('s_remember').where({ username }).find().then((res: any) => {
+      console.log(res)
+    })
+    // return query('s_remember', '', `username='${username}'`)
   },
 
   /**

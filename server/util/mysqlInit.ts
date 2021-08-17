@@ -151,15 +151,8 @@ let querys = (sql: string, type?: string) => {
   })
 }
 
-/**
- * 实例化 db
- * @param table 
- * @returns 
- */
-let dbMysql = (table: string) => {
-  return new Mysql(table)
-}
-
 module.exports = {
-  db: dbMysql
+  db(table: string) {
+    return new Mysql(table)
+  }
 }
