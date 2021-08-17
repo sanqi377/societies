@@ -3,8 +3,10 @@ module.exports = {
     // mysql 配置
     mysql: {
       host: "localhost",
-      user: "societies",
-      password: "societies",
+      user: "root",
+      // user: "societies",
+      // password: "societies",
+      password: "root",
       database: "societies",
     },
     // server 配置
