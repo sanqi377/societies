@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/user/login/index",
-    "pages/user/reg/index",
-    "pages/societies/index/index",
-    "pages/user/my/index",
+    "pages/societies/info/index",
     "pages/user/info/index",
-    "pages/societies/info/index"
+    "pages/user/my/index",
+    "pages/societies/index/index",
+    "pages/index/index",
+    "pages/user/reg/index",
+    "pages/user/login/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
