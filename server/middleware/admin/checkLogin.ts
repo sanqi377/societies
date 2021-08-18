@@ -1,8 +1,8 @@
 var { Verification } = require("../../util/jwt");
 var init = (app: any) => {
-  app.use('/index', (req: any, res: any, next: any) => {
-    let token = req.headers.token
-    if (req.path == "login" || req.path == "req") {
+  app.use('/admin', (req: any, res: any, next: any) => {
+    let token = req.headers.authorization
+    if (req.path == "login") {
       next()
     }
     if (!Verification(token)) {
@@ -10,7 +10,7 @@ var init = (app: any) => {
     } else {
       next()
     }
-  });
+  })
 }
 
 module.exports = {

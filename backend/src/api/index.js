@@ -5,8 +5,8 @@ const api = {
         login: (param) => {
             return ajax.post("users/login", param);
         },
-        list: (param) => {
-            return ajax.post("users/list", param);
+        getUsers: (param) => {
+            return ajax.post("users/getUsers", param);
         },
         save: (param) => {
             return ajax.post("users/save", param);

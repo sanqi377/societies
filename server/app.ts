@@ -9,9 +9,13 @@ core.init(app)
 // post 数据转 json 中间件
 app.use(express.json());
 
-// 前端 token 鉴权
+// 前台 token 鉴权
 const indexCheckLogin = require('./middleware/index/checkLogin')
 indexCheckLogin.init(app)
+
+// 前端 token 鉴权
+const adminCheckLogin = require('./middleware/admin/checkLogin')
+adminCheckLogin.init(app)
 
 // 路由自动加载
 const { autoLoadRouter } = require("./util/authLoader");

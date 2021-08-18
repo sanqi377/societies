@@ -17,5 +17,14 @@ module.exports = {
         })
       })
     })
+  },
+
+  /**
+   * 后台用户管理
+   */
+  getUsers(req: any, res: any) {
+    let data = req.body
+    model.getUsers(data)
+    console.log(data)
   }
 }

@@ -271,7 +271,7 @@ export default {
         query() {
             this.loading = true;
             this.$api.user
-                .list(this.where)
+                .getUsers(this.where)
                 .then((res) => {
                     this.loading = false;
                     this.data = res;
@@ -283,7 +283,7 @@ export default {
         },
         isNo(res) {
             this.$api.user
-                .list({ status: res.status, id: res.id })
+                .getUsers({ status: res.status, id: res.id })
                 .then((res) => {
                     this.$message({
                         type: "success",

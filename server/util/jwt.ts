@@ -22,15 +22,15 @@ var createJwtToken: any = (uid: string) => {
 
 
 var Verification: any = (token: string) => {
-    if (token) {
-        try {
-            var decoded = jwt.decode(token,secret);
-        } catch (err) {
-            return false
-        }
-        return true
+  if (token) {
+    try {
+      var decoded = jwt.decode(token, secret);
+      return decoded
+    } catch (err) {
+      return false
     }
-    return false
+  }
+  return false
 };
 
 module.exports = {

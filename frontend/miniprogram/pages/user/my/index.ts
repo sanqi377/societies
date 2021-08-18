@@ -1,4 +1,3 @@
-// {{page}}.ts
 Page({
 
   /**
@@ -26,7 +25,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    wx.getStorage({
+      key: 'token',
+      fail: () => {
+        wx.navigateTo({
+          url: '/pages/user/login/index'
+        })
+      }
+    })
   },
 
   /**

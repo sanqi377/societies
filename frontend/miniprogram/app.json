@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/societies/info/index",
     "pages/user/info/index",
     "pages/user/my/index",
     "pages/societies/index/index",
-    "pages/index/index",
     "pages/user/reg/index",
     "pages/user/login/index"
   ],
@@ -14,6 +14,34 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
+  },
+  "tabBar" :{
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",
+        "iconPath":"public/icon/index.png",
+        "selectedIconPath":"public/icon/index.png"
+      },
+      {
+        "pagePath":"pages/societies/index/index",
+        "text":"社团",
+        "iconPath":"public/icon/societies.png",
+        "selectedIconPath":"public/icon/societies.png"
+      },
+      {
+        "pagePath":"pages/societies/index/index",
+        "text":"消息",
+        "iconPath":"public/icon/message.png",
+        "selectedIconPath":"public/icon/message.png"
+      },
+      {
+        "pagePath":"pages/user/my/index",
+        "text":"我的",
+        "iconPath":"public/icon/my.png",
+        "selectedIconPath":"public/icon/my.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

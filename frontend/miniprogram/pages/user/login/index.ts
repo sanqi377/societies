@@ -19,7 +19,25 @@ Page({
             if (res.code) {
               ajax('http://localhost:3000/index/user/login', { code: res.code }).then((res: any) => {
                 let code = res.data.code
-                if (code === 201) wx.reLaunch({ url: '/pages/user/reg' })
+                if (code === 201) wx.reLaunch({ url: '/pages/user/reg/index' })
+                if (code === 200) {
+                  wx.showToast({
+                    title: res.data.msg,
+                    icon: 'success',
+                    duration: 2000,
+                    success: () => {
+                      wx.setStorage({
+                        key: "token",
+                        data: res.data.token,
+                        success: () => {
+                          setTimeout(() => {
+                            wx.reLaunch({ url: '/pages/user/my/index' })
+                          }, 2000)
+                        }
+                      })
+                    }
+                  })
+                }
               })
             } else {
               console.log('登录失败！' + res.errMsg)
@@ -27,6 +45,15 @@ Page({
           }
         })
       },
+    })
+  },
+
+  /**
+   * 暂不登录
+   */
+  back() {
+    wx.switchTab({
+      url: '/pages/index/index'
     })
   }
 })

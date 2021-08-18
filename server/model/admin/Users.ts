@@ -24,7 +24,21 @@ module.exports = {
       })
     })
   },
+
+  /**
+   * 查询管理员信息
+   * @param username 用户名
+   * @returns 
+   */
   getUserInfo(username: string) {
     return db('s_remember').where({ username }).find()
+  },
+
+  /**
+   * 后台用户管理
+   * @param data 
+   */
+  getUsers(data: any) {
+    return db('s_users').where(data).select()
   }
 }

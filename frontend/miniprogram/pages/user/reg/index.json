@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "s-input":"../../components/s-input/index"
+    "s-input":"../../../components/s-input/index"
   }
 }
