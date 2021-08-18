@@ -179,7 +179,7 @@ export default {
     display: block;
 }
 .footer {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 </style>

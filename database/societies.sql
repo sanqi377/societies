@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-08-18 13:10:00
+Date: 2021-08-18 18:16:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -58,6 +58,27 @@ CREATE TABLE `s_college` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for s_department
+-- ----------------------------
+DROP TABLE IF EXISTS `s_department`;
+CREATE TABLE `s_department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of s_department
+-- ----------------------------
+INSERT INTO `s_department` VALUES ('1', '学院');
+INSERT INTO `s_department` VALUES ('2', '信息工程系');
+INSERT INTO `s_department` VALUES ('3', '机械工程系');
+INSERT INTO `s_department` VALUES ('4', '电气工程系');
+INSERT INTO `s_department` VALUES ('5', '智能控制系');
+INSERT INTO `s_department` VALUES ('6', '车辆工程系');
+INSERT INTO `s_department` VALUES ('7', '经济管理系');
+
+-- ----------------------------
 -- Table structure for s_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `s_menu`;
@@ -74,7 +95,7 @@ CREATE TABLE `s_menu` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `index_pid` (`pid`) USING BTREE,
   KEY `index_name` (`title`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='系统菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='系统菜单表';
 
 -- ----------------------------
 -- Records of s_menu
@@ -96,6 +117,9 @@ INSERT INTO `s_menu` VALUES ('77', '73', '标签列表', 'el-icon-discount', '/a
 INSERT INTO `s_menu` VALUES ('78', '1', '站点设置11', 'el-icon-_network', '/system/site', null, '1', '1', '0');
 INSERT INTO `s_menu` VALUES ('79', '0', '评论管理', 'el-icon-chat-dot-square', '/comment/index', null, '1', '6', '0');
 INSERT INTO `s_menu` VALUES ('85', '0', '用户管理', 'el-icon-_user-group', '/user/index', null, '1', '10', '0');
+INSERT INTO `s_menu` VALUES ('86', '0', '社团管理', 'el-icon-bangzhu', '', null, '1', '10', '0');
+INSERT INTO `s_menu` VALUES ('87', '86', '社团列表', 'el-icon-_nav', '/societies/index', null, '1', '4', '0');
+INSERT INTO `s_menu` VALUES ('88', '86', '添加社团', 'el-icon-_user-add', '/societies/add', null, '1', '2', '0');
 
 -- ----------------------------
 -- Table structure for s_remember
@@ -126,6 +150,22 @@ INSERT INTO `s_remember` VALUES ('3', '小器器', '55076323@qq.com', '49a907652
 INSERT INTO `s_remember` VALUES ('5', '文强', 'zaiceshi ', '813b0be1640369c3713be61c7ac0f070', null, 'JjMcli', '0', '0', '1615120737', null, '127.0.0.1', null, '0');
 INSERT INTO `s_remember` VALUES ('6', '嘻嘻', null, null, null, null, null, '0', null, null, null, null, '0');
 INSERT INTO `s_remember` VALUES ('7', '嘻嘻', null, null, null, null, null, '0', null, null, null, null, '0');
+
+-- ----------------------------
+-- Table structure for s_societies_type
+-- ----------------------------
+DROP TABLE IF EXISTS `s_societies_type`;
+CREATE TABLE `s_societies_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of s_societies_type
+-- ----------------------------
+INSERT INTO `s_societies_type` VALUES ('1', '学院');
+INSERT INTO `s_societies_type` VALUES ('2', '系部');
 
 -- ----------------------------
 -- Table structure for s_task
@@ -160,10 +200,11 @@ CREATE TABLE `s_users` (
   `studentId` varchar(255) NOT NULL,
   `college_id` int(11) NOT NULL DEFAULT '-1' COMMENT '所属社团，为-1时为新人用户',
   `phone` varchar(255) DEFAULT NULL COMMENT '手机号',
+  `status` int(1) DEFAULT '1' COMMENT '用户状态 0：禁用，1：启用',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of s_users
 -- ----------------------------
-INSERT INTO `s_users` VALUES ('2', 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒123456', null, 'XX2021', '信息工程系', '123456', '-1', '13333333333');
+INSERT INTO `s_users` VALUES ('2', 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒123456', null, 'XX2021', '信息工程系', '123456', '-1', '13333333333', '1');
