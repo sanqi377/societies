@@ -13,7 +13,7 @@ app.use(express.json());
 const indexCheckLogin = require('./middleware/index/checkLogin')
 indexCheckLogin.init(app)
 
-// 前端 token 鉴权
+// 后台 token 鉴权
 const adminCheckLogin = require('./middleware/admin/checkLogin')
 adminCheckLogin.init(app)
 

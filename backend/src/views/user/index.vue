@@ -45,23 +45,8 @@
             >
             </el-table-column>
             <el-table-column
-                prop="nickname"
-                label="昵称"
-                width="120"
-                align="center"
-            >
-            </el-table-column>
-            <el-table-column
-                prop="username"
-                label="用户名"
-                width="200"
-                align="center"
-            >
-            </el-table-column>
-            <el-table-column
                 prop="avatar"
                 label="头像"
-                width="120"
                 align="center"
             >
                 <template slot-scope="{ row }">
@@ -72,6 +57,37 @@
                     ></el-avatar>
                 </template>
             </el-table-column>
+            <el-table-column
+                prop="name"
+                label="姓名"
+                align="center"
+            >
+            </el-table-column>
+            <el-table-column
+                prop="studentId"
+                label="学号"
+                align="center"
+            >
+            </el-table-column>
+            <el-table-column
+                prop="departments"
+                label="系部"
+                align="center"
+            >
+            </el-table-column>
+            <el-table-column
+                prop="class"
+                label="班级"
+                align="center"
+            >
+            </el-table-column>
+            <el-table-column
+                prop="phone"
+                label="手机号"
+                align="center"
+            >
+            </el-table-column>
+            
             <el-table-column
                 prop="status"
                 label="状态"
@@ -99,40 +115,6 @@
                 <template slot-scope="{ row }">
                     {{ row.identity == 0 ? "用户" : "管理员" }}
                 </template>
-            </el-table-column>
-            <el-table-column
-                prop="addtime"
-                label="注册时间"
-                min-width="180"
-                align="center"
-            >
-                <template slot-scope="{ row }">{{
-                    (row.addtime * 1000) | toDateString
-                }}</template>
-            </el-table-column>
-            <el-table-column
-                prop="lasttime"
-                label="登录时间"
-                min-width="180"
-                align="center"
-            >
-                <template slot-scope="{ row }">{{
-                    (row.lasttime * 1000) | toDateString
-                }}</template>
-            </el-table-column>
-            <el-table-column
-                prop="addip"
-                label="注册 IP"
-                min-width="160"
-                align="center"
-            >
-            </el-table-column>
-            <el-table-column
-                prop="loginip"
-                label="登录 IP"
-                min-width="160"
-                align="center"
-            >
             </el-table-column>
             <el-table-column
                 label="操作"

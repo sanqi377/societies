@@ -24,7 +24,8 @@ module.exports = {
    */
   getUsers(req: any, res: any) {
     let data = req.body
-    model.getUsers(data)
-    console.log(data)
+    model.getUsers(data).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
+    })
   }
 }

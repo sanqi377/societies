@@ -8,7 +8,7 @@ module.exports = {
       db('s_menu').where({ pid: 0, status: 1 }).order({ 'sort': 'asc' }).select().then((res: any) => {
         for (let i = 0; i < res.length; i++) {
           res[i].children = []
-          db('s_menu').where({ pid: res[i].id, status: 1 }).select().then((resp: any) => {
+          db('s_menu').where({ pid: res[i].id, status: 1 }).order({ 'sort': 'asc' }).select().then((resp: any) => {
             res[i].children = resp
             if (i === res.length - 1) resolve(res)
           })
