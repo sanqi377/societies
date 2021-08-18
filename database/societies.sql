@@ -11,30 +11,11 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 18/08/2021 20:07:18
+ Date: 18/08/2021 20:34:50
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for s_activity
--- ----------------------------
-DROP TABLE IF EXISTS `s_activity`;
-CREATE TABLE `s_activity`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '活动id',
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '活动标题',
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '活动内容',
-  `publisher_college_id` int(11) NOT NULL COMMENT '发布社团',
-  `recipient_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '-1' COMMENT '接受者id,可多人，为-1时表示所有人可接收',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `publisher_college_id_copy_1`(`publisher_college_id`) USING BTREE,
-  CONSTRAINT `publisher_college_id_copy_1` FOREIGN KEY (`publisher_college_id`) REFERENCES `s_college` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of s_activity
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for s_classification
@@ -59,24 +40,6 @@ CREATE TABLE `s_classification`  (
 -- ----------------------------
 INSERT INTO `s_classification` VALUES (1, 0, '知识笔记', '/notes', 0, 1, 1, 'el-icon-circle-plus-outline', '测试简介1111', 1);
 INSERT INTO `s_classification` VALUES (3, 0, '干货分享', '/share', 0, 2, 1, '', '嘻嘻嘻啦啦啦', 1);
-
--- ----------------------------
--- Table structure for s_college
--- ----------------------------
-DROP TABLE IF EXISTS `s_college`;
-CREATE TABLE `s_college`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '社团ID',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '社团名称',
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '社团头像',
-  `notice` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公告',
-  `number` int(11) NOT NULL COMMENT '社团人数',
-  `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所属院系',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of s_college
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for s_department
@@ -151,7 +114,9 @@ CREATE TABLE `s_notice`  (
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告内容',
   `college_id` int(11) NOT NULL COMMENT '所属社团ID',
   `nowtime` datetime(0) NOT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '发布时的时间戳，自动生成',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `college_id_copy_1`(`college_id`) USING BTREE,
+  CONSTRAINT `college_id_copy_1` FOREIGN KEY (`college_id`) REFERENCES `s_societies` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -222,11 +187,39 @@ CREATE TABLE `s_role`  (
 DROP TABLE IF EXISTS `s_role_powers_tie`;
 CREATE TABLE `s_role_powers_tie`  (
   `role_id` int(11) NOT NULL COMMENT '角色ID',
-  `powers_id` int(11) NOT NULL COMMENT '权限ID'
+  `powers_id` int(11) NOT NULL COMMENT '权限ID',
+  INDEX `role_id`(`role_id`) USING BTREE,
+  INDEX `powers_id`(`powers_id`) USING BTREE,
+  CONSTRAINT `powers_id` FOREIGN KEY (`powers_id`) REFERENCES `s_powers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `s_role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of s_role_powers_tie
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for s_societies
+-- ----------------------------
+DROP TABLE IF EXISTS `s_societies`;
+CREATE TABLE `s_societies`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '社团ID',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '社团名称',
+  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '社团头像',
+  `notice_id` int(11) NOT NULL COMMENT '公告ID',
+  `number` int(11) NOT NULL COMMENT '社团人数',
+  `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '所属院系',
+  `type_id` int(11) NOT NULL COMMENT '社团级别',
+  `about` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '社团简介',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `notice_id`(`notice_id`) USING BTREE,
+  INDEX `type_id`(`type_id`) USING BTREE,
+  CONSTRAINT `notice_id` FOREIGN KEY (`notice_id`) REFERENCES `s_notice` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `type_id` FOREIGN KEY (`type_id`) REFERENCES `s_societies_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of s_societies
 -- ----------------------------
 
 -- ----------------------------
@@ -257,8 +250,8 @@ CREATE TABLE `s_task`  (
   `recipient_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '接受者id,可多人',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `publisher_college_id`(`publisher_college_id`) USING BTREE,
-  CONSTRAINT `s_task_ibfk_1` FOREIGN KEY (`publisher_college_id`) REFERENCES `s_college` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `publisher_college_id` FOREIGN KEY (`publisher_college_id`) REFERENCES `s_societies` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of s_task
@@ -270,7 +263,8 @@ CREATE TABLE `s_task`  (
 DROP TABLE IF EXISTS `s_user_role_tie`;
 CREATE TABLE `s_user_role_tie`  (
   `user_id` int(11) NOT NULL COMMENT '用户ID',
-  `role_id` int(11) NOT NULL COMMENT '角色ID'
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  INDEX `user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -282,22 +276,21 @@ CREATE TABLE `s_user_role_tie`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `s_users`;
 CREATE TABLE `s_users`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `openid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `open_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `class` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `departments` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `studentId` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `college_id` int(11) NOT NULL DEFAULT -1 COMMENT '所属社团，为-1时为新人用户',
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
-  `status` int(1) NULL DEFAULT 1 COMMENT '用户状态 0：禁用，1：启用',
+  `student_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `college_id` int(11) NULL DEFAULT NULL COMMENT '所属社团',
+  `phone` int(11) NULL DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '状态0为关闭1为启用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of s_users
 -- ----------------------------
-INSERT INTO `s_users` VALUES (2, 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒123456', NULL, 'XX2021', '信息工程系', '123456', -1, '13333333333', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
