@@ -112,8 +112,8 @@ const api = {
             return ajax.post("personal/saveInfo", param);
         }
     },
-    link: {
-        getLink: (param) => {
+    societies: {
+        getType: (param) => {
             return ajax.post("link/getLink", param);
         },
         addLink: (param) => {
@@ -136,16 +136,7 @@ const api = {
         getInfo: () => {
             return ajax.post("dashboard/getInfo");
         }
-    },
-    // 外部api
-    external: {
-        hitokoto: () => {
-            return ajax.post("external/hitokoto");
-        },
-        getInfo: () => {
-            return ajax.post("external/getInfo");
-        }
-    },
+    }
 };
 
 export default api;
