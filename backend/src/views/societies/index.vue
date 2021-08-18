@@ -1,183 +1,110 @@
 <template>
     <el-card class="ele-body" shadow="never">
         <el-row :gutter="20">
-            <el-col :span="6">
-                <div class="societies-card">
-                    <el-card class="box-card">
-                        <div class="left">
-                            <div class="cont">
-                                <div class="data" style="background: #e36d63">
-                                    <div class="info">
-                                        <div class="logo">
-                                            <img
-                                                src="https://avatars.githubusercontent.com/u/75518418?v=4"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div class="number">20 人</div>
-                                    </div>
-                                </div>
-                                <div class="new">
-                                    <div class="title">计算机协会</div>
-                                    <div class="btns">
-                                        <div class="item">
-                                            <el-button type="primary" plain
-                                                >信息编辑</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="success" plain
-                                                >公告管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="info" plain
-                                                >人员管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="warning" plain
-                                                >任务管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="danger" plain
-                                                >活动管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button plain
-                                                >财务信息</el-button
-                                            >
+            <div class="card" v-for="item in data" :key="item.id">
+                <el-col :span="6">
+                    <div class="societies-card">
+                        <el-card class="box-card">
+                            <div class="left">
+                                <div class="cont">
+                                    <div class="data">
+                                        <div class="info">
+                                            <div class="logo">
+                                                <img :src="item.logo" alt="" />
+                                            </div>
+                                            <div class="number">
+                                                {{
+                                                    item.number
+                                                        ? item.number
+                                                        : 0
+                                                }}
+                                                人
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right">
-                            <div class="title">计算机协会</div>
-                            <div class="dsc">
-                                简介：巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉拉巴拉巴拉巴拉巴拉巴拉巴拉
-                            </div>
-                            <div class="job">
-                                <div class="one">会长：叁柒</div>
-                                <div class="two">副会长：柯南</div>
-                            </div>
-                        </div>
-                    </el-card>
-                </div>
-            </el-col>
-            <el-col :span="6">
-                <div class="societies-card">
-                    <el-card class="box-card">
-                        <div class="left">
-                            <div class="cont">
-                                <div class="data" style="background: #96c0aa">
-                                    <div class="info">
-                                        <div class="logo">
-                                            <img
-                                                src="https://avatars.githubusercontent.com/u/75518418?v=4"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div class="number">20 人</div>
-                                    </div>
-                                </div>
-                                <div class="new">
-                                    <div class="title">宣传部</div>
-                                    <div class="btns">
-                                        <div class="item">
-                                            <el-button type="primary" plain
-                                                >信息编辑</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="success" plain
-                                                >公告管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="info" plain
-                                                >人员管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="warning" plain
-                                                >任务管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button type="danger" plain
-                                                >活动管理</el-button
-                                            >
-                                        </div>
-                                        <div class="item">
-                                            <el-button plain
-                                                >财务信息</el-button
-                                            >
+                                    <div class="new">
+                                        <div class="title">{{ item.name }}</div>
+                                        <div class="btns">
+                                            <div class="item">
+                                                <el-button
+                                                    @click="showInfos(item.id)"
+                                                    type="primary"
+                                                    plain
+                                                    >信息编辑</el-button
+                                                >
+                                            </div>
+                                            <div class="item">
+                                                <el-button
+                                                    @click="showNotics(item.id)"
+                                                    type="success"
+                                                    plain
+                                                    >公告管理</el-button
+                                                >
+                                            </div>
+                                            <div class="item">
+                                                <el-button type="info" plain
+                                                    >人员管理</el-button
+                                                >
+                                            </div>
+                                            <div class="item">
+                                                <el-button type="warning" plain
+                                                    >任务管理</el-button
+                                                >
+                                            </div>
+                                            <div class="item">
+                                                <el-button type="danger" plain
+                                                    >活动管理</el-button
+                                                >
+                                            </div>
+                                            <div class="item">
+                                                <el-button plain
+                                                    >财务信息</el-button
+                                                >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="right">
-                            <div class="title">宣传部</div>
-                            <div class="dsc">
-                                简介：巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉拉巴拉巴拉巴拉巴拉巴拉巴拉
+                            <div class="right">
+                                <div class="title">{{ item.name }}</div>
+                                <div class="dsc">简介：{{ item.about }}</div>
+                                <div class="job">
+                                    <div class="one">会长：叁柒</div>
+                                    <div class="two">副会长：柯南</div>
+                                </div>
                             </div>
-                            <div class="job">
-                                <div class="one">会长：叁柒</div>
-                                <div class="two">副会长：柯南</div>
-                            </div>
-                        </div>
-                    </el-card>
-                </div>
-            </el-col>
+                        </el-card>
+                    </div>
+                </el-col>
+            </div>
         </el-row>
+        <Info :show="showInfo" :id="societiesId" @handleClose="handleClose" />
+        <Notic :show="showNotic" :id="societiesId" @handleClose="handleClose" />
     </el-card>
 </template>
 <script>
+import Info from "../../components/societiesInfo";
+import Notic from "../../components/societiesNotic";
 export default {
     data() {
         return {
-            data: [], // 列表数据
-            showEdit: false, // 是否显示表单弹窗
-            form: {}, // 表单数据
-            where: {}, // 搜索条件
-            rules: {
-                // 表单验证规则
-                username: [
-                    {
-                        required: true,
-                        message: "请输入登录名",
-                        trigger: "blur",
-                    },
-                ],
-                nickname: [
-                    {
-                        required: true,
-                        message: "请输入昵称",
-                        trigger: "blur",
-                    },
-                ],
-                // password: [
-                //     {
-                //         required: true,
-                //         message: "请输入密码",
-                //         trigger: "blur",
-                //     },
-                // ],
-            },
+            data: {},
+            showInfo: false,
+            showNotic:false,
+            societiesId: null,
         };
     },
     created() {
-        this.query();
+        this.getSocieties();
     },
     methods: {
-        query() {
+        /**
+         * 获取社团
+         */
+        getSocieties() {
             this.loading = true;
-            this.$api.user
-                .getUsers(this.where)
+            this.$api.societies
+                .getSocieties()
                 .then((res) => {
                     this.loading = false;
                     this.data = res;
@@ -187,59 +114,20 @@ export default {
                     this.$message.error(e.message);
                 });
         },
-        isNo(res) {
-            this.$api.user
-                .getUsers({ status: res.status, id: res.id })
-                .then((res) => {
-                    this.$message({
-                        type: "success",
-                        message: res.msg,
-                    });
-                });
+        handleClose(val) {
+            this.showInfo = val;
+            this.showNotic = val;
         },
-        add(row) {
-            this.form = { status: 1, identity: 0 };
-            this.showEdit = true;
+        showInfos(id) {
+            this.showInfo = true;
+            this.societiesId = id;
         },
-        edit(row) {
-            this.form = row;
-            this.showEdit = true;
-        },
-        save() {
-            this.$refs["editForm"].validate((valid) => {
-                if (valid) {
-                    const loading = this.$loading({ lock: true });
-                    this.$api.user
-                        .save(this.form)
-                        .then((res) => {
-                            loading.close();
-                            this.showEdit = false;
-                            this.$message({
-                                type: "success",
-                                message: res.msg,
-                            });
-                            if (this.form.id) {
-                                // 更新数据
-                                this.$util.eachTreeData(this.data, (item) => {
-                                    if (item.id === this.form.id) {
-                                        Object.assign(item, this.form);
-                                        return false;
-                                    }
-                                });
-                            } else {
-                                this.query();
-                            }
-                        })
-                        .catch((e) => {
-                            loading.close();
-                            this.$message.error(e.message);
-                        });
-                } else {
-                    return false;
-                }
-            });
+        showNotics(id) {
+            this.showNotic = true;
+            this.societiesId = id;
         },
     },
+    components: { Info, Notic },
 };
 </script>
 
@@ -373,5 +261,13 @@ export default {
 
 .new .btns .item {
     margin-top: 30px;
+}
+
+.card:nth-child(odd) .data {
+    background: #e36d63;
+}
+
+.card:nth-child(even) .data {
+    background: #9dc7b1;
 }
 </style>

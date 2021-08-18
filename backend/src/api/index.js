@@ -112,18 +112,58 @@ const api = {
             return ajax.post("personal/saveInfo", param);
         }
     },
+
+    /**
+     * 社团管理相关 api
+     */
     societies: {
-        getType: (param) => {
-            return ajax.post("link/getLink", param);
+        /**
+         * 社团级别
+         */
+        getType: () => {
+            return ajax.post("societies/getType");
         },
-        addLink: (param) => {
-            return ajax.post("link/addLink", param);
+        /**
+         * 所属院系
+         */
+        getDepartment: () => {
+            return ajax.post("societies/getDepartment");
         },
-        deleteLink: (param) => {
-            return ajax.post("link/deleteLink", param);
+        /**
+         * 添加社团
+         */
+        addSocieties: (param) => {
+            return ajax.post("societies/addSocieties", param)
         },
-        changeStatus: (param) => {
-            return ajax.post("link/changeStatus", param);
+        /**
+         * 获取社团
+         */
+        getSocieties: () => {
+            return ajax.post("societies/getSocieties")
+        },
+        /**
+         * 获取社团信息
+         */
+        getSocietiesInfo: (param) => {
+            return ajax.post("societies/getSocietiesInfo", param)
+        },
+        /**
+         * 添加 / 修改公告
+         */
+        addNotice: (param) => {
+            return ajax.post("societies/addNotice", param)
+        },
+        /**
+         * 获取公告消息
+         */
+        getNotice: (param) => {
+            return ajax.post("societies/getNotice", param)
+        },
+        /**
+         * 删除公告消息
+         */
+        deleteNotice: (param) => {
+            return ajax.post("societies/deleteNotice", param)
         }
     },
     dashboard: {

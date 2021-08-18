@@ -1,6 +1,6 @@
 <template>
     <el-row type="flex" class="row-bg" justify="space-around">
-        <el-col :span="12">
+        <el-col :span="18">
             <el-card class="ele-body" shadow="never">
                 <el-form ref="form" :model="form" label-width="80px">
                     <el-input
@@ -8,7 +8,7 @@
                         show-word-limit
                         placeholder="请输入社团名称"
                         style="border-bottom: 0; margin-bottom: 22px"
-                        v-model="form.title"
+                        v-model="form.name"
                     >
                         <template slot="prepend">社团名称</template></el-input
                     >
@@ -16,16 +16,14 @@
                         <el-col :span="12">
                             <el-form-item label="社团级别">
                                 <el-select
-                                    v-model="form.type"
+                                    v-model="form.type_id"
                                     placeholder="请选择"
                                 >
                                     <el-option
-                                        label="学院"
-                                        value="1"
-                                    ></el-option>
-                                    <el-option
-                                        label="系部"
-                                        value="1"
+                                        v-for="item in societiesType"
+                                        :key="item.id"
+                                        :label="item.name"
+                                        :value="item.id"
                                     ></el-option>
                                 </el-select>
                             </el-form-item>
@@ -37,32 +35,10 @@
                                     placeholder="请选择"
                                 >
                                     <el-option
-                                        label="学院"
-                                        value="1"
-                                    ></el-option>
-                                    <el-option
-                                        label="信息工程系"
-                                        value="1"
-                                    ></el-option>
-                                    <el-option
-                                        label="机械工程系"
-                                        value="2"
-                                    ></el-option>
-                                    <el-option
-                                        label="电气工程系"
-                                        value="3"
-                                    ></el-option>
-                                    <el-option
-                                        label="智能控制系"
-                                        value="3"
-                                    ></el-option>
-                                    <el-option
-                                        label="车辆工程系"
-                                        value="3"
-                                    ></el-option>
-                                    <el-option
-                                        label="经济管理系"
-                                        value="3"
+                                        v-for="item in department"
+                                        :key="item.id"
+                                        :label="item.name"
+                                        :value="item.id"
                                     ></el-option>
                                 </el-select>
                             </el-form-item>
@@ -73,12 +49,20 @@
                             <el-form-item label="社团标志">
                                 <el-upload
                                     class="avatar-uploader"
-                                    action="https://jsonplaceholder.typicode.com/posts/"
+                                    :action="
+                                        this.$setting.baseURL +
+                                        this.$setting.baseUloads
+                                    "
+                                    :headers="{
+                                        Authorization: this.$store.state.token,
+                                    }"
                                     :show-file-list="false"
+                                    :limit="1"
+                                    :on-success="uploadSuccess"
                                 >
                                     <img
-                                        v-if="imageUrl"
-                                        :src="imageUrl"
+                                        v-if="form.logo"
+                                        :src="form.logo"
                                         class="avatar"
                                     />
                                     <i
@@ -97,14 +81,16 @@
                                     type="textarea"
                                     :rows="8"
                                     placeholder="请输入内容"
-                                    v-model="textarea"
+                                    v-model="form.about"
                                 >
                                 </el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <div class="footer">
-                        <el-button type="primary">添加</el-button>
+                        <el-button type="primary" @click="addSocieties"
+                            >添加</el-button
+                        >
                     </div>
                 </el-form>
             </el-card>
@@ -116,9 +102,54 @@
 export default {
     data() {
         return {
-            form: {},
-            imageUrl: "",
+            form: {
+                logo: "",
+            },
+            societiesType: {},
+            department: {},
         };
+    },
+    mounted() {
+        this.getType();
+        this.getDepartment();
+    },
+    methods: {
+        /**
+         * 获取社团级别
+         */
+        getType() {
+            this.$api.societies.getType().then((res) => {
+                this.societiesType = res;
+            });
+        },
+        /**
+         * 获取所属院系
+         */
+        getDepartment() {
+            this.$api.societies.getDepartment().then((res) => {
+                this.department = res;
+            });
+        },
+        /**
+         * 标志上传成功
+         */
+        uploadSuccess(e) {
+            this.form.logo = this.$setting.baseURL + "/" + e.data.path;
+            this.form.logo = this.form.logo.replace(/\\/, "/");
+        },
+        /**
+         * 添加社团
+         */
+        addSocieties() {
+            let data = this.$refs.form.model;
+            this.$api.societies.addSocieties(data).then((res) => {
+                this.$message({
+                    type: res.type,
+                    message: res.msg,
+                });
+                this.form = {};
+            });
+        },
     },
 };
 </script>

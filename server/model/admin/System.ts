@@ -16,7 +16,6 @@ module.exports = {
       })
     })
   },
-
   /**
    * 后台删除菜单
    * @param id 菜单id
@@ -24,7 +23,6 @@ module.exports = {
   deleteMenu(id: number) {
     return db('s_menu').where({ id }).delete()
   },
-
   /**
    * 后台修改菜单
    * @param data 修改内容
@@ -33,7 +31,6 @@ module.exports = {
     delete data.children
     return db('s_menu').where({ id: data.id }).update(data)
   },
-
   /**
    * 新增修改菜单
    * @param data 修改内容
