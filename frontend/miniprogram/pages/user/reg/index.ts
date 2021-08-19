@@ -4,7 +4,7 @@ Page({
     form: {
       phone: 0,
       name: '',
-      studentId: '',
+      student_id: '',
       departments: '',
       class: '',
       code: ''
@@ -40,7 +40,7 @@ Page({
    */
   getStudentId(val: any) {
     this.setData({
-      ['form.studentId']: val.detail
+      ['form.student_id']: val.detail
     })
     this.changeActive()
   },
@@ -71,7 +71,7 @@ Page({
    * 更改登录按钮状态
    */
   changeActive() {
-    this.data.form.phone  && this.data.form.name && this.data.form.studentId && this.data.form.departments && this.data.form.class ? this.setData({ active: true }) : this.setData({ active: false })
+    this.data.form.phone && this.data.form.name && this.data.form.student_id && this.data.form.departments && this.data.form.class ? this.setData({ active: true }) : this.setData({ active: false })
   },
 
   /**
@@ -88,14 +88,19 @@ Page({
         if (res.code) {
           ajax('http://localhost:3000/index/user/reg', data).then((res: any) => {
             if (res.data.code === 200) {
-              wx.showToast({
-                title: res.data.msg,
-                icon: 'success',
-                duration: 2000,
+              wx.setStorage({
+                key: "token",
+                data: res.data.token,
                 success: () => {
-                  setTimeout(() => {
-                    wx.reLaunch({ url: '/pages/user/login/index' })
-                  }, 2000)
+                  wx.setStorage({
+                    key: "openid",
+                    data: res.data.openid,
+                    success: () => {
+                      setTimeout(() => {
+                        wx.reLaunch({ url: '/pages/index/index' })
+                      }, 2000)
+                    }
+                  })
                 }
               })
             }

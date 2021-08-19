@@ -30,9 +30,15 @@ Page({
                         key: "token",
                         data: res.data.token,
                         success: () => {
-                          setTimeout(() => {
-                            wx.reLaunch({ url: '/pages/user/my/index' })
-                          }, 2000)
+                          wx.setStorage({
+                            key: "openid",
+                            data: res.data.openid,
+                            success: () => {
+                              setTimeout(() => {
+                                wx.reLaunch({ url: '/pages/index/index' })
+                              }, 2000)
+                            }
+                          })
                         }
                       })
                     }

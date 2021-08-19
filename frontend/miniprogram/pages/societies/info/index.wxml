@@ -1,6 +1,6 @@
 <view class="container">
   <view class="head">
-    <view class="back">
+    <view class="back" bindtap="back">
       <image src="../../../public/icon/back.png"></image>
     </view>
   </view>
@@ -8,8 +8,8 @@
     <image src="../../../public/img/bg.jpg"></image>
   </view>
   <view class="info">
-    <view class="title">计算机协会</view>
-    <view class="department">信息工程系</view>
+    <view class="title">{{info.name}}</view>
+    <view class="department">{{info.department}}</view>
   </view>
 </view>
 <view class="main">
@@ -64,9 +64,12 @@
   </view>
   <view class="header" style="margin-top: 20px;">
     <view class="name">公告</view>
+    <view class="more">
+      <image src="../../../public/icon/more.png"></image>
+    </view>
   </view>
   <view class="notice">
-    为空军欧文配件巫婆二紧哦碰文件哦破武器而哭泣瓦克瓦克【我请客【未开票【我去饿开辟为【乔科维奇
+    {{notic[0].content}}
   </view>
   <view class="header" style="margin-top: 20px;">
     <view class="name">任务</view>

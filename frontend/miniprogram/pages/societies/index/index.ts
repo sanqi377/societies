@@ -1,11 +1,29 @@
-// {{page}}.ts
+var { ajax } = require('../../../utils/util')
 Page({
+  data: {
+    list: {}
+  },
 
   /**
-   * 页面的初始数据
+   * 获取社团列表
    */
-  data: {
+  getSocieties() {
+    var _this = this
+    ajax('http://localhost:3000/index/societies/getSocieties').then((res: any) => {
+      if (res.data.ret === 200) {
+        _this.setData({
+          list: res.data.data
+        })
+      }
+    })
+  },
 
+  jumpDetails(e: any) {
+    var id: number = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/societies/info/index?id=' + id
+    })
+    console.log(id)
   },
 
   /**
@@ -26,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getSocieties()
   },
 
   /**
