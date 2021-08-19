@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="bg">
+    <image src="../../public/image/bg.jpg" />
+  </view>
+  <view class="content">
+    <view class="info">
+      <view class="avatar">
+        <image src="https://avatars.githubusercontent.com/u/75518418?v=4" />
+      </view>
+      <view class="name">叁柒</view>
+    </view>
+    <view class="icon">
+      <image src="../../public/image/notify.png" />
+    </view>
+  </view>
+</view>

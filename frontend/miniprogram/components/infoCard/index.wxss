@@ -1,0 +1,50 @@
+.container {
+  background-color: rgba(151, 193, 255, .1);
+  border-radius: 8px;
+}
+
+.content {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content .icon {
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.content .icon image {
+  width: 100px;
+  height: 100px;
+}
+
+.content .information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content .information .instruction {
+  margin-bottom: 15px;
+}
+
+.content .information .instruction .title {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content .information .instruction .subtitle {
+  font-size: 12px;
+}
+
+.content .information .button>view {
+  display: inline-block;
+  font-size: 12px;
+  color: #fff;
+  padding: 5px 35px;
+  border-radius: 30px;
+  background: rgb(151, 193, 255);
+}

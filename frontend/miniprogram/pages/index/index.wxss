@@ -1,179 +1,129 @@
-page {
-  background: #F5F6FA;
-}
-
 .container:first-child {
-  padding-top: 40px;
+  margin-top: -15px;
 }
 
 .container {
-  background: #fff;
+  margin: 15px;
   padding: 15px;
-  margin-bottom: 15px;
+  background: #fff;
 }
 
-.header .title {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.swiper {
-  margin-top: 20px;
-  border-radius: 8px;
-}
-
-.swiper .swiper-img {
-  width: 100%;
-  height: 150px;
-  border-radius: 8px;
+.carousel {
+  margin: 0 15px;
+  margin-top: -30px;
+  background: #fff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .btns {
-  padding: 15px 0;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
 }
 
-.btns .item {
+.btns>view {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 14px;
 }
 
 .btns image {
   width: 35px;
   height: 35px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.title {
+  font-size: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 10px;
 }
 
-.societies .title {
-  font-size: 20px;
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 2.5px;
+  left: 0;
+  width: 4px;
+  height: 15px;
+  background: #1082ff;
+  border-radius: 2px;
 }
 
-.more image {
-  width: 31px;
-  height: 31px;
-}
-
-.societies .list {
-  display: flex;
-}
-
-.societies .list .item {
-  margin: 15px 15px 5px 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
-}
-
-.societies .list .item .logo {
-  width: 80px;
-  height: 80px;
-  background: red;
-}
-
-.societies .list .item .name {
-  text-align: center;
-  font-size: 14px;
-}
-
-.dynamic .title {
-  font-size: 20px;
-}
-
-.dynamic .tabs {
-  margin-top: 12px;
-}
-
-.dynamic .card {
-  padding: 10px 0;
-}
-
-.dynamic .card .info {
-  display: flex;
-  justify-content: space-between;
-}
-
-.dynamic .card .info .user {
-  display: flex;
-  align-items: center;
-}
-
-.dynamic .card .info .like {
-  display: flex;
-  align-items: center;
-}
-
-.dynamic .card .info .like>view {
-  background: #FFD943;
-  color: #333333;
-  padding: 4px 18px;
-  border-radius: 35px;
-  display: flex;
-  align-items: center;
-}
-
-.dynamic .card .info .like>view span {
-  font-size: 14px;
-}
-
-.dynamic .card .info .like>view image {
-  width: 13px;
-  height: 13px;
-  margin-right: 3px;
-}
-
-.dynamic .card .info .user .name {
-  font-size: 14px;
-}
-
-.dynamic .card .info .user .datetime {
-  margin-top: 5px;
-  color: #98989F;
-  font-size: 12px;
-}
-
-.dynamic .card .info .avatar {
-  margin-right: 10px;
-}
-
-.dynamic .card .info .avatar image {
+.list image {
   width: 40px;
   height: 40px;
-  border-radius: 6px;
-}
-
-.dynamic .card .content {
-  margin-top: 12px;
-}
-
-.dynamic .card .content image {
-  margin-top: 5px;
-  width: 100%;
   border-radius: 3px;
+  margin-right: 8px;
 }
 
-.dynamic .card .btns {
+.list .item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.list .item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.list .head {
   display: flex;
   justify-content: space-between;
 }
 
-.dynamic .card .btns image {
-  width: 20px;
-  height: 20px;
+.list .head .info {
+  display: flex;
+}
+
+.list .head .info .logo {
   margin-right: 3px;
 }
 
-.dynamic .card .btns>view {
+.list .head .info .information .name {
+  font-size: 14px;
+  margin-bottom: 7px;
   display: flex;
   align-items: center;
 }
 
-.dynamic .card .btns .admits span {
-  font-size: 16px;
+.list .head .info .information .name span {
+  background: #1082ff;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.list .head .info .information .num {
+  font-size: 12px;
+  color: #98989F;
+}
+
+.list .head .fan {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.list .head .fan view {
+  background: #1082ff;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 30px;
+}
+
+.list .head .fan view.active {
+  background: #f5f7f9;
+  color: #616161;
+}
+
+.list .head .fan view image {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
 }

@@ -1,116 +1,147 @@
-<view class="header container">
-  <view class="title">清华大学</view>
-  <view class="swiper">
-    <swiper indicator-dots autoplay interval duration>
-      <block wx:for="{{swiper}}" wx:key="*this">
-        <swiper-item>
-          <image class="swiper-img" src="{{item.url}}"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
+<header info="{{headerInfo}}" />
+<view class="carousel">
+  <carousel />
+</view>
+<view class="container">
+  <view class="title">快捷菜单</view>
   <view class="btns">
-    <view class="item">
-      <image src="../../public/icon/article.png"></image>
-      <span>社团文章</span>
+    <view class="societies">
+      <view class="icon">
+        <image src="../../public/image/societies.png" />
+      </view>
+      <view>社团迎新</view>
     </view>
-    <view class="item">
-      <image src="../../public/icon/activity.png"></image>
-      <span>社团活动</span>
+    <view class="task">
+      <view class="icon">
+        <image src="../../public/image/task.png" />
+      </view>
+      <view>我的任务</view>
     </view>
-    <view class="item">
-      <image src="../../public/icon/classification.png"></image>
-      <span>社团分类</span>
+    <view class="information">
+      <view class="icon">
+        <image src="../../public/image/information.png" />
+      </view>
+      <view>信息完善</view>
     </view>
-    <view class="item">
-      <image src="../../public/icon/sign-in.png"></image>
-      <span>每日签到</span>
+    <view class="activity">
+      <view class="icon">
+        <image src="../../public/image/activity.png" />
+      </view>
+      <view>活动签到</view>
     </view>
   </view>
 </view>
-<view class="societies container">
-  <view class="top">
-    <view class="title">全部社团</view>
-    <view class="more">
-      <image src="../../public/icon/more.png"></image>
-    </view>
-  </view>
-  <scroll-view scroll-x="true">
-    <view class="list">
-      <view class="item">
-        <view class="logo"></view>
-        <view class="name">计算机协会</view>
-      </view>
-      <view class="item">
-        <view class="logo"></view>
-        <view class="name">计算机协会</view>
-      </view>
-      <view class="item">
-        <view class="logo"></view>
-        <view class="name">计算机协会</view>
-      </view>
-      <view class="item">
-        <view class="logo"></view>
-        <view class="name">计算机协会</view>
-      </view>
-      <view class="item">
-        <view class="logo"></view>
-        <view class="name">计算机协会</view>
-      </view>
-    </view>
-  </scroll-view>
+<view class="container">
+  <view class="title">活动列表</view>
+  <infoCard info="{{info}}" />
 </view>
-<view class="dynamic container">
-  <view class="title">社团动态</view>
-  <view class="tabs">
-    <s-tabs title="{{tabsTitle}}" bind:changeTabs="changeTabs">
-      <block wx:for="{{tabsTitle}}" wx:key="item">
-        <block wx:if="{{index === 0 && item.active}}">
-          <view class="card">
-            <view class="info">
-              <view class="user">
-                <view class="avatar">
-                  <image src="../../public/head_pic/avatar.jpg"></image>
-                </view>
-                <view class="date">
-                  <view class="name">计算机协会</view>
-                  <view class="datetime">11-24 08:25</view>
-                </view>
-              </view>
-              <view class="like">
-                <view>
-                  <image src="../../public/icon/like.png"></image>
-                  <span>关注</span>
-                </view>
-              </view>
-            </view>
-            <view class="content">
-              阿八八八二九我却极为哦请我喝酒欧文i去人家而我溶解无人机额外i进入
-              <image src="../../public/img/swiper-1.jpg"></image>
-            </view>
-            <view class="btns">
-              <view class="admits">
-                <image src="../../public/icon/give-lick.png"></image>
-                <span>100</span>
-              </view>
-              <view class="comment">
-                <image src="../../public/icon/comment.png"></image>
-                <span>100</span>
-              </view>
-              <view class="share">
-                <image src="../../public/icon/share.png"></image>
-                <span>100</span>
-              </view>
-            </view>
+<view class="container">
+  <view class="title">热门社团</view>
+  <view class="list">
+    <view class="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../public/image/logo.jpg" />
           </view>
-        </block>
-        <block wx:if="{{index === 1 && item.active}}">
-          我加入的
-        </block>
-        <block wx:if="{{index === 2 && item.active}}">
-          我关注的
-        </block>
-      </block>
-    </s-tabs>
+          <view class="information">
+            <view class="name">
+              <span>学院</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />关注
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../public/image/logo.jpg" />
+          </view>
+          <view class="information">
+            <view class="name">
+              <span style="background:#ff4f94">系部</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />关注
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../public/image/logo.jpg" />
+          </view>
+          <view class="information">
+            <view class="name">
+              <span style="background:#ff4f94">系部</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />关注
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../public/image/logo.jpg" />
+          </view>
+          <view class="information">
+            <view class="name">
+              <span style="background:#ff4f94">系部</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />关注
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../public/image/logo.jpg" />
+          </view>
+          <view class="information">
+            <view class="name">
+              <span style="background:#ff4f94">系部</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />关注
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

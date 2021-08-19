@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "s-tabs":"../../components/s-tabs/index"
+    "infoCard":"../../components/infoCard/index",
+    "header":"../../components/header/index",
+    "carousel":"../../components/carousel/index"
   }
 }

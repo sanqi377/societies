@@ -1,0 +1,23 @@
+.tab-bar {
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  margin: 0 20px;
+  background: rgb(0, 0, 0, .5);
+  height: 50px;
+  border-radius: 30px;
+  display: flex;
+}
+
+.tab-bar .content {
+  padding: 0 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab-bar .icon {
+  width: 22px;
+  height: 22px;
+}

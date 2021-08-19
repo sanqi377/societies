@@ -1,37 +1,18 @@
 Page({
   data: {
-    swiper: [
-      {
-        url: '../../public/img/swiper-1.jpg'
-      }
-    ],
-    tabsTitle: [
-      {
-        title: '全部',
-        active: 1
-      },
-      {
-        title: '我加入的',
-        active: 0
-      },
-      {
-        title: '我关注的',
-        active: 0
-      }
-    ]
+    info: {
+      title: '社团纳新',
+      subTitle: '快来找一个中意的社团把！',
+      icon: 'https://iconfont.alicdn.com/s/5b4c3bf4-323c-470c-a946-763db030bf9f_origin.svg',
+      btnTitle: '我要报名',
+      btnPath: ''
+    },
   },
-  /**
-   * 改变 tabs 标题栏切换状态
-   */
-  changeTabs(e: any) {
-    let index: number = e.detail
-    let data = this.data.tabsTitle
-    data.forEach((item, idx) => {
-      item.active = 0
-      if (idx === index) item.active = 1
-    })
-    this.setData({
-      tabsTitle: data
-    })
-  }
+  onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
 })

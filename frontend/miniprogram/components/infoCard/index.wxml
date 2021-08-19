@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="content">
+    <view class="icon">
+      <image src="{{info.icon}}" />
+    </view>
+    <view class="information">
+      <view class="instruction">
+        <view class="title">{{info.title}}</view>
+        <view class="subtitle">{{info.subTitle}}</view>
+      </view>
+      <view class="button">
+        <view>{{info.btnTitle}}</view>
+      </view>
+    </view>
+  </view>
+</view>
