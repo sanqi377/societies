@@ -26,7 +26,6 @@ var parentMenu = (arr: number[]) => {
           // 如果不为0就push进newpid 后续查
           newPid.push(res.pid)
         }
-
         // 循环结束,将不为0的push 进newarr
         if (index === arr.length - 1) {
           if (unique(newPid).length === 0) {
@@ -36,7 +35,9 @@ var parentMenu = (arr: number[]) => {
               db('s_menu').where({ id: item, status: 1 }).find().then((res: any) => {
                 newArr.forEach((el: any) => {
                   // id不相同再push
-                  if (el.id != res.id) newArr.push(res)
+                  if (el.id != res.id) {
+                    newArr.push(res)
+                  }
                 });
                 if (idx === unique(newPid).length - 1) resolve(newArr)
               })
