@@ -252,6 +252,7 @@
 <script>
 import Treeselect from "@riophae/vue-treeselect"; // 下拉树
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
+import store from '@/store';
 
 export default {
     name: "SysMenu",
@@ -300,7 +301,7 @@ export default {
         query() {
             this.loading = true;
             this.$api.system
-                .getMenu(this.where)
+                .getMenu({id:store.state.userinfo.identity_id  })
                 .then((res) => {
                     this.loading = false;
                     this.data = this.$util.toTreeData(res, "id", "pid");
