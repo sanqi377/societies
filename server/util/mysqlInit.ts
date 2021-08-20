@@ -3,7 +3,7 @@
  */
 
 var mysqlServe = require("mysql");
-const { setting } = require('../config/setting')
+var { setting } = require('../config/setting')
 
 let connection = mysqlServe.createConnection(setting.mysql)
 console.log("mysql start! OK!")

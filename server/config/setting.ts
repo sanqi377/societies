@@ -12,6 +12,14 @@ module.exports = {
     // server 配置
     server: {
       port: 3000
+    },
+    index: {
+      noAuth: [
+        { path: '/user/login' },
+        { path: '/user/reg' },
+        { path: '/societies/getSocieties' },
+        
+      ]
     }
   }
 }

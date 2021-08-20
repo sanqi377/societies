@@ -1,0 +1,23 @@
+<view class="container" wx:for="{{data}}" wx:key="data">
+  <view class="logo">
+    <image src="{{item.logo}}" />
+  </view>
+  <view class="more">
+    <image src="../../public/image/more.png" />
+  </view>
+  <view class="main">
+    <view class="name">
+      <view>{{item.name}}</view>
+      <view>
+        <span>{{item.type_id}}</span>
+      </view>
+    </view>
+    <view class="dsc">
+      简介：{{item.about}}
+    </view>
+    <view class="user">
+      <view>社长：叁柒</view>
+      <view>副社长：叁柒</view>
+    </view>
+  </view>
+</view>

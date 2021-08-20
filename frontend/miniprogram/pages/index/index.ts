@@ -15,4 +15,14 @@ Page({
       })
     }
   },
+  goWelcome() {
+    wx.navigateTo({
+      url: '/pages/societies/welcome/index'
+    })
+  },
+  goAll() {
+    wx.navigateTo({
+      url: '/pages/societies/all/index'
+    })
+  }
 })

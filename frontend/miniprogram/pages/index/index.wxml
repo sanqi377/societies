@@ -5,7 +5,7 @@
 <view class="container">
   <view class="title">快捷菜单</view>
   <view class="btns">
-    <view class="societies">
+    <view class="societies" bindtap="goWelcome">
       <view class="icon">
         <image src="../../public/image/societies.png" />
       </view>
@@ -17,11 +17,11 @@
       </view>
       <view>我的任务</view>
     </view>
-    <view class="information">
+    <view class="information" bindtap="goAll">
       <view class="icon">
         <image src="../../public/image/information.png" />
       </view>
-      <view>信息完善</view>
+      <view>全部社团</view>
     </view>
     <view class="activity">
       <view class="icon">

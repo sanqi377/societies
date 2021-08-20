@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "societiesCard":"../../../components/societiesCard/index"
+  }
+}

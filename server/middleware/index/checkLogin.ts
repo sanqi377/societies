@@ -1,14 +1,18 @@
-var { Verification } = require("../../util/jwt");
+var { Verification } = require("../../util/jwt")
+var { setting } = require("../../config/setting")
+var noAuth = setting.index.noAuth
 var init = (app: any) => {
   app.use('/index', (req: any, res: any, next: any) => {
     let token = req.headers.token
-    if (req.path === "/index/user/login" || req.path === '/user/login' || req.path === '/index/user/reg' || req.path === '/user/reg') {
-      next()
-      return
-    }
-    console.log(req.path)
     if (!Verification(token)) {
-      res.send({ message: "认证失败", code: 400 });
+      for (let i = 0; i < noAuth.length; i++) {
+        if (req.path === noAuth[i].path) {
+          next()
+          break
+        } else {
+          if (i === noAuth.length - 1) res.send({ message: "认证失败", code: 400 })
+        }
+      }
     } else {
       next()
     }
