@@ -1,0 +1,13 @@
+<view class="container">
+  <swiper indicator-dots autoplay circular>
+    <swiper-item>
+      <image src="../../public/image/banner1.jpg" mode="aspectFill" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../public/image/banner2.jpg" mode="aspectFill" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../public/image/banner3.jpg" mode="aspectFill" />
+    </swiper-item>
+  </swiper>
+</view>
