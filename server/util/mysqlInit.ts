@@ -46,7 +46,7 @@ class Mysql {
         }
       })
     })
-    this.wheres = arrs.toString().replace(',', ' and ')
+    this.wheres = arrs.toString().replace(/,/g, ' and ')
     return this
   }
 

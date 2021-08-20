@@ -17,9 +17,6 @@ export default new Vuex.Store({
         menus: null, // 当前menu
         tokenValidTime: localStorage.getItem('valid_time'), // token有效期
         userinfo: loginUser, // 登陆用户的信息
-        systemInfo: {
-            max: localStorage.getItem('fileMax')
-        }
     },
     mutations: {
         setToken(state, $token) {
@@ -39,17 +36,8 @@ export default new Vuex.Store({
             state.userinfo = $userinfo; // 设置 userinfo
             if ($userinfo) localStorage.setItem('user_info', JSON.stringify($userinfo)); // 设置新的 token
         },
-        setSystem(state, $systemInfo) {
-            $systemInfo.forEach(item => {
-                console.log(item)
-                if (item.key == "max") {
-                    localStorage.setItem('fileMax', item.value)
-                }
-            })
-        }
     },
     actions: {
-        // 异步调用设置 token 方法
         setToken(context, $token) {
             context.commit('setToken', $token);
         },
@@ -58,9 +46,6 @@ export default new Vuex.Store({
         },
         setUser(context, $userinfo) {
             context.commit('setUser', $userinfo);
-        },
-        setSystem(context, $systemInfo) {
-            context.commit('setSystem', $systemInfo);
         }
     }
 })

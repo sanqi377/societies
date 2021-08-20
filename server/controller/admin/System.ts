@@ -4,12 +4,9 @@ module.exports = {
    * 获取菜单
    */
   getMenu(req: any, res: any) {
-    let id = req.body.id;
-
-    model.getUserMenu(id).then((resp:any)=>{
-        model.getMenu(resp).then((respe: any) => {
-          res.send({ ret: 200, data: respe })
-        })
+    let { role } = req.body
+    model.getMenu(role).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
     })
   },
 

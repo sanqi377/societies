@@ -7,7 +7,7 @@ module.exports = {
    * @returns 
    */
   isReg(username: string) {
-    return db('s_remember').where({ username }).find()
+    return db('s_users').where({ user: username }).find()
   },
 
   /**
@@ -16,10 +16,10 @@ module.exports = {
    */
   login(data: any) {
     return new Promise((resolve) => {
-      db('s_remember').where({ username: data.username }).find().then((res: any) => {
+      db('s_users').where({ user: data.username }).find().then((res: any) => {
         let password = md5(md5(data.password) + res.salt)
         let status = false
-        password === res.password ? status = true : status = false
+        password === res.pass ? status = true : status = false
         resolve(status)
       })
     })
@@ -31,7 +31,7 @@ module.exports = {
    * @returns 
    */
   getUserInfo(username: string) {
-    return db('s_remember').where({ username }).find()
+    return db('s_users').where({ user: username }).find()
   },
 
   /**

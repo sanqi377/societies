@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
     if (to.path != '/login') { // 判断不处于登陆页
         if (store.state.token) { // 判断是否登陆
             if (!store.state.menus) { // 判断是否有menu数据
-                axios.post(setting.baseURL + '/admin/system/getMenu',{id:store.state.userinfo.identity_id  }).then(res => { // 后端请求menu数据, 带特定标记 route
+                axios.post(setting.baseURL + '/admin/system/getMenu', { role: store.state.userinfo.role }).then(res => { // 后端请求menu数据, 带特定标记 route
                     store.dispatch('setMenu', res); // 添加menu数据到vuex
                     if (store.state.menus) { // 判断是否有menu数据
                         let data = store.state.menus;
