@@ -6,7 +6,6 @@ module.exports = {
    */
   getMenu(menus: any) {
     let id=menus.sign.split(":")
-    console.log(id);
     return new Promise((resolve) => {
         db("s_menu")
           .where({ pid: 0, status:1 })
