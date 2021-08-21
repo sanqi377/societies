@@ -37,3 +37,7 @@ page {
 .container {
   margin: 15px;
 }
+
+.sidebar {
+  margin-top: 10px;
+}

@@ -1,0 +1,34 @@
+<view class="container">
+  <scroll-view class="container" scroll-y style="height: 1100rpx;">
+    <view class="item" wx:for="{{15}}">
+      <view class="logo">
+        <image src="../../public/head_pic/avatar.jpg" />
+      </view>
+      <view class="info">
+        <view class="data">
+          <view class="title">计算机协会</view>
+          <view class="dsc">
+            简介:
+            <span>阿巴阿巴阿巴阿巴阿巴</span>
+          </view>
+          <view class="social dsc">
+            <view>
+              动态:
+              <span>2</span>
+            </view>
+            <view>
+              成员:
+              <span>7</span>
+            </view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../public/image/fan.png" />
+            <span>关注</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

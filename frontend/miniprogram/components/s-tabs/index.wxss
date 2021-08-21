@@ -14,6 +14,10 @@
   position: relative;
 }
 
+.title .item:last-child {
+  margin-right: 0;
+}
+
 .title .item.active {
   font-weight: bold;
 }

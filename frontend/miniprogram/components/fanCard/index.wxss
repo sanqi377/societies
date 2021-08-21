@@ -1,0 +1,72 @@
+.container {
+  margin-right: 15px;
+}
+
+.container .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.container .item .logo {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  margin-right: 5px;
+}
+
+.container .item image {
+  width: 55px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.container .item .info {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.container .item .info .fan {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.container .item .info .fan image {
+  width: 10px;
+  height: 10px;
+  margin-right: 3px;
+}
+
+.container .item .info .fan>view {
+  background: #276EF9;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.container .item .info .data>view {
+  margin-bottom: 4px;
+}
+
+.container .item .info .data>view:last-child {
+  margin-bottom: 0;
+}
+
+.container .item .info .data .social {
+  display: flex;
+}
+
+.container .item .info .data .social>view {
+  margin-right: 8px;
+}
+
+.container .item .info .data .title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.container .item .info .data .dsc {
+  font-size: 12px;
+}

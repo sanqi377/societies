@@ -13,7 +13,7 @@ Component({
      */
     changeTabs(e: any) {
       let index: number = e.currentTarget.dataset.id
-      this.triggerEvent('changeTabs', index)
+      this.triggerEvent('changeSidebar', index)
     }
   }
 })

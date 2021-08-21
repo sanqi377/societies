@@ -1,0 +1,23 @@
+.container {
+  margin-bottom: 15px;
+  background: #f6f6ff;
+  padding: 8px 10px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.container .icon {
+  display: flex;
+  align-items: center;
+}
+
+.container .icon image {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.container .input {
+  font-size: 12px;
+  width: 100%;
+}

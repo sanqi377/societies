@@ -1,4 +1,5 @@
 <view class="container">
+  <s-search />
   <view class="create">
     <view class="title">
       <image class="icon" src="../../../public/image/fan.png" />
@@ -7,11 +8,15 @@
     <view class="subtitle">快点创建专属于你的社团</view>
   </view>
   <s-tab title="{{title}}" bind:changeTabs="changeTabs">
-    <view hidden="{{allValue}}">
-      <s-sidebar title="{{sidebar}}">
-        外界哦请问结尾i金额我姐
+    <view class="sidebar" hidden="{{!title[0].active}}">
+      <s-sidebar title="{{sidebar}}" bind:changeSidebar="changeSidebar">
+        <view hidden="{{!sidebar[0].active}}">
+          <fanCard />
+        </view>
       </s-sidebar>
     </view>
-    <view hidden="{{joinValue}}">222</view>
+    <view hidden="{{!title[1].active}}">
+      已入职的社团
+    </view>
   </s-tab>
 </view>

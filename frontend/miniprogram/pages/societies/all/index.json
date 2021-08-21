@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "s-tab": "../../../components/s-tabs/index",
-    "s-sidebar": "../../../components/s-sidebar/index"
-  }
+    "s-sidebar": "../../../components/s-sidebar/index",
+    "fanCard": "../../../components/fanCard/index",
+    "s-search": "../../../components/s-search/index"
+  },
+  "disableScroll": true
 }
