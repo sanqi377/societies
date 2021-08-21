@@ -108,6 +108,20 @@ module.exports = {
     })
   },
   /**
+   * 获取所有子类菜单
+   */
+  getAllMenu(){
+    return new Promise((resolve) => {
+      db('s_menu').where({status:1}).whereNo({pid:0}).select().then((res:any)=>{
+        let menu:any=[]
+        res.forEach((el:any) => {
+          menu.push({id:el.id,title:el.title})
+        });
+        resolve(menu)
+      })
+    })
+  },
+  /**
    * 后台删除菜单
    * @param id 菜单id
    */

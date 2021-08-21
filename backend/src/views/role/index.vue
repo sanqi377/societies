@@ -199,13 +199,13 @@
           <el-col :sm="12">
             <el-form-item label="选择权限">
               <el-select
-                v-model="value1"
+                v-model="form.sign"
                 multiple
                 collapse-tags
                 placeholder="请选择权限"
               >
                 <el-option
-                  v-for="item in options"
+                  v-for="item in options||from.sign"
                   :key="item.id"
                   :label="item.title"
                   :value="item.id"
@@ -236,7 +236,7 @@
               type="textarea"
               :rows="2"
               placeholder="请输入角色介绍"
-              v-model="form.Introduction"
+              v-model="form.introduction"
             >
             </el-input>
           </el-col>
@@ -317,10 +317,10 @@ export default {
     },
     getMenu(){
       this.$api.system
-        .getMenu({ role: 1 })
+        .getAllMenu()
         .then((res) => {
           this.loading = false;
-          this.options = this.$util.toTreeData(res, "id", "pid");
+          this.options = res;
         })
         .catch((e) => {
           this.loading = false;
@@ -329,25 +329,22 @@ export default {
     },
     /* 显示添加 */
     add(row) {
-      this.form = { status: 1, pid: row ? row.id : null };
+      this.form = { status: 1};
       this.showEdit = true;
     },
     /* 显示编辑 */
     edit(row) {
-      this.form = Object.assign({}, row, { pid: row.pid || null });
+      this.form = Object.assign({}, row);
       this.showEdit = true;
     },
     /* 保存编辑 */
     save() {
+      this.form.sign=this.value1
       this.$refs["editForm"].validate((valid) => {
         if (valid) {
           const loading = this.$loading({ lock: true });
-          this.$api.article
-            .save(
-              Object.assign({}, this.form, {
-                pid: this.form.pid || 0,
-              })
-            )
+          this.$api.role
+            .addRole(this.form)
             .then((res) => {
               loading.close();
               this.showEdit = false;

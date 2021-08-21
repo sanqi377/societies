@@ -40,5 +40,13 @@ module.exports = {
                 }
             })
         })
+    },
+    /**
+     * 插入角色信息
+     */
+    addRole(data:any){
+        return db("s_role").insert(data).then((res:any)=>{
+            console.log(res)
+        });
     }
 }
