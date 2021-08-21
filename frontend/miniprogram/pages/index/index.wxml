@@ -54,7 +54,8 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../public/image/fan.png" />关注
+            <image src="../../public/image/fan.png" />
+            关注
           </view>
         </view>
       </view>
@@ -75,7 +76,8 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../public/image/fan.png" />关注
+            <image src="../../public/image/fan.png" />
+            关注
           </view>
         </view>
       </view>
@@ -96,7 +98,8 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../public/image/fan.png" />关注
+            <image src="../../public/image/fan.png" />
+            关注
           </view>
         </view>
       </view>
@@ -117,7 +120,8 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../public/image/fan.png" />关注
+            <image src="../../public/image/fan.png" />
+            关注
           </view>
         </view>
       </view>
@@ -138,7 +142,8 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../public/image/fan.png" />关注
+            <image src="../../public/image/fan.png" />
+            关注
           </view>
         </view>
       </view>

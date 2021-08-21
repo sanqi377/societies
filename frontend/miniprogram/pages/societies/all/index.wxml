@@ -1,3 +1,17 @@
 <view class="container">
-  <societiesCard data="{{data}}" />
+  <view class="create">
+    <view class="title">
+      <image class="icon" src="../../../public/image/fan.png" />
+      <view>新建社团</view>
+    </view>
+    <view class="subtitle">快点创建专属于你的社团</view>
+  </view>
+  <s-tab title="{{title}}" bind:changeTabs="changeTabs">
+    <view hidden="{{allValue}}">
+      <s-sidebar title="{{sidebar}}">
+        外界哦请问结尾i金额我姐
+      </s-sidebar>
+    </view>
+    <view hidden="{{joinValue}}">222</view>
+  </s-tab>
 </view>

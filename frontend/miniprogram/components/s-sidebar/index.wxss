@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  margin: 0 -15px;
+}
+
+.title {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  background: #f6f6ff;
+  height: 100%;
+}
+
+.title .item {
+  font-size: 14px;
+  position: relative;
+  padding: 10px;
+  text-align: center;
+}
+
+.title .item.active {
+  font-weight: bold;
+  background: #e4e4f0;
+}
+
+.content {
+  width: 80%;
+  padding-left: 10px;
+}

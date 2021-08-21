@@ -4,7 +4,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: {}
+    data: {},
+    title: [
+      {
+        title: "全部",
+        active: true
+      },
+      {
+        title: "入职",
+        active: false
+      }
+    ],
+    sidebar: [
+      {
+        title: "技术社团",
+        active: true
+      },
+      {
+        title: "学生会",
+        active: false
+      },
+      {
+        title: "艺术社团",
+        active: false
+      },
+      {
+        title: "运动社团",
+        active: false
+      }
+    ],
+    allValue: false,
+    joinValue: true
   },
 
   /**
@@ -18,6 +48,33 @@ Page({
           data: res.data.data
         })
       }
+    })
+  },
+
+  /**
+   * Tabs 切换
+   * @param e.detail 获取点击 index
+   */
+  changeTabs(e: any) {
+    let index: number = e.detail
+    var _this = this
+    this.data.title.forEach((el: any, idx: number) => {
+      el.active = false
+      if (idx === index) el.active = true
+    })
+    if (index === 1) {
+      _this.setData({
+        allValue: true,
+        joinValue: false
+      })
+    } else {
+      _this.setData({
+        allValue: false,
+        joinValue: true
+      })
+    }
+    _this.setData({
+      title: _this.data.title
     })
   },
 

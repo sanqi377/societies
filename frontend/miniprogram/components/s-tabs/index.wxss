@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .title {
   display: flex;
   margin-bottom: 15px;
@@ -20,7 +25,7 @@
   transform: translateX(-50%);
   bottom: -10px;
   width: 16px;
-  height: 4px;
+  height: 3px;
   border-radius: 3px;
-  background: #FED838;
+  background: #276EF9;
 }

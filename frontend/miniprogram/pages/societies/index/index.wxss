@@ -46,7 +46,6 @@
 
 .list .item .info .dsc {
   font-size: 14px;
-  text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

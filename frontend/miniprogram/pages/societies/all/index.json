@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "societiesCard":"../../../components/societiesCard/index"
+    "s-tab": "../../../components/s-tabs/index",
+    "s-sidebar": "../../../components/s-sidebar/index"
   }
 }

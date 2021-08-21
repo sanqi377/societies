@@ -19,9 +19,9 @@ var parentMenu = (arr: number[]) => {
     let newPid: number[] = []
     arr.forEach((item, index) => {
       db('s_menu').where({ id: Number(item), status: 1 }).find().then((res: any) => {
-        // 为0时说明本身就是一级菜单 直接push
+        // 为0时说明本身就是一级菜单 直接push id
         if (res.pid === 0) {
-          newArr.push(res)
+          newPid.push(res.id)
         } else {
           // 如果不为0就push进newpid 后续查
           newPid.push(res.pid)
@@ -33,12 +33,7 @@ var parentMenu = (arr: number[]) => {
           } else {
             unique(newPid).forEach((item, idx) => {
               db('s_menu').where({ id: item, status: 1 }).find().then((res: any) => {
-                newArr.forEach((el: any) => {
-                  // id不相同再push
-                  if (el.id != res.id) {
-                    newArr.push(res)
-                  }
-                });
+                newArr.push(res)
                 if (idx === unique(newPid).length - 1) resolve(newArr)
               })
             })

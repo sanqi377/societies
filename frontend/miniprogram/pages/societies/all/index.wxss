@@ -1,3 +1,39 @@
+page {
+  background: #fff;
+}
+
+.create {
+  background: #396afc;
+  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  background: linear-gradient(to right, #2948ff, #396afc);
+  padding: 15px 0;
+  text-align: center;
+  border-radius: 35px;
+  margin-bottom: 25px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+}
+
+.create .title {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.create .title image {
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+}
+
+.create .subtitle {
+  color: rgba(255, 255, 255, .6);
+  font-size: 14px;
+}
+
 .container {
   margin: 15px;
 }
