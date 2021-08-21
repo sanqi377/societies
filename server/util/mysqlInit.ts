@@ -15,6 +15,7 @@ class Mysql {
   wheres: string
   limits: string
   orders: string
+  likes: string
 
   /**
    * 构造函数
@@ -23,11 +24,12 @@ class Mysql {
    * @param limits 限制结果数量
    * @param sets 更新时的 value
    */
-  constructor(table: string, wheres?: string, limits?: string, orders?: string) {
+  constructor(table: string, wheres?: string, limits?: string, orders?: string, likes?: string) {
     this.table = table
     this.wheres = wheres as string
     this.limits = limits as string
     this.orders = orders as string
+    this.likes = likes as string
   }
 
   /**
@@ -92,6 +94,7 @@ class Mysql {
     if (this.table) sql += ` from ${this.table}`
     if (this.wheres) sql += ` where ${this.wheres}`
     if (this.orders) sql += ` ${this.orders}`
+    if (this.likes) sql += ` where ${this.likes}`
     return querys(sql, 'select')
   }
   /**
@@ -170,6 +173,27 @@ class Mysql {
     this.orders = `ORDER BY ${keys} ${vals}`
     return this
   }
+
+  /**
+   * Like 模糊查询
+   *
+   * @param {...any} arr
+   * @memberof Mysql
+   */
+  like(...arr: any) {
+    arr = arr[0]
+    let arrs: string[] = []
+    Object.keys(arr).forEach((item: any, index: any) => {
+      Object.values(arr).forEach((items: any, idx: any) => {
+        if (index === idx) {
+          if (typeof (items) === 'string') items = `'${items}'`
+          arrs.push(item + ' LIKE ' + items)
+        }
+      })
+    })
+    this.likes = arrs.toString()
+    return this
+  }
 }
 
 /**
@@ -191,6 +215,12 @@ let querys = (sql: string, type?: string) => {
     })
   })
 }
+
+// var ini = (table: string) => {
+//   return new Mysql(table)
+// }
+
+// ini('s_menu').like({ name: '%计算%' }).select()
 
 module.exports = {
   db(table: string) {
