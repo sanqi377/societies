@@ -16,28 +16,7 @@ Page({
         active: false
       }
     ],
-    sidebar: [
-      {
-        title: "全部",
-        active: true
-      },
-      {
-        title: "技术社团",
-        active: false
-      },
-      {
-        title: "学生会",
-        active: false
-      },
-      {
-        title: "艺术社团",
-        active: false
-      },
-      {
-        title: "运动社团",
-        active: false
-      }
-    ]
+    sidebar: []
   },
 
   /**
@@ -45,10 +24,11 @@ Page({
   */
   getSocieties() {
     var _this = this
-    ajax('http://localhost:3000/index/societies/getSocieties').then((res: any) => {
+    ajax('http://localhost:3000/index/class/getclass').then((res: any) => {
+      console.log(res.data.data)
       if (res.data.ret === 200) {
         _this.setData({
-          data: res.data.data
+          sidebar: res.data.data
         })
       }
     })
@@ -104,7 +84,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // this.getSocieties()
+    this.getSocieties()
   },
 
   /**

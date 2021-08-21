@@ -2,7 +2,7 @@
   <view class="title">
     <block wx:for="{{title}}" wx:key="item">
       <view class="item {{item.active ? 'active' : ''}}" data-id="{{index}}" bindtap="changeTabs">
-        {{item.title}}
+        {{item.name}}
       </view>
     </block>
   </view>

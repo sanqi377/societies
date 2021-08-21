@@ -1,15 +1,15 @@
 <view class="container">
   <scroll-view class="container" scroll-y style="height: 1100rpx;">
-    <view class="item" wx:for="{{15}}">
+    <view class="item" wx:for="{{info}}">
       <view class="logo">
-        <image src="../../public/head_pic/avatar.jpg" />
+        <image src="{{item.logo}}" />
       </view>
       <view class="info">
         <view class="data">
-          <view class="title">计算机协会</view>
+          <view class="title">{{item.name}}</view>
           <view class="dsc">
             简介:
-            <span>阿巴阿巴阿巴阿巴阿巴</span>
+            <span>{{item.about}}</span>
           </view>
           <view class="social dsc">
             <view>

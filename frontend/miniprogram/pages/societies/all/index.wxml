@@ -10,13 +10,13 @@
   <s-tab title="{{title}}" bind:changeTabs="changeTabs">
     <view class="sidebar" hidden="{{!title[0].active}}">
       <s-sidebar title="{{sidebar}}" bind:changeSidebar="changeSidebar">
-        <view hidden="{{!sidebar[0].active}}">
-          <fanCard />
-        </view>
+        <block wx:for="{{sidebar}}" wx:key="item">
+          <view hidden="{{!item.active}}">
+            <fanCard info="{{item.class_societies}}" />
+          </view>
+        </block>
       </s-sidebar>
     </view>
-    <view hidden="{{!title[1].active}}">
-      已入职的社团
-    </view>
+    <view hidden="{{!title[1].active}}">已入职的社团</view>
   </s-tab>
 </view>
