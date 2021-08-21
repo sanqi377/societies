@@ -51,6 +51,26 @@ class Mysql {
   }
 
   /**
+   * 拼接 where 条件
+   * @param arr 
+   * @returns 
+   */
+  whereNo(...arr: any) {
+    arr = arr[0]
+    let arrs: string[] = []
+    Object.keys(arr).forEach((item: any, index: any) => {
+      Object.values(arr).forEach((items: any, idx: any) => {
+        if (index === idx) {
+          if (typeof (items) === 'string') items = `'${items}'`
+          arrs.push(item + '!=' + items)
+        }
+      })
+    })
+    this.wheres += " and " + arrs.toString().replace(/,/g, ' and ')
+    return this
+  }
+
+  /**
    * 单条数据查询
    * @returns 
    */
