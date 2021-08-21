@@ -289,7 +289,7 @@ export default {
     methods: {
         isNo(res) {
             this.$api.system
-                .getMenu({ status: res.status, id: res.id })
+                .getMenu({ status: res.status, id: res.id})
                 .then((res) => {
                     this.$message({
                         type: "success",
@@ -301,7 +301,7 @@ export default {
         query() {
             this.loading = true;
             this.$api.system
-                .getMenu({id:store.state.userinfo.identity_id  })
+                .getMenu({role:store.state.userinfo.role})
                 .then((res) => {
                     this.loading = false;
                     this.data = this.$util.toTreeData(res, "id", "pid");

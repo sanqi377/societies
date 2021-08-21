@@ -83,17 +83,7 @@
                 >
             </el-table-column>
             <el-table-column
-                label="导航地址"
-                show-overflow-tooltip
-                min-width="150"
-                align="center"
-            >
-                <template slot-scope="{ row }">{{
-                    row.path ? row.path : "无"
-                }}</template>
-            </el-table-column>
-            <el-table-column
-                label="导航介绍"
+                label="分类介绍"
                 show-overflow-tooltip
                 min-width="150"
                 align="center"
@@ -120,13 +110,6 @@
                     </el-switch>
                 </template>
             </el-table-column>
-
-            <el-table-column
-                prop="sort"
-                label="排序"
-                width="60px"
-                align="center"
-            />
             <el-table-column
                 label="创建时间"
                 show-overflow-tooltip
@@ -195,10 +178,10 @@
             >
                 <el-row :gutter="15">
                     <el-col :sm="24">
-                        <el-form-item label="导航名称:">
+                        <el-form-item label="分类名称:">
                             <el-input
                                 v-model="form.name"
-                                placeholder="请输入导航名称"
+                                placeholder="请输入分类名称"
                                 clearable
                             />
                         </el-form-item>

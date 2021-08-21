@@ -74,7 +74,6 @@ class Mysql {
     if (this.orders) sql += ` ${this.orders}`
     return querys(sql, 'select')
   }
-
   /**
    * 数据更新
    * @param arr 

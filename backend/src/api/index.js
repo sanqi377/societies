@@ -176,6 +176,11 @@ const api = {
         getInfo: () => {
             return ajax.post("dashboard/getInfo");
         }
+    },
+    role:{
+        getRoleSign:(param)=>{
+            return ajax.post("role/getrolesign",param)
+        }
     }
 };
 

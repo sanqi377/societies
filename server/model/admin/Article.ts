@@ -4,7 +4,7 @@ module.exports = {
    * 后台获取分类
    */
   getClassification() {
-    return db('s_classification').where({ status: 1 }).order({ sort: 'asc' }).select()
+    return db('s_classification').where({ status: 1 }).select()
   },
 
   /**
