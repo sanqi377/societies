@@ -33,12 +33,36 @@ module.exports = {
                     getsign(sign).then((resp: any) => {
                         res[i].sign = []
                         res[i].sign = resp
-                        if(i==res.length-1){
+                        if (i == res.length - 1) {
                             resolve(res)
                         }
                     })
                 }
             })
         })
+    },
+    /**
+     * 插入角色信息
+     */
+    addRole(data: any) {
+        return new Promise((resolve, reject) => {
+            db("s_role").insert(data).then((res: any) => {
+                resolve(res)
+            });
+        })
+    },
+
+    /**
+     * 更新角色信息
+     */
+    updateRole(data: any) {
+        return db("s_role").where({ id: data.id }).update(data)
+    },
+    
+    /**
+     * 删除角色信息
+     */
+    delectRole(id:number){
+        return db("s_role").where({id}).delete();
     }
 }

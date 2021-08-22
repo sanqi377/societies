@@ -10,10 +10,10 @@
         >
             <el-row :gutter="15">
                 <el-col :md="6" :sm="12">
-                    <el-form-item label="菜单名称:">
+                    <el-form-item label="分类名称:">
                         <el-input
-                            v-model="where.title"
-                            placeholder="请输入菜单名称"
+                            v-model="where.name"
+                            placeholder="请输入分类名称"
                             clearable
                         />
                     </el-form-item>
@@ -73,23 +73,23 @@
                 prop="id"
             />
             <el-table-column
-                label="菜单名称"
+                label="分类名称"
                 show-overflow-tooltip
                 min-width="200"
                 align="center"
             >
                 <template slot-scope="{ row }"
-                    ><i :class="row.icon" /> {{ row.title }}</template
+                    ><i :class="row.icon" /> {{ row.name }}</template
                 >
             </el-table-column>
             <el-table-column
-                label="路由地址"
+                label="分类介绍"
                 show-overflow-tooltip
                 min-width="150"
                 align="center"
             >
                 <template slot-scope="{ row }">{{
-                    row.path ? row.path : "无"
+                    row.Introduction ? row.Introduction : "无"
                 }}</template>
             </el-table-column>
             <el-table-column
@@ -110,13 +110,6 @@
                     </el-switch>
                 </template>
             </el-table-column>
-
-            <el-table-column
-                prop="sort"
-                label="排序"
-                width="60px"
-                align="center"
-            />
             <el-table-column
                 label="创建时间"
                 show-overflow-tooltip
@@ -124,7 +117,7 @@
                 align="center"
             >
                 <template slot-scope="{ row }">{{
-                    (row.create_time * 1000) | toDateString
+                    (row.addtime * 1000) | toDateString
                 }}</template>
             </el-table-column>
             <el-table-column
@@ -167,7 +160,7 @@
         </el-table>
         <!-- 编辑弹窗 -->
         <el-dialog
-            :title="form.id ? '修改菜单' : '添加菜单'"
+            :title="form.id ? '修改分类' : '添加分类'"
             :visible.sync="showEdit"
             width="600px"
             @closed="form = {}"
@@ -184,60 +177,31 @@
                 @submit.native.prevent
             >
                 <el-row :gutter="15">
-                    <el-col :sm="12">
-                        <el-form-item label="上级菜单:">
-                            <treeselect
-                                v-model="form.pid"
-                                :options="data"
-                                placeholder="请选择上级菜单"
-                                :defaultExpandLevel="3"
-                                :normalizer="
-                                    (d) => {
-                                        return {
-                                            id: d.id,
-                                            label: d.title,
-                                            children: d.children || undefined,
-                                        };
-                                    }
-                                "
-                            />
-                        </el-form-item>
-                        <el-form-item label="菜单名称:" prop="title">
+                    <el-col :sm="24">
+                        <el-form-item label="分类名称:">
                             <el-input
-                                v-model="form.title"
-                                placeholder="请输入菜单名称"
+                                v-model="form.name"
+                                placeholder="请输入分类名称"
                                 clearable
-                            />
-                        </el-form-item>
-                        <el-form-item label="菜单图标:">
-                            <ele-icon-picker
-                                v-model="form.icon"
-                                placeholder="请选择菜单图标"
                             />
                         </el-form-item>
                     </el-col>
                     <el-col :sm="12">
-                        <el-form-item label="路由地址:">
-                            <el-input
-                                v-model="form.path"
-                                placeholder="请输入路由地址"
-                                clearable
-                            />
-                        </el-form-item>
-                        <el-form-item label="排序号:" prop="sort">
-                            <el-input-number
-                                v-model="form.sort"
-                                :min="0"
-                                placeholder="请输入排序号"
-                                class="ele-fluid ele-text-left"
-                            />
-                        </el-form-item>
-                        <el-form-item label="菜单状态:">
+                        <el-form-item label="分类状态:">
                             <el-radio-group v-model="form.status">
                                 <el-radio :label="1">正常</el-radio>
                                 <el-radio :label="0">禁用</el-radio>
                             </el-radio-group>
                         </el-form-item>
+                    </el-col>
+                    <el-col :sm="24">
+                        <el-input
+                            type="textarea"
+                            :rows="2"
+                            placeholder="请输入分类介绍"
+                            v-model="form.Introduction"
+                        >
+                        </el-input>
                     </el-col>
                 </el-row>
             </el-form>
@@ -252,7 +216,6 @@
 <script>
 import Treeselect from "@riophae/vue-treeselect"; // 下拉树
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
-import store from '@/store';
 
 export default {
     name: "SysMenu",
@@ -288,8 +251,8 @@ export default {
     },
     methods: {
         isNo(res) {
-            this.$api.system
-                .getMenu({ status: res.status, id: res.id})
+            this.$api.article
+                .getClassification({ status: res.status, id: res.id })
                 .then((res) => {
                     this.$message({
                         type: "success",
@@ -300,11 +263,12 @@ export default {
         /* 查询 */
         query() {
             this.loading = true;
-            this.$api.system
-                .getAllMenu({role:store.state.userinfo.role})
+            this.$api.article
+                .getClassification(this.where)
                 .then((res) => {
                     this.loading = false;
                     this.data = this.$util.toTreeData(res, "id", "pid");
+                    console.log(res)
                 })
                 .catch((e) => {
                     this.loading = false;
@@ -326,18 +290,17 @@ export default {
             this.$refs["editForm"].validate((valid) => {
                 if (valid) {
                     const loading = this.$loading({ lock: true });
-                    this.$api.system
-                        .saveMenu(
+                    this.$api.article
+                        .save(
                             Object.assign({}, this.form, {
                                 pid: this.form.pid || 0,
                             })
                         )
                         .then((res) => {
-                            console.log(this.form);
                             loading.close();
                             this.showEdit = false;
                             this.$message({
-                                type: res.type,
+                                type: "success",
                                 message: res.msg,
                             });
                             if (this.form.id) {
@@ -382,8 +345,8 @@ export default {
             if (row.children && row.children.length > 0)
                 return this.$message.error("请先删除子节点");
             const loading = this.$loading({ lock: true });
-            this.$api.system
-                .deleteMenu({ id: row.id })
+            this.$api.article
+                .deleteClassification({ id: row.id })
                 .then((res) => {
                     loading.close();
                     this.$message({

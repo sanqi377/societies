@@ -196,32 +196,19 @@
               />
             </el-form-item>
           </el-col>
-          <el-col :sm="12">
+          <el-col :sm="24">
             <el-form-item label="选择权限">
-              <el-select
-                v-model="value1"
-                multiple
-                collapse-tags
-                placeholder="请选择权限"
+              <el-tree
+                :data="options"
+                show-checkbox
+                ref="tree"
+                node-key="id"
+                @check-change="getCheckedKeys"
+                :props="defaultProps"
               >
-                <el-option
-                  v-for="item in options"
-                  :key="item.id"
-                  :label="item.title"
-                  :value="item.id"
-                >
-                </el-option>
-              </el-select>
+              </el-tree>
             </el-form-item>
 
-            <el-form-item label="角色状态:">
-              <el-radio-group v-model="form.status">
-                <el-radio :label="1">正常</el-radio>
-                <el-radio :label="0">禁用</el-radio>
-              </el-radio-group>
-            </el-form-item>
-          </el-col>
-          <el-col :sm="12">
             <el-form-item label="排序号:" prop="sort">
               <el-input-number
                 v-model="form.sort"
@@ -230,13 +217,19 @@
                 class="ele-fluid ele-text-left"
               />
             </el-form-item>
+            <el-form-item label="角色状态:">
+              <el-radio-group v-model="form.status">
+                <el-radio :label="1">正常</el-radio>
+                <el-radio :label="0">禁用</el-radio>
+              </el-radio-group>
+            </el-form-item>
           </el-col>
           <el-col :sm="24">
             <el-input
               type="textarea"
               :rows="2"
               placeholder="请输入角色介绍"
-              v-model="form.Introduction"
+              v-model="form.introduction"
             >
             </el-input>
           </el-col>
@@ -251,16 +244,12 @@
 </template>
 
 <script>
-import Treeselect from "@riophae/vue-treeselect"; // 下拉树
-import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
 export default {
-  name: "SysMenu",
-  components: { Treeselect },
+  name: "role",
   data() {
     return {
       options: [],
-      value1: [],
       loading: true, // 加载状态
       where: {}, // 搜索条件
       data: [], // 列表数据
@@ -283,6 +272,10 @@ export default {
           },
         ],
       },
+      defaultProps: {
+        children: "children",
+        label: "title",
+      },
     };
   },
   mounted() {
@@ -291,12 +284,12 @@ export default {
   },
   methods: {
     isNo(res) {
-      this.$api.article
-        .getClassification({ status: res.status, id: res.id })
+      this.$api.role
+        .addRole({ status: res.status, id: res.id,sign:res.sign })
         .then((res) => {
           this.$message({
             type: "success",
-            message: res,
+            message: res.msg,
           });
         });
     },
@@ -313,14 +306,13 @@ export default {
           this.loading = false;
           this.$message.error(e.message);
         });
-      
     },
-    getMenu(){
+    getMenu() {
       this.$api.system
-        .getMenu({ role: 1 })
+        .getAllMenu()
         .then((res) => {
           this.loading = false;
-          this.options = this.$util.toTreeData(res, "id", "pid");
+          this.options = res;
         })
         .catch((e) => {
           this.loading = false;
@@ -329,12 +321,15 @@ export default {
     },
     /* 显示添加 */
     add(row) {
-      this.form = { status: 1, pid: row ? row.id : null };
+      this.form = { status: 1 };
       this.showEdit = true;
     },
     /* 显示编辑 */
     edit(row) {
-      this.form = Object.assign({}, row, { pid: row.pid || null });
+      this.form = Object.assign({}, row);
+      this.$nextTick(() => {
+        this.$refs.tree.setCheckedNodes(this.form.sign);
+      });
       this.showEdit = true;
     },
     /* 保存编辑 */
@@ -342,12 +337,8 @@ export default {
       this.$refs["editForm"].validate((valid) => {
         if (valid) {
           const loading = this.$loading({ lock: true });
-          this.$api.article
-            .save(
-              Object.assign({}, this.form, {
-                pid: this.form.pid || 0,
-              })
-            )
+          this.$api.role
+            .addRole(this.form)
             .then((res) => {
               loading.close();
               this.showEdit = false;
@@ -355,17 +346,6 @@ export default {
                 type: "success",
                 message: res.msg,
               });
-              if (this.form.id) {
-                // 更新数据
-                this.$util.eachTreeData(this.data, (item) => {
-                  if (item.id === this.form.id) {
-                    Object.assign(item, this.form);
-                    return false;
-                  }
-                });
-              } else {
-                this.query();
-              }
             })
             .catch((e) => {
               loading.close();
@@ -375,6 +355,12 @@ export default {
           return false;
         }
       });
+    },
+    /**
+     * 获取已选节点
+     */
+    getCheckedKeys() {
+      this.form.sign = this.$refs.tree.getCheckedKeys(true);
     },
     /**
      * 展开全部
@@ -394,19 +380,14 @@ export default {
     },
     // 删除
     remove(row) {
-      if (row.children && row.children.length > 0)
-        return this.$message.error("请先删除子节点");
       const loading = this.$loading({ lock: true });
-      this.$api.article
-        .deleteClassification({ id: row.id })
+      this.$api.role
+        .delectRole({ id: row.id })
         .then((res) => {
           loading.close();
           this.$message({
-            type: res.type,
+            type: "success",
             message: res.msg,
-            onClose: () => {
-              location.reload();
-            },
           });
         })
         .catch((e) => {

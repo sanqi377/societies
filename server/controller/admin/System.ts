@@ -9,7 +9,17 @@ module.exports = {
       res.send({ ret: 200, data: resp })
     })
   },
+  /**
+   * 获取所有子类菜单
+   * @param req 
+   * @param res 
+   */
 
+  getAllMenu(req:any,res:any){
+    model.getAllMenu().then((resp:any)=>{
+      res.send({ret:200,data:resp})
+    })
+  },
   /**
    * 删除菜单
    */
