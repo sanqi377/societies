@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 21/08/2021 16:00:25
+ Date: 22/08/2021 18:47:11
 */
 
 SET NAMES utf8mb4;
@@ -93,13 +93,13 @@ CREATE TABLE `s_menu`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `index_pid`(`pid`) USING BTREE,
   INDEX `index_name`(`title`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 92 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统菜单表' ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统菜单表' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of s_menu
 -- ----------------------------
 INSERT INTO `s_menu` VALUES (1, 0, '系统管理', 'el-icon-setting', NULL, NULL, 1, 3, 1605787979);
-INSERT INTO `s_menu` VALUES (6, 0, '用户管理', 'el-icon-_user-group', NULL, NULL, 0, 5, 1605787979);
+INSERT INTO `s_menu` VALUES (6, 0, '用户管理', 'el-icon-_user-group', NULL, NULL, 1, 5, 1605787979);
 INSERT INTO `s_menu` VALUES (17, 1, '菜单管理', 'el-icon-s-operation', '/system/menu', 'sys:menu:view', 1, 2, 1605787979);
 INSERT INTO `s_menu` VALUES (37, 1, '登录日志', 'el-icon-date', '/system/loginlog', 'sys:loginlog:view', 1, 3, 1605787979);
 INSERT INTO `s_menu` VALUES (40, 1, '操作日志', 'el-icon-_template', '/system/actionlog', 'sys:operlog:view', 0, 4, 1605787979);
@@ -120,6 +120,7 @@ INSERT INTO `s_menu` VALUES (87, 86, '社团列表', 'el-icon-_nav', '/societies
 INSERT INTO `s_menu` VALUES (88, 86, '添加社团', 'el-icon-_user-add', '/societies/add', NULL, 1, 2, 0);
 INSERT INTO `s_menu` VALUES (89, 0, '角色管理', 'el-icon-user', '', NULL, 1, 8, 0);
 INSERT INTO `s_menu` VALUES (91, 89, '角色列表', 'el-icon-document', '/role/index', NULL, 1, 2, 0);
+INSERT INTO `s_menu` VALUES (92, 86, '社团分类', 'el-icon-_menu', '/societies/class', NULL, 1, 3, 0);
 
 -- ----------------------------
 -- Table structure for s_notice
@@ -149,21 +150,21 @@ INSERT INTO `s_notice` VALUES (5, '撒东', 7, 1629359124, 1);
 -- ----------------------------
 DROP TABLE IF EXISTS `s_role`;
 CREATE TABLE `s_role`  (
-  `id` int(11) NOT NULL COMMENT '角色id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色id',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名',
   `sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色权限',
   `introduction` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色介绍',
   `status` int(1) NOT NULL COMMENT '角色状态：0 禁用 1 启用',
   `sort` int(10) NULL DEFAULT NULL COMMENT '排序',
-  `create_time` datetime(0) NOT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_time` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of s_role
 -- ----------------------------
-INSERT INTO `s_role` VALUES (1, '超级管理员', '91:87:88:76', '超级管理', 1, 1, '2021-08-21 15:10:20');
-INSERT INTO `s_role` VALUES (2, '测试', '17:78:87:88:73', '测试使用', 1, 2, '2021-08-21 10:28:52');
+INSERT INTO `s_role` VALUES (2, '测试', '', '测试使用11111', 1, 2, '1629629166065');
+INSERT INTO `s_role` VALUES (3, '超级管理', '17:37:45:46:74:75:76:78:87:88:91:92:6:65', '最高管理人员', 1, 3, '1629551540226');
 
 -- ----------------------------
 -- Table structure for s_societies
@@ -183,9 +184,9 @@ CREATE TABLE `s_societies`  (
   INDEX `notice_id`(`notice_id`) USING BTREE,
   INDEX `type_id`(`type_id`) USING BTREE,
   INDEX `class_id`(`class_id`) USING BTREE,
+  CONSTRAINT `class_id` FOREIGN KEY (`class_id`) REFERENCES `s_classification` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `notice_id` FOREIGN KEY (`notice_id`) REFERENCES `s_notice` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `type_id` FOREIGN KEY (`type_id`) REFERENCES `s_societies_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `class_id` FOREIGN KEY (`class_id`) REFERENCES `s_classification` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `type_id` FOREIGN KEY (`type_id`) REFERENCES `s_societies_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -254,7 +255,7 @@ CREATE TABLE `s_users`  (
 -- ----------------------------
 -- Records of s_users
 -- ----------------------------
-INSERT INTO `s_users` VALUES (5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'admin', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', 1);
+INSERT INTO `s_users` VALUES (5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'admin', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', 3);
 INSERT INTO `s_users` VALUES (6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'admin888', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
