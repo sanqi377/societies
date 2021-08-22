@@ -59,6 +59,24 @@
           "pathName": "pages/societies/all/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/message/index/index",
+          "pathName": "pages/message/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/societies/info/index",
+          "pathName": "pages/societies/info/index",
+          "query": "id=6",
+          "scene": null
+        },
+        {
+          "name": "pages/societies/welcome/index",
+          "pathName": "pages/societies/welcome/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

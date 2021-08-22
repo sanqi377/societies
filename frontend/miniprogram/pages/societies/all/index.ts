@@ -1,4 +1,4 @@
-var { ajax } = require('../../../utils/util')
+var { ajax, checkLogin } = require('../../../utils/util')
 Page({
   /**
    * 页面的初始数据
@@ -16,7 +16,8 @@ Page({
         active: false
       }
     ],
-    sidebar: []
+    sidebar: [],
+    show: false
   },
 
   /**
@@ -24,7 +25,7 @@ Page({
   */
   getSocieties() {
     var _this = this
-    ajax('http://localhost:3000/index/class/getclass').then((res: any) => {
+    ajax('http://localhost:3000/index/class/getClass').then((res: any) => {
       console.log(res.data.data)
       if (res.data.ret === 200) {
         _this.setData({
@@ -41,6 +42,13 @@ Page({
   changeTabs(e: any) {
     let index: number = e.detail
     var _this = this
+    console.log(checkLogin())
+    if (!checkLogin()) {
+      _this.setData({
+        show: true
+      })
+      return
+    }
     _this.data.title.forEach((el: any, idx: number) => {
       el.active = false
       if (idx === index) el.active = true
@@ -63,6 +71,12 @@ Page({
     })
     _this.setData({
       sidebar: _this.data.sidebar
+    })
+  },
+
+  changeShow(e: any) {
+    this.setData({
+      show: e.detail
     })
   },
 

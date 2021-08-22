@@ -1,6 +1,6 @@
 <view class="container">
-  <scroll-view class="container" scroll-y style="height: 1100rpx;">
-    <view class="item" wx:for="{{info}}">
+  <scroll-view class="container" scroll-y style="height: 100%;">
+    <view class="item" wx:for="{{info}}" wx:key="item" data-id="{{item.id}}" bindtap="goInfo">
       <view class="logo">
         <image src="{{item.logo}}" />
       </view>
@@ -18,7 +18,7 @@
             </view>
             <view>
               成员:
-              <span>7</span>
+              <span>{{item.number ? item.number : 0}}</span>
             </view>
           </view>
         </view>

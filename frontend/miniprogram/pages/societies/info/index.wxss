@@ -29,21 +29,42 @@
 }
 
 .info {
-  margin-top: 90px;
+  margin-top: 30px;
   color: #fff;
+  display: flex;
 }
 
 .info .title {
-  font-size: 22px;
-  margin-bottom: 15px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.info .department {
+  font-size: 14px;
+}
+
+.info .logo {
+  margin-right: 10px;
+}
+
+.info .logo image {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.info .dsc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .main {
   margin-top: 20px;
   background: #fff;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  padding: 30px 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 15px 20px;
   padding-bottom: 0;
 }
 
@@ -57,31 +78,31 @@
 .main .header .more {
   display: flex;
   align-items: center;
+  font-size: 12px;
 }
 
 .main .header image {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .main .name {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .group {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .group>view {
-  width: 17%;
   margin-bottom: 10px;
 }
 
 .group image {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   margin-bottom: 3px;
 }
@@ -93,9 +114,170 @@
 }
 
 .group .user .name {
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.notice {
+.fan {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fan .count {
+  color: rgba(255, 255, 255, .7);
+  font-size: 13px;
+}
+
+.fan .fans {
+  display: flex;
+}
+
+.fan .fans .gz {
+  margin-right: 15px;
+  background: rgba(255, 255, 255, .9);
+  padding: 4px 25px;
+  font-size: 15px;
+  border-radius: 25px;
+}
+
+.fan .fans .share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  background: rgba(255, 255, 255, .5);
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.fan .fans .share image {
+  width: 15px;
+  height: 15px;
+}
+
+.dynamic {
+  padding: 0 15px;
+  margin-top: 15px;
+  padding-top: 20px;
+  background: #fff;
+}
+
+.dynamic image {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+.dynamic .item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.dynamic .item:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.dynamic .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dynamic .head .info {
+  margin-top: 0;
+  display: flex;
+  color: #000;
+}
+
+.dynamic .head .info .logo {
+  margin-right: 3px;
+}
+
+.dynamic .head .info .information .name {
+  font-size: 14px;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .head .info .information .name span {
+  background: #1082ff;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.dynamic .head .info .information .num {
+  font-size: 12px;
   color: #98989F;
+}
+
+.dynamic .head .fan {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 0;
+}
+
+.dynamic .head .fan view {
+  background: #1082ff;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 30px;
+}
+
+.dynamic .head .fan view.active {
+  background: #f5f7f9;
+  color: #616161;
+}
+
+.dynamic .head .fan view image {
+  width: 10px;
+  height: 10px;
+  margin-right: 0;
+}
+
+.dynamic .title {
+  font-size: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.dynamic .title::after {
+  content: '';
+  position: absolute;
+  bottom: 2.5px;
+  left: 0;
+  width: 4px;
+  height: 15px;
+  background: #1082ff;
+  border-radius: 2px;
+}
+
+.dynamic .value {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.dynamic .btns {
+  margin-top: 10px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dynamic .btns>view {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic .btns image {
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
 }

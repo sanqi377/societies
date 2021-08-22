@@ -132,11 +132,6 @@ export default {
 </script>
 
 <style scoped>
-@keyframes lchang {
-    to {
-        width: 542px;
-    }
-}
 .societies-card >>> .el-card__body {
     display: flex;
     padding: 0 !important;

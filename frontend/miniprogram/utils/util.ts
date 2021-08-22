@@ -23,6 +23,13 @@ var ajaxHttp = (url: string, data: object) => {
   })
 }
 
+var checkLogin: any = () => {
+  var token: string = wx.getStorageSync('token')
+  if (!token) return false
+  return true
+}
+
 module.exports = {
-  ajax: ajaxHttp
+  ajax: ajaxHttp,
+  checkLogin
 }

@@ -8,7 +8,8 @@
     "pages/user/reg/index",
     "pages/user/login/index",
     "pages/societies/welcome/index",
-    "pages/societies/all/index"
+    "pages/societies/all/index",
+    "pages/message/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

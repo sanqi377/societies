@@ -36,6 +36,10 @@ Component({
     switchTab(e: any) {
       const data = e.currentTarget.dataset
       const url = data.path
+      if (url === '/pages/user/my/index') {
+        var token = wx.getStorageSync('token')
+        if (!token) wx.navigateTo({ url: '/pages/user/login/index' })
+      }
       wx.switchTab({ url })
       this.setData({
         selected: data.index

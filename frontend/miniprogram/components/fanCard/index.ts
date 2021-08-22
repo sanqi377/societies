@@ -20,6 +20,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goInfo(e: any) {
+      wx.navigateTo({
+        url: "/pages/societies/info/index?id=" + e.currentTarget.dataset.id
+      })
+    }
   }
 })

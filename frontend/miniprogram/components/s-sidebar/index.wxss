@@ -5,10 +5,8 @@
 
 .title {
   width: 20%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
   background: #f6f6ff;
 }
 

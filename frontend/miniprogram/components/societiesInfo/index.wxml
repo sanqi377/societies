@@ -1,0 +1,121 @@
+<view class="container">
+  <view class="bg">
+    <image src="../../public/image/bg.jpg" mode="aspectFill" />
+    <view class="avatar">
+      <image src="../../public/head_pic/avatar.jpg" />
+    </view>
+  </view>
+  <view class="info">
+    <view class="title">社团信息</view>
+    <view class="name">
+      <view>计算机协会</view>
+      <view>
+        <span>系部</span>
+      </view>
+    </view>
+    <view class="dsc">简介：阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿
+阿巴阿阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿</view>
+  </view>
+  <view class="btns">
+    <view class="title">快捷菜单</view>
+    <view class="btn">
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/societies.png" />
+          </view>
+          <view>信息</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/users.png" />
+          </view>
+          <view>人员</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/rw.png" />
+          </view>
+          <view>任务</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/gg.png" />
+          </view>
+          <view>公告</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+<view class="container">
+  <view class="bg">
+    <image src="../../public/image/bg.jpg" mode="aspectFill" />
+    <view class="avatar">
+      <image src="../../public/head_pic/avatar.jpg" />
+    </view>
+  </view>
+  <view class="info">
+    <view class="title">社团信息</view>
+    <view class="name">
+      <view>计算机协会</view>
+      <view>
+        <span>系部</span>
+      </view>
+    </view>
+    <view class="dsc">简介：阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿
+阿巴阿阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿</view>
+  </view>
+  <view class="btns">
+    <view class="title">快捷菜单</view>
+    <view class="btn">
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/societies.png" />
+          </view>
+          <view>信息</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/users.png" />
+          </view>
+          <view>人员</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/rw.png" />
+          </view>
+          <view>任务</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="content">
+          <view class="icon">
+            <image src="../../public/image/gg.png" />
+          </view>
+          <view>公告</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

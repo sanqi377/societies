@@ -1,3 +1,4 @@
+<s-message show="{{show}}" type="warning" bind:changeShow="changeShow">请先登录</s-message>
 <view class="container">
   <s-search />
   <view class="create">
@@ -17,6 +18,8 @@
         </block>
       </s-sidebar>
     </view>
-    <view hidden="{{!title[1].active}}">已入职的社团</view>
+    <view hidden="{{!title[1].active}}">
+      <societiesInfo />
+    </view>
   </s-tab>
 </view>

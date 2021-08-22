@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "welcomeCard": "../../../components/welcomeCard/index"
+  }
 }

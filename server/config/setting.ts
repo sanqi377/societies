@@ -18,7 +18,7 @@ module.exports = {
         { path: '/user/login' },
         { path: '/user/reg' },
         { path: '/societies/getSocieties' },
-        
+        { path: '/class/getClass' }
       ]
     }
   }
