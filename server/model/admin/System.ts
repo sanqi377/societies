@@ -110,14 +110,17 @@ module.exports = {
   /**
    * 获取所有子类菜单
    */
-  getAllMenu(){
+  getAllMenu() {
     return new Promise((resolve) => {
-      db('s_menu').where({status:1}).whereNo({pid:0}).select().then((res:any)=>{
-        let menu:any=[]
-        res.forEach((el:any) => {
-          menu.push({id:el.id,title:el.title})
-        });
-        resolve(menu)
+      db('s_menu').where({ status: 1, pid: 0 }).select().then((res: any) => {
+        for (let i = 0; i < res.length; i++) {
+          db("s_menu").where({ pid: res[i].id }).select().then((resp: any) => {
+            res[i].children=resp;
+            if (res.length-1 == i) {
+              resolve(res)
+            }
+          })
+        }
       })
     })
   },
@@ -133,7 +136,6 @@ module.exports = {
    * @param data 修改内容
    */
   reviseMenu(data: any) {
-    delete data.children;
     return db("s_menu").where({ id: data.id }).update(data);
   },
   /**

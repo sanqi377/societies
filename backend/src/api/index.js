@@ -187,7 +187,10 @@ const api = {
     },
     // 添加角色
     addRole:(param)=>{
-        return ajax.post("role/addrole",param)
+        return ajax.post("role/addrole",param);
+    },
+    delectRole:(param)=>{
+      return ajax.post("role/delectRole",param)
     }
   },
 };
