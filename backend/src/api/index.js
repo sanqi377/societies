@@ -11,6 +11,9 @@ const api = {
     save: (param) => {
       return ajax.post("users/save", param);
     },
+    delect: (param) => {
+      return ajax.post("users/delect", param);
+    },
   },
   system: {
     getMenu: (param) => {
