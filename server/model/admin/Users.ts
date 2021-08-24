@@ -1,5 +1,4 @@
 var { db } = require('../../util/mysqlInit')
-var md5 = require('md5-node')
 module.exports = {
   /**
    * 检测是否注册
@@ -39,6 +38,34 @@ module.exports = {
    * @param data 
    */
   getUsers(data: any) {
-    return db('s_users').where(data).select()
+    return new Promise((resolve, reject) => {
+      db('s_users').where(data).select().then((res:any)=>{
+        for(let i=0;i<res.length;i++){
+        db('s_role').where({id:res[i].role}).find().then((resp:any)=>{
+            res[i].role={name:resp.name,id:resp.id}
+            if(i==res.length-1){
+              resolve(res)
+            }
+          })
+        }
+      })
+    })
+  },
+
+  /**
+   * 添加用户
+   * @param data 
+   */
+  saveUser(data:any){
+    return db('s_users').insert(data)
+  },
+
+  /**
+   * 
+   * @param data 
+   * @returns 
+   */
+  updateUser(data:any){
+    return db('s_users').where({id:data.id}).update(data)
   }
 }
