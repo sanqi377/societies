@@ -89,7 +89,9 @@
         align="center"
       >
         <template slot-scope="{ row }">
-          {{ row }}
+          <span v-for="item in row.sign" :key="item.id">
+            {{ item.title||"无" }}
+          </span>
         </template>
       </el-table-column>
       <el-table-column
@@ -123,12 +125,14 @@
 
       <el-table-column prop="sort" label="排序" width="60px" align="center" />
       <el-table-column
-        label="创建时间"
+        label="修改时间"
         show-overflow-tooltip
         min-width="160"
         align="center"
       >
-        <template slot-scope="{ row }">{{ row.create_time }}</template>
+        <template slot-scope="{ row }">{{
+          (parseInt(row.create_time/1000)*1000) | toDateString
+        }}</template>
       </el-table-column>
       <el-table-column
         label="操作"
@@ -244,7 +248,6 @@
 </template>
 
 <script>
-
 export default {
   name: "role",
   data() {
@@ -284,8 +287,10 @@ export default {
   },
   methods: {
     isNo(res) {
+      let sign = [];
+      sign.push(res.sign[0].id);
       this.$api.role
-        .addRole({ status: res.status, id: res.id,sign:res.sign })
+        .addRole({ status: res.status, id: res.id, sign })
         .then((res) => {
           this.$message({
             type: "success",
