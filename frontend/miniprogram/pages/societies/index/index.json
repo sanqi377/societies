@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "tabs": "../../../components/tabs/index",
+    "tab": "../../../components/tab/index",
+    "loading": "../../../components/loading/index"
+  },
+  "navigationStyle": "custom"
 }

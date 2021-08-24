@@ -1,7 +1,8 @@
-var { ajax } = require('../../../utils/util')
+export { }
+const { getFont } = require('../../../utils/util')
+
 Page({
   data: {
-    list: {}
   },
 
   onShow: function () {
@@ -16,29 +17,21 @@ Page({
    * 获取社团列表
    */
   getSocieties() {
-    var _this = this
-    ajax('http://localhost:3000/index/societies/getSocieties').then((res: any) => {
-      if (res.data.ret === 200) {
-        _this.setData({
-          list: res.data.data
-        })
-      }
-    })
-  },
 
-  jumpDetails(e: any) {
-    var id: number = e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: '/pages/societies/info/index?id=' + id
-    })
-    console.log(id)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    let _this = this
+    getFont().then((res: boolean) => {
+      if (res) {
+        _this.setData({
+          show: true
+        })
+      }
+    })
   },
 
   /**

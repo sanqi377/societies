@@ -41,9 +41,6 @@ Component({
         if (!token) wx.navigateTo({ url: '/pages/user/login/index' })
       }
       wx.switchTab({ url })
-      this.setData({
-        selected: data.index
-      })
     }
   }
 })

@@ -1,19 +1,45 @@
-<view class="container">
-  <view class="title">社团</view>
-  <view class="list">
-    <view class="item" wx:for="{{list}}" wx:key="item" data-id="{{item.id}}" bindtap="jumpDetails">
-      <view class="logo">
-        <image src="{{item.logo}}"></image>
-      </view>
-      <vew class="info">
-        <view class="name">
-          <view class="level">{{item.type_id}}</view>
-          <view class="names">{{item.name}}</view>
-        </view>
-        <view class="dsc">
-          {{item.about}}
-        </view>
-      </vew>
-    </view>
+<view class="header">
+  <view class="back" bindtap="back">
+    <image src="../../../public/icon/back-black.png" />
   </view>
 </view>
+<view class="tabs">
+  <tabs active="{{1}}">
+    <tab title="关注">关注</tab>
+    <tab title="推荐">
+      <view class="dynamic-card">
+        <view class="head">
+          <view class="info">
+            <view class="avatar">
+              <image src="../../../public/head_pic/avatar.jpg" />
+            </view>
+            <view>
+              <view class="name">叁柒</view>
+              <view class="date">2021-08-24</view>
+            </view>
+          </view>
+          <view class="more">
+            <image src="../../../public/image/more.png" />
+          </view>
+        </view>
+        <view class="main">阿巴阿巴像个傻瓜...</view>
+        <view class="btns">
+          <view class="share">
+            <image src="../../../public/image/share.png" />
+            <view>分享</view>
+          </view>
+          <view class="comment">
+            <image src="../../../public/image/comment.png" />
+            <view>评论</view>
+          </view>
+          <view class="praise">
+            <image src="../../../public/image/praise.png" />
+            <view>点赞</view>
+          </view>
+        </view>
+      </view>
+    </tab>
+    <tab title="社团">社团</tab>
+  </tabs>
+</view>
+<loading show="{{show}}" />
