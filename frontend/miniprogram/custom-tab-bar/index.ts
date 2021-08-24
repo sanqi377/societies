@@ -5,7 +5,7 @@ Component({
     selectedColor: "#3cc51f",
     list: [
       {
-        "pagePath": "/pages/index/index",
+        "pagePath": "/pages/index/index/index",
         "text": "首页",
         "iconPath": "/public/image/index.svg",
         "selectedIconPath": "/public/image/index-active.svg"

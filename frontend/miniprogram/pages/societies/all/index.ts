@@ -1,4 +1,6 @@
+export { }
 var { ajax, checkLogin } = require('../../../utils/util')
+const { $Notify } = require('@sanqi377/qui/s-notify/notify')
 Page({
   /**
    * 页面的初始数据
@@ -17,7 +19,6 @@ Page({
       }
     ],
     sidebar: [],
-    show: false
   },
 
   /**
@@ -26,7 +27,6 @@ Page({
   getSocieties() {
     var _this = this
     ajax('http://localhost:3000/index/class/getClass').then((res: any) => {
-      console.log(res.data.data)
       if (res.data.ret === 200) {
         _this.setData({
           sidebar: res.data.data
@@ -42,10 +42,10 @@ Page({
   changeTabs(e: any) {
     let index: number = e.detail
     var _this = this
-    console.log(checkLogin())
     if (!checkLogin()) {
-      _this.setData({
-        show: true
+      $Notify({
+        type: 'error',
+        content: '抱歉，您未登录'
       })
       return
     }

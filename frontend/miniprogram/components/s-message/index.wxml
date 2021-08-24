@@ -1,5 +1,0 @@
-<cover-view style="{{show ? 'transform:translateY(30px)' : 'transform:translateY(-30px)'}}" class="container">
-  <cover-view class="message {{type ? type : 'default'}}">
-    <slot></slot>
-  </cover-view>
-</cover-view>

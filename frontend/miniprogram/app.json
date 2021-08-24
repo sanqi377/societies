@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/index/index/index",
     "pages/societies/info/index",
     "pages/user/info/index",
     "pages/user/my/index",
@@ -9,7 +9,8 @@
     "pages/user/login/index",
     "pages/societies/welcome/index",
     "pages/societies/all/index",
-    "pages/message/index/index"
+    "pages/message/index/index",
+    "pages/index/notify/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +22,7 @@
     "custom": true,
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index/index/index",
         "text": "首页",
         "iconPath": "public/icon/index.png",
         "selectedIconPath": "public/icon/index.png"

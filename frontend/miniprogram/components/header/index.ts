@@ -7,6 +7,10 @@ Component({
   data: {
   },
   methods: {
-
+    goNotify() {
+      wx.navigateTo({
+        url: '/pages/index/notify/index'
+      })
+    }
   }
 })

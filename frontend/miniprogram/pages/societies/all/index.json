@@ -5,6 +5,7 @@
     "fanCard": "../../../components/fanCard/index",
     "s-search": "../../../components/s-search/index",
     "societiesInfo": "../../../components/societiesInfo/index",
-    "s-message": "../../../components/s-message/index"
+    "s-dialog": "@sanqi377/qui/s-dialog",
+    "s-notify": "@sanqi377/qui/s-notify"
   }
 }

@@ -1,0 +1,64 @@
+<header info="{{headerInfo}}" />
+<view class="carousel">
+  <carousel />
+</view>
+<view class="container">
+  <view class="title">快捷菜单</view>
+  <view class="btns">
+    <view class="societies" bindtap="goWelcome">
+      <view class="icon">
+        <image src="../../../public/image/societies.png" />
+      </view>
+      <view>社团迎新</view>
+    </view>
+    <view class="task">
+      <view class="icon">
+        <image src="../../../public/image/task.png" />
+      </view>
+      <view>我的任务</view>
+    </view>
+    <view class="information" bindtap="goAll">
+      <view class="icon">
+        <image src="../../../public/image/information.png" />
+      </view>
+      <view>全部社团</view>
+    </view>
+    <view class="activity">
+      <view class="icon">
+        <image src="../../../public/image/activity.png" />
+      </view>
+      <view>活动签到</view>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <view class="title">活动列表</view>
+  <infoCard info="{{info}}" />
+</view>
+<view class="container">
+  <view class="title">热门社团</view>
+  <view class="list">
+    <view class="item" wx:for="{{5}}" wx:key="item">
+      <view class="head">
+        <view class="info">
+          <view class="logo">
+            <image src="../../../public/image/logo.jpg" />
+          </view>
+          <view class="information">
+            <view class="name">
+              <span>学院</span>
+              <view>计算机协会</view>
+            </view>
+            <view class="num">人数：100</view>
+          </view>
+        </view>
+        <view class="fan">
+          <view>
+            <image src="../../../public/image/fan.png" />
+            关注
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

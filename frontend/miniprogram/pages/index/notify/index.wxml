@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="title">消息通知</view>
+  <view class="list">
+    <view class="item" wx:for="{{5}}" wx:key="item">
+      <view class="info">
+        <view class="name">
+          <view class="icon">
+            <image src="../../../public/image/notify_s.png" />
+          </view>
+          <view>创客项目大赛</view>
+        </view>
+        <view class="date">2021-08-24</view>
+      </view>
+      <view class="dsc">这是一段测试通知...这是一段测试通知...这是一段测试通知...这是一段测试通知...这是一段测试通知...</view>
+      <view class="detail">
+        <view>查看详情</view>
+        <view>
+          <image src="../../../public/image/right.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "infoCard":"../../../components/infoCard/index",
+    "header":"../../../components/header/index",
+    "carousel":"../../../components/carousel/index"
+  },
+  "navigationStyle": "custom"
+}

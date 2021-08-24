@@ -10,7 +10,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "@sanqi377/qui": "^1.0.6"
+    "@sanqi377/qui": "^1.0.7"
   },
   "devDependencies": {
     "miniprogram-api-typings": "^3.4.2",

@@ -9,7 +9,6 @@ var getCtx = function (selector) {
     return componentCtx;
 };
 var Notify = function (options) {
-    console.log(options);
     var _a = options.selector, selector = _a === void 0 ? '#notify' : _a;
     var ctx = getCtx(selector);
     ctx.handleShow(options);

@@ -1,4 +1,3 @@
-<s-message show="{{show}}" type="warning" bind:changeShow="changeShow">请先登录</s-message>
 <view class="container">
   <s-search />
   <view class="create">
@@ -23,3 +22,7 @@
     </view>
   </s-tab>
 </view>
+
+<s-dialog id="dialog" />
+
+<s-notify id="notify" />

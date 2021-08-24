@@ -97,7 +97,7 @@ Page({
                     data: res.data.openid,
                     success: () => {
                       setTimeout(() => {
-                        wx.reLaunch({ url: '/pages/index/index' })
+                        wx.reLaunch({ url: '/pages/index/index/index' })
                       }, 2000)
                     }
                   })
