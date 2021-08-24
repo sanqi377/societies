@@ -39,11 +39,11 @@ module.exports = {
    */
   getUsers(data: any) {
     return new Promise((resolve, reject) => {
-      db('s_users').where(data).select().then((res:any)=>{
-        for(let i=0;i<res.length;i++){
-        db('s_role').where({id:res[i].role}).find().then((resp:any)=>{
-            res[i].role={name:resp.name,id:resp.id}
-            if(i==res.length-1){
+      db('s_users').where(data).select().then((res: any) => {
+        for (let i = 0; i < res.length; i++) {
+          db('s_role').where({ id: res[i].role }).find().then((resp: any) => {
+            res[i].role = { name: resp.name, id: resp.id }
+            if (i == res.length - 1) {
               resolve(res)
             }
           })
@@ -56,16 +56,22 @@ module.exports = {
    * 添加用户
    * @param data 
    */
-  saveUser(data:any){
+  saveUser(data: any) {
     return db('s_users').insert(data)
   },
 
   /**
-   * 
+   * 更新用户信息
    * @param data 
    * @returns 
    */
-  updateUser(data:any){
-    return db('s_users').where({id:data.id}).update(data)
+  updateUser(data: any) {
+    return db('s_users').where({ id: data.id }).update(data)
+  },
+  /**
+  * 删除角色信息
+  */
+  delectUser(id: number) {
+    return db("s_users").where({ id }).delete();
   }
 }

@@ -229,7 +229,7 @@ export default {
     },
     isNo(res) {
       this.$api.user
-        .getUsers({ status: res.status, id: res.id })
+        .save({ status: res.status, id: res.id, role: res.role })
         .then((res) => {
           this.$message({
             type: "success",
@@ -276,6 +276,23 @@ export default {
           return false;
         }
       });
+    },
+    // 删除
+    remove(row) {
+      const loading = this.$loading({ lock: true });
+      this.$api.user
+        .delect({ id: row.id })
+        .then((res) => {
+          loading.close();
+          this.$message({
+            type: "success",
+            message: res.msg,
+          });
+        })
+        .catch((e) => {
+          loading.close();
+          this.$message.error(e.message);
+        });
     },
   },
 };

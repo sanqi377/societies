@@ -41,7 +41,7 @@ module.exports = {
     let password = md5(md5(data.password) + data.salt)
     data.pass = password
     data.salt = "H5nJ8c"
-    data.role = req.body.role.id||req.body.role
+    data.role = req.body.role.id || req.body.role
     delete data.password;
     console.log(data)
     if (data.id) {
@@ -63,5 +63,11 @@ module.exports = {
       }
     })
 
+  },
+  delect(req: any, res: any) {
+    let { id } = req.body
+    model.delectUser(id).then((resp:any)=>{
+      res.send({ret:200,data:{msg:"删除成功"}})
+    })
   }
 }
