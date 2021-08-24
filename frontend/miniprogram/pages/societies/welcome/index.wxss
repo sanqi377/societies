@@ -1,3 +1,137 @@
 .container {
+  position: absolute;
+  top: 160px;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.top-pic {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.top-pic .back {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 30rpx;
+  top: 100rpx;
+  z-index: 99;
+}
+
+.top-pic .top {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 35px;
+}
+
+.top-pic::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border-radius: 0 0 5% 5%;
+  background: #1082ff;
+}
+
+.user-card {
   margin: 0 15px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .1);
+  margin-bottom: 20px;
+}
+
+.user-card:last-child {
+  margin-bottom: 0;
+}
+
+.user-card .user-info .info .avatar {
+  margin-right: 10px;
+}
+
+.user-card .user-info .info .name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-card .user-info .info .name view {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.user-card .user-info .info .name .id {
+  font-weight: normal;
+  font-size: 12px;
+  margin: 0;
+  background: #ecf4ff;
+  border-radius: 20px;
+  padding: 2px 12px;
+  color: #1a88ff;
+}
+
+.user-card .user-info .info .avatar image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-card .user-info .info {
+  display: flex;
+}
+
+.user-card .user-info .info .id {
+  display: flex;
+  align-items: center;
+}
+
+.user-card .user-info .info .id image {
+  display: flex;
+  align-items: center;
+  width: 15px;
+  margin-right: 3px;
+  height: 15px;
+}
+
+.user-card .user-info .index {
+  font-size: 14px;
+  display: flex;
+  color: rgba(0, 0, 0, .6);
+}
+
+.user-card .user-info .index image {
+  width: 20px;
+  height: 20px;
+}
+
+.user-card .user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card .user-show {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-card .user-show .item {
+  text-align: center;
+}
+
+.user-card .user-show .item .information {
+  font-size: 13px;
+  color: rgba(0, 0, 0, .6);
 }

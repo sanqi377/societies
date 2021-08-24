@@ -15,7 +15,6 @@ Page({
   onLoad() {
     var _this = this
     getFont().then((res: boolean) => {
-      console.log(res)
       if (res) {
         _this.setData({
           show: true

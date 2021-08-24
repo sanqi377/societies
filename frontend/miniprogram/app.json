@@ -10,7 +10,8 @@
     "pages/societies/welcome/index",
     "pages/societies/all/index",
     "pages/message/index/index",
-    "pages/index/notify/index"
+    "pages/index/notify/index",
+    "pages/societies/welcomeInfo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

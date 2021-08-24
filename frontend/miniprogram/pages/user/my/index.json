@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "loading": "../../../components/loading/index"
+  },
   "navigationStyle": "custom"
 }

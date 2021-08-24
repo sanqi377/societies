@@ -1,5 +1,4 @@
 <view class="container">
-  <view class="title">消息通知</view>
   <view class="list">
     <view class="item" wx:for="{{5}}" wx:key="item">
       <view class="info">

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "welcomeCard": "../../../components/welcomeCard/index"
-  }
+    "loading": "../../../components/loading/index"
+  },
+  "navigationStyle": "custom"
 }

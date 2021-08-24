@@ -1,3 +1,44 @@
-<view class="container">
-  <welcomeCard />
+<view class="top-pic">
+  <image class="top" src="../../../public/image/xin-top.png" />
+  <image class="back" src="../../../public/icon/back.png" bindtap="back" />
 </view>
+<view class="container">
+  <view class="user-card" wx:for="{{4}}" wx:key="item">
+    <view class="user-info">
+      <view class="info">
+        <view class="avatar">
+          <image src="../../../public/head_pic/avatar.jpg" />
+        </view>
+        <view class="name">
+          <view>计算机协会</view>
+          <view class="id">
+            <span>信息工程系</span>
+          </view>
+        </view>
+      </view>
+      <view class="index">
+        <span>迎新主页</span>
+        <image src="../../../public/icon/more.png" />
+      </view>
+    </view>
+    <view class="user-show">
+      <view class="item">
+        <view class="num">5</view>
+        <view class="information">动态</view>
+      </view>
+      <view class="item">
+        <view class="num">20</view>
+        <view class="information">粉丝</view>
+      </view>
+      <view class="item">
+        <view class="num">2</view>
+        <view class="information">成员</view>
+      </view>
+      <view class="item">
+        <view class="num">210</view>
+        <view class="information">热度</view>
+      </view>
+    </view>
+  </view>
+</view>
+<loading show="{{show}}" />
