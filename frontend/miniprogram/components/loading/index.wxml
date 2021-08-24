@@ -1,0 +1,4 @@
+<cover-view wx:if="{{!show}}" class="mask" catchtouchmove="true"></cover-view>
+<view wx:if="{{!show}}" class="container" catchtouchmove="true">
+  <span class="loader"></span>
+</view>

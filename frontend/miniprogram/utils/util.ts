@@ -23,13 +23,34 @@ var ajaxHttp = (url: string, data: object) => {
   })
 }
 
+/**
+ * 检测是否登录
+ * @returns 
+ */
 var checkLogin: any = () => {
   var token: string = wx.getStorageSync('token')
   if (!token) return false
   return true
 }
 
+/**
+ * 加载网络字体
+ * @returns 
+ */
+var getFont = () => {
+  return new Promise((resolve) => {
+    wx.loadFontFace({
+      family: 'PingFang',
+      source: 'url("http://localhost:3000/index/index/getFont")',
+      success: () => {
+        resolve(true)
+      }
+    })
+  })
+}
+
 module.exports = {
   ajax: ajaxHttp,
-  checkLogin
+  checkLogin,
+  getFont
 }

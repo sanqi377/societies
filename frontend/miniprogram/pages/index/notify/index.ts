@@ -1,4 +1,7 @@
-// {{page}}.ts
+export {}
+
+const { getFont } = require('../../../utils/util')
+
 Page({
 
   /**
@@ -12,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    getFont()
   },
 
   /**

@@ -18,7 +18,8 @@ module.exports = {
         { path: '/user/login' },
         { path: '/user/reg' },
         { path: '/societies/getSocieties' },
-        { path: '/class/getClass' }
+        { path: '/class/getClass' },
+        { path: '/index/getFont' }
       ]
     }
   }

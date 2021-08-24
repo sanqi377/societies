@@ -1,3 +1,7 @@
+export { }
+
+const { getFont } = require('../../../utils/util')
+
 Page({
   data: {
     info: {
@@ -7,6 +11,17 @@ Page({
       btnTitle: '我要报名',
       btnPath: ''
     },
+  },
+  onLoad() {
+    var _this = this
+    getFont().then((res: boolean) => {
+      console.log(res)
+      if (res) {
+        _this.setData({
+          show: true
+        })
+      }
+    })
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

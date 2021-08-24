@@ -1,8 +1,9 @@
 {
   "usingComponents": {
-    "infoCard":"../../../components/infoCard/index",
-    "header":"../../../components/header/index",
-    "carousel":"../../../components/carousel/index"
+    "infoCard": "../../../components/infoCard/index",
+    "header": "../../../components/header/index",
+    "carousel": "../../../components/carousel/index",
+    "loading": "../../../components/loading/index"
   },
   "navigationStyle": "custom"
 }

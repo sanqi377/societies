@@ -1,11 +1,9 @@
-var model = require(__filename.replace(/controller/, 'model'))
+export { }
+const path = require('path')
+
 module.exports = {
-  getInfo(req: any, res: any) {
-    model.getInfo().then((resp: any) => {
-      res.send({ data: resp })
-    })
-  },
-  getMenu(req: any, res: any) {
-    res.send({ data: 777 })
+  getFont(req: any, res: any) {
+    res.setHeader("Content-Type", "font/ttf");
+    res.sendFile('pingfang.ttf', { root: './public/font/' })
   }
 }
