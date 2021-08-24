@@ -1,2 +1,36 @@
-<!--{{page}}.wxml-->
-<text>{{page}}.wxml</text>
+<view class="container">
+  <view class="head">
+    <view class="back" bindtap="back">
+      <image src="../../../public/icon/back.png"></image>
+    </view>
+  </view>
+  <view class="bg">
+    <image src="../../../public/img/bg.jpg"></image>
+  </view>
+  <view class="info">
+    <view class="logo">
+      <image src="../../../public/head_pic/avatar.jpg" />
+    </view>
+    <view class="dsc">
+      <view class="title">计算机协会</view>
+      <view class="department">简介：阿巴阿巴像个傻瓜</view>
+    </view>
+  </view>
+  <view class="fan">
+    <view class="count">111 成员 · 2 条动态</view>
+  </view>
+</view>
+<view class="container list">
+  <view class="title">申请要求</view>
+  <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
+  <view class="title">迎新简介</view>
+  <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
+  <view class="title">工作内容</view>
+  <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
+  <view class="title">加入本社团你可以获得</view>
+  <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
+</view>
+<view class="apply">
+  <view>申请加入</view>
+</view>
+<loading show="{{show}}" />

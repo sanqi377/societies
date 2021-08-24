@@ -1,1 +1,118 @@
-/* {{page}}.wxss */
+.container:first-child {
+  padding-top: 55px;
+}
+
+.container {
+  margin: 0 15px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.head image {
+  width: 16px;
+  height: 16px;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 275px;
+}
+
+.bg image {
+  width: 100%;
+  height: 275px;
+}
+
+.info {
+  margin-top: 30px;
+  color: #fff;
+  display: flex;
+}
+
+.info .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.info .department {
+  font-size: 14px;
+}
+
+.info .logo {
+  margin-right: 10px;
+}
+
+.info .logo image {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.info .dsc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fan {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fan .count {
+  color: rgba(255, 255, 255, .7);
+  font-size: 13px;
+}
+
+.list {
+  margin-top: 25px;
+  border-radius: 8px;
+  padding: 15px 20px;
+  background: #fff;
+}
+
+.list .title:first-child {
+  margin-top: 0;
+}
+
+.list .title {
+  margin-top: 25px;
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.list .title::after {
+  content: '';
+  position: absolute;
+  bottom: 2.5px;
+  left: 0;
+  width: 4px;
+  height: 17px;
+  background: #1082ff;
+  border-radius: 2px;
+}
+
+.list .dsc {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.apply {
+  margin: 0 15px;
+  margin-top: 20px;
+  text-align: center;
+  background: #1082ff;
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 8px;
+}

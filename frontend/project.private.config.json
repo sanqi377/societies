@@ -89,6 +89,12 @@
           "pathName": "pages/index/notify/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/societies/welcomeInfo/index",
+          "pathName": "pages/societies/welcomeInfo/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

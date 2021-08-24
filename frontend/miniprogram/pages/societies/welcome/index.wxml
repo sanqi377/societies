@@ -3,7 +3,7 @@
   <image class="back" src="../../../public/icon/back.png" bindtap="back" />
 </view>
 <view class="container">
-  <view class="user-card" wx:for="{{4}}" wx:key="item">
+  <view class="user-card" wx:for="{{4}}" wx:key="item" bindtap="goInfo">
     <view class="user-info">
       <view class="info">
         <view class="avatar">
