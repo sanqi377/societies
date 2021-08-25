@@ -1,7 +1,4 @@
 <view class="header">
-  <view class="back" bindtap="back">
-    <image src="../../../public/icon/back-black.png" />
-  </view>
 </view>
 <view class="tabs">
   <tabs active="{{1}}">

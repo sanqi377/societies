@@ -1,0 +1,28 @@
+.input {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  box-shadow: 6px 3px 6px rgba(0, 0, 0, .5);
+}
+
+.input .main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30rpx;
+}
+
+.input input {
+  height: 80rpx;
+  width: 80%;
+  font-size: 14px;
+}
+
+.input .send {
+  background: #1082ff;
+  color: #fff;
+  padding: 6rpx 16rpx;
+  font-size: 14px;
+  border-radius: 8rpx;
+}

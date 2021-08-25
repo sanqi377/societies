@@ -1,3 +1,4 @@
+export {}
 const express = require("express");
 var path = require("path");
 const app = express();
@@ -28,6 +29,10 @@ allMiddleware.init({ app, path: __dirname });
 // 路由自动加载
 const { autoLoadRouter } = require("./util/authLoader");
 autoLoadRouter(app, path.join(__dirname, "controller"));
+
+// websocket init
+const websocket = require('./util/websocket')
+websocket.init()
 
 app.listen(3000, () => {
   console.log("server start! OK!");

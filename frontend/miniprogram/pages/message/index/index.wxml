@@ -1,2 +1,23 @@
-<!--{{page}}.wxml-->
-<text>{{page}}.wxml</text>
+<view class="container">
+  <view class="tabs">
+    <tabs active="{{0}}">
+      <tab title="消息">
+        <view class="list">
+          <view class="item" wx:for="{{list}}" wx:key="item" data-send="{{item.uid}}" data-accept="{{item.accept}}" bindtap="goChat">
+            <view class="info">
+              <view class="avatar">
+                <image src="../../../public/head_pic/avatar.jpg" />
+              </view>
+              <view>
+                <view class="name">{{item.accept}}</view>
+                <view class="message">{{item.last_message}}</view>
+              </view>
+            </view>
+            <view class="date">2分钟前</view>
+          </view>
+        </view>
+      </tab>
+      <tab title="通知">通知</tab>
+    </tabs>
+  </view>
+</view>

@@ -1,1 +1,45 @@
-/* {{page}}.wxss */
+page {
+  background: #fff;
+}
+
+.container {
+  padding-top: 70rpx;
+}
+
+.list .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.list .item:last-child {
+  margin-bottom: 0;
+}
+
+.list .item .date {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.list .item .info {
+  display: flex;
+  align-items: center;
+}
+
+.list .item .info .message {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.list .item .info .avatar {
+  margin-right: 20rpx;
+}
+
+.list .item .info .avatar image {
+  display: flex;
+  align-items: center;
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+}

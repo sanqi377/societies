@@ -17,7 +17,7 @@ Component({
         "selectedIconPath": "/public/image/societies-active.svg"
       },
       {
-        "pagePath": "/pages/societies/index/index",
+        "pagePath": "/pages/message/index/index",
         "text": "消息",
         "iconPath": "/public/image/message.svg",
         "selectedIconPath": "/public/image/message-active.svg"

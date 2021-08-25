@@ -11,7 +11,8 @@
     "pages/societies/all/index",
     "pages/message/index/index",
     "pages/index/notify/index",
-    "pages/societies/welcomeInfo/index"
+    "pages/societies/welcomeInfo/index",
+    "pages/message/chat/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,7 +36,7 @@
         "selectedIconPath": "public/icon/societies.png"
       },
       {
-        "pagePath": "pages/societies/index/index",
+        "pagePath": "pages/message/index/index",
         "text": "消息",
         "iconPath": "public/icon/message.png",
         "selectedIconPath": "public/icon/message.png"

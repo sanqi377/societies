@@ -9,11 +9,6 @@
   margin: 0 30rpx;
 }
 
-.back image {
-  width: 30rpx;
-  height: 30rpx;
-}
-
 .dynamic-card {
   padding: 30rpx;
   background: #fff;

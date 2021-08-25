@@ -1,10 +1,11 @@
-<view class="container {{direction === 'left' ? 'left' : ''}}">
+<view class="container">
   <view class="title">
     <view class="item" wx:for="{{title}}" wx:for-index="idx" wx:key="item" data-idx="{{idx}}" bindtap="changeHandle">
       <view class="{{idx === active ? 'active' : ''}}">{{item}}</view>
     </view>
   </view>
 </view>
+
 <view class="main">
   <slot />
 </view>

@@ -95,6 +95,30 @@
           "pathName": "pages/societies/welcomeInfo/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/message/index/index",
+          "pathName": "pages/message/index/index",
+          "query": "uid=2",
+          "scene": null
+        },
+        {
+          "name": "pages/message/chat/index",
+          "pathName": "pages/message/chat/index",
+          "query": "send=9&accept=1",
+          "scene": null
+        },
+        {
+          "name": "pages/message/chat/index",
+          "pathName": "pages/message/chat/index",
+          "query": "send=2&accept=9",
+          "scene": null
+        },
+        {
+          "name": "pages/message/index/index",
+          "pathName": "pages/message/index/index",
+          "query": "uid=1",
+          "scene": null
         }
       ]
     }

@@ -1,5 +1,6 @@
-var title: string[] = [];
-let active = 0
+export { }
+let title: string[] = [];
+let elements: any
 Component({
   properties: {
     title: {
@@ -8,23 +9,27 @@ Component({
   },
   relations: {
     '../tabs/index': {
-      type: 'parent',
-      linked(e) {
-        title.push(this.data.title);
-        active = e.data.active
-      }
+      type: 'parent'
     }
   },
   pageLifetimes: {
     show() {
+      elements = this.getRelationNodes('../tabs/index')
+      if (elements.length > 0) {
+        elements.forEach((element: any) => {
+          title = element.data.title
+          this.setData({
+            active: element.data.active
+          });
+        })
+      }
       this.setData({
-        titles: title,
-        active
-      });
-    },
+        titles: this.unique(title) as string[],
+      })
+    }
   },
   data: {
-    active,
+    active: 0,
     titles: [] as string[],
   },
   methods: {
@@ -33,5 +38,8 @@ Component({
         active: activeKey,
       })
     },
+    unique(arr: any) {
+      return Array.from(new Set(arr))
+    }
   }
 })

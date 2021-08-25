@@ -41,13 +41,13 @@ Page({
   changeTabs(e: any) {
     let index: number = e.detail
     var _this = this
-    // if (!checkLogin()) {
-    //   $Notify({
-    //     type: 'error',
-    //     content: '抱歉，您未登录'
-    //   })
-    //   return
-    // }
+    if (!checkLogin()) {
+      // $Notify({
+      //   type: 'error',
+      //   content: '抱歉，您未登录'
+      // })
+      return
+    }
     _this.data.title.forEach((el: any, idx: number) => {
       el.active = false
       if (idx === index) el.active = true
