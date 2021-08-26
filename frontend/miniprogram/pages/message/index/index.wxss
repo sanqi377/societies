@@ -62,3 +62,25 @@ page {
   height: 85rpx;
   border-radius: 50%;
 }
+
+.online {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: rgb(0, 255, 0);
+  box-shadow: 0 0 1px rgba(0, 255, 0, .6);
+  border-radius: 50%;
+}
+
+.unonline {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20rpx;
+  height: 20rpx;
+  background: rgb(255, 0, 0);
+  box-shadow: 0 0 1px rgba(255, 0, 0, .6);
+  border-radius: 50%;
+}

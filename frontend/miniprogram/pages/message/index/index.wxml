@@ -10,6 +10,7 @@
                 <view class="unread" hidden="{{uid == item.uid ? (item.u_unread ? false : true) : (item.a_unread ? false : true)}}">
                   <span>{{uid == item.uid ? item.u_unread : item.a_unread}}</span>
                 </view>
+                <view class="{{item.online ? 'online' : 'unonline'}}"></view>
               </view>
               <view>
                 <view class="name">{{uid == item.uid ? item.accept : item.uid}}</view>

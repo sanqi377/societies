@@ -6,6 +6,8 @@ let io = wx.connectSocket({
   }
 })
 
+let hostId = 0
+
 App<IAppOption>({
   globalData: {
     io,
@@ -18,6 +20,7 @@ App<IAppOption>({
       io.send({
         data: JSON.stringify(info),
         success: () => {
+          hostId = info.send
           console.log(`绑定主机信息成功：主机号为${info.send}`)
         }
       })
@@ -32,4 +35,13 @@ App<IAppOption>({
       console.log('连接打开成功');
     });
   },
+  onHide() {
+    io.send({
+      data: JSON.stringify({ type: 'offLine', hostId }),
+      success: () => {
+        io.close({})
+        console.log(`主机下线成功：主机号为${hostId}`)
+      }
+    })
+  }
 })

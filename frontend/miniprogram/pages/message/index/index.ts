@@ -1,6 +1,6 @@
 export { }
 const { getFont, ajax, formatMsgTime } = require('../../../utils/util')
-const { wlecome, monitor } = getApp().globalData
+const { wlecome, monitor, io } = getApp().globalData
 Page({
 
   /**
@@ -8,7 +8,8 @@ Page({
    */
   data: {
     list: [],
-    uid: 0
+    uid: 0,
+    online: []
   },
 
   /**
@@ -18,7 +19,6 @@ Page({
     let send = e.currentTarget.dataset.send
     let accept = e.currentTarget.dataset.accept
     let fid = e.currentTarget.dataset.fid
-    console.log(`/pages/message/chat/index?send=${send}&accept=${accept}&fid=${fid}`)
     wx.navigateTo({
       url: `/pages/message/chat/index?send=${send}&accept=${accept}&fid=${fid}`
     })
@@ -36,7 +36,31 @@ Page({
       })
       _this.setData({
         list: res.data.data
+      }, () => {
+        this.getOnline()
       })
+    })
+  },
+
+  /**
+   * 获取会话列表对象在线状态
+   */
+  getOnline() {
+    let users: string[] = []
+    this.data.list.forEach((item: any) => {
+      if (this.data.uid == item.uid) {
+        users.push(item.accept)
+      }
+      if (this.data.uid == item.accept) {
+        users.push(item.uid)
+      }
+    })
+    let data = { type: 'getOnline', data: users }
+    io.send({
+      data: JSON.stringify(data),
+      success: () => {
+        console.log('请求在线状态成功')
+      }
     })
   },
 
@@ -59,6 +83,39 @@ Page({
     monitor((res: any) => {
       let msg = JSON.parse(res)
       console.log(msg)
+      switch (msg.type) {
+        case 'getOnline':
+          this.setData({
+            online: msg.data
+          })
+          break;
+        case 'offLine':
+          this.data.online.forEach((el: any, index) => {
+            if (el == msg.data) this.data.online.splice(index, 1)
+          })
+          this.setData({
+            online: this.data.online
+          }, () => {
+            this.data.list.forEach((item: any) => {
+              item.online = false
+              this.data.online.forEach((el: any) => {
+                if (this.data.uid == item.uid) {
+                  console.log(item.accept, el)
+                  if (item.accept == el) item.online = true
+                } else {
+                  console.log(item.uid, el)
+                  if (item.uid == el) item.online = true
+                }
+              })
+            })
+            this.setData({
+              list: this.data.list
+            })
+          })
+          break
+        default:
+          break;
+      }
       this.data.list.forEach((item: any) => {
         if (msg.fid == item.id) {
           console.log(item, msg)
@@ -74,6 +131,19 @@ Page({
       })
       this.setData({
         list: this.data.list
+      }, () => {
+        this.data.list.forEach((item: any) => {
+          this.data.online.forEach((el: any) => {
+            if (this.data.uid == item.uid) {
+              if (item.accept == el) item.online = true
+            } else {
+              if (item.uid == el) item.online = true
+            }
+          })
+        })
+        this.setData({
+          list: this.data.list
+        })
       })
     })
   },

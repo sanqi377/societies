@@ -21,10 +21,28 @@ let unique = (arr: any) => {
 }
 
 /**
+ * 取出数组相同元素
+ *
+ * @param {string[]} arr1
+ * @param {string[]} arr2
+ * @return {*} 
+ */
+let getArrEqual = (arr1: string[], arr2: string[]) => {
+  let newArr: string[] = [];
+  for (let i = 0; i < arr2.length; i++) {
+    for (let j = 0; j < arr1.length; j++) {
+      if (arr1[j] == arr2[i]) {
+        newArr.push(arr1[j])
+      }
+    }
+  }
+  return newArr
+}
+
+/**
  * 新增消息
  */
 let addMessage = (data: any) => {
-  console.log(data)
   // 更新会话信息
   db('s_session').where({ uid: data.send, accept: data.accept }).update({ last_message: data.message, last_datetime: data.create_time })
   db('s_session').where({ uid: data.accept, accept: data.send }).update({ last_message: data.message, last_datetime: data.create_time })
@@ -54,7 +72,24 @@ module.exports = {
               if (data.accept === client.id) client.send(JSON.stringify(data))
             })
             break;
-
+          // 用户下线
+          case 'offLine':
+            clients.forEach((item, index) => {
+              if (item === data.hostId) {
+                clients.splice(index, 1)
+                console.log(`主机下线${item}成功`)
+              }
+            })
+            wss.clients.forEach(function each(client: any) {
+              client.send(JSON.stringify({ type: 'offLine', data: data.hostId }))
+            })
+            break
+          // 获取在线状态
+          case 'getOnline':
+            wss.clients.forEach(function each(client: any) {
+              client.send(JSON.stringify({ type: 'getOnline', data: clients }))
+            })
+            break
           default:
             break;
         }
