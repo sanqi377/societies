@@ -125,7 +125,7 @@
 
       <el-table-column prop="sort" label="排序" width="60px" align="center" />
       <el-table-column
-        label="修改时间"
+        label="创建时间"
         show-overflow-tooltip
         min-width="160"
         align="center"
@@ -348,7 +348,7 @@ export default {
               loading.close();
               this.showEdit = false;
               this.$message({
-                type: "success",
+                type: 'success',
                 message: res.msg,
               });
             })
@@ -391,7 +391,7 @@ export default {
         .then((res) => {
           loading.close();
           this.$message({
-            type: "success",
+            type: res.type,
             message: res.msg,
           });
         })

@@ -61,5 +61,40 @@ module.exports = {
    */
   deleteNotice(id: number) {
     return db('s_notice').where({ id }).delete()
+  },
+
+  /**
+   * 获取社团分类
+   * @returns 
+   */
+  getClassification(data: any) {
+    data.status = 1
+    return db('s_classification').where(data).select()
+  },
+
+  /**
+   * 社团分类添加
+   * @param data 
+   * @returns 
+   */
+  addClassification(data: any) {
+    return db('s_classification').insert(data)
+  },
+
+  /**
+   * 社团分类更新
+   * @param data 
+   * @returns 
+   */
+  updateClassification(data: any) {
+    return db('s_classification').where({ id: data.id }).update(data)
+  },
+  /**
+   * 删除社团菜单
+   * @param id 
+   * @returns 
+   */
+  deleteClassification(id: number) {
+    return db('s_classification').where({ id }).delete()
   }
 }

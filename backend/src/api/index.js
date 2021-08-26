@@ -171,6 +171,28 @@ const api = {
     deleteNotice: (param) => {
       return ajax.post("societies/deleteNotice", param);
     },
+    /**
+     * 获取社团分类
+     * @returns 
+     */
+    getClassification: () => {
+      return ajax.post("societies/getClassification");
+    },
+
+    /**
+     * 添加社团分类
+     * @returns 
+     */
+    addClassification: (param) => {
+      return ajax.post("societies/addClassification",param);
+    },
+    /**
+     * 删除社团分类
+     * @returns 
+     */
+    deleteClassification: (param) => {
+      return ajax.post("societies/deleteclassification",param);
+    },
   },
   dashboard: {
     trafficRank: () => {
@@ -189,12 +211,12 @@ const api = {
       return ajax.post("role/getrolesign", param);
     },
     // 添加角色
-    addRole:(param)=>{
-        return ajax.post("role/addrole",param);
+    addRole: (param) => {
+      return ajax.post("role/addrole", param);
     },
-    delectRole:(param)=>{
-      return ajax.post("role/delectRole",param)
-    }
+    delectRole: (param) => {
+      return ajax.post("role/delectRole", param);
+    },
   },
 };
 

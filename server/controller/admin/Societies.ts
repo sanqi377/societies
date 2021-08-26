@@ -109,5 +109,56 @@ module.exports = {
         res.send({ ret: 200, data: { type: 'error', msg: '删除失败' } })
       }
     })
+  },
+  /**
+ * 获取社团分类
+ */
+  getClassification(req: any, res: any) {
+    model.getClassification(req.body).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
+    })
+  },
+
+  /**
+   * 添加社团分类
+   */
+  addClassification(req: any, res: any) {
+    let data = req.body
+    if (data.id) {
+      model.updateClassification(data).then((resp: any) => {
+        if (resp) {
+          res.send({ ret: 200, data: { msg: "更新成功" } })
+        } else {
+          res.send({ ret: 200, data: { msg: "更新失败" } })
+        }
+      })
+    } else {
+      model.getClassification({name:data.name}).then((result: any) => {
+        if (result) {
+          res.send({ ret: 201, data: { msg: "当前分类已存在" } })
+        } else {
+          data.addtime = new Date().getTime()
+          model.addClassification(data).then((resp: any) => {
+            if (resp) {
+              res.send({ ret: 200, data: { msg: "添加成功" } })
+            } else {
+              res.send({ ret: 200, data: { msg: "添加失败" } })
+            }
+          })
+        }
+      })
+    }
+  },
+  deleteClassification(req: any, res: any) {
+    let { id } = req.body
+    model.deleteClassification(id).then((resp: any) => {
+      if (resp) {
+        res.send({ ret: 200, data: { type: 'success', msg: '删除成功' } })
+      } else {
+        res.send({ ret: 200, data: { type: 'error', msg: '服务器错误' } })
+      }
+    }).catch((e:any)=>{
+      res.send({ ret: 200, data: { type: 'error', msg: '删除失败，请先移除分类下社团' } })
+    })
   }
 }
