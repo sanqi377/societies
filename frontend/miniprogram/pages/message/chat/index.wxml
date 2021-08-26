@@ -1,14 +1,23 @@
 <page-meta>
   <navigation-bar title="{{data.accept}}" front-color="#fff" background-color="#1082ff" nbBackgroundColor="#000" />
 </page-meta>
-<view class="list">
-  <view class="item" wx:for="{{message}}" wx:key="item">
-    {{item.text}}
-  </view>
+<view class="container">
+  <scroll-view class="list" scroll-y scroll-into-view="{{toView}}" style="height: 1400rpx">
+    <view wx:for="{{message}}" wx:for-index="idx" wx:key="item" id="msg-{{idx}}"
+      class="item {{item.send == data.send ? 'myself' : '11'}}">
+      <view class="avatar">
+        <image src="../../../public/head_pic/avatar.jpg" />
+      </view>
+      <view class="msg">
+        <view>{{item.message}}</view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
+
 <view class="input">
   <view class="main">
-    <input type="text" value="{{data.text}}" placeholder="戳这里打字..." bindinput="getInput" />
+    <input type="text" adjust-position value="{{data.message}}" placeholder="戳这里打字..." bindinput="getInput" />
     <view class="send" bindtap="send">发送</view>
   </view>
 </view>

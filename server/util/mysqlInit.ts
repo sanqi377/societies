@@ -52,6 +52,21 @@ class Mysql {
     return this
   }
 
+  whereOr(...arr: any) {
+    arr = arr[0]
+    let arrs: string[] = []
+    Object.keys(arr).forEach((item: any, index: any) => {
+      Object.values(arr).forEach((items: any, idx: any) => {
+        if (index === idx) {
+          if (typeof (items) === 'string') items = `'${items}'`
+          arrs.push(item + '=' + items)
+        }
+      })
+    })
+    this.wheres = arrs.toString().replace(/,/g, ' or ')
+    return this
+  }
+
   /**
    * 拼接 where 条件
    * @param arr 
@@ -204,10 +219,10 @@ class Mysql {
  */
 let querys = (sql: string, type?: string) => {
   console.log(sql)
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     connection.query(sql, (err: any, res: any) => {
       if (err) {
-        return err
+        reject(err)
       }
       if (type === 'find') resolve(res[0])
       if (type === 'select') resolve(res)
@@ -220,7 +235,7 @@ let querys = (sql: string, type?: string) => {
 //   return new Mysql(table)
 // }
 
-// ini('s_menu').like({ name: '%计算%' }).select()
+// ini('table').like({ name: '%计算%' }).select()
 
 module.exports = {
   db(table: string) {

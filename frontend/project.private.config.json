@@ -99,7 +99,7 @@
         {
           "name": "pages/message/index/index",
           "pathName": "pages/message/index/index",
-          "query": "uid=2",
+          "query": "uid=3",
           "scene": null
         },
         {
@@ -118,6 +118,18 @@
           "name": "pages/message/index/index",
           "pathName": "pages/message/index/index",
           "query": "uid=1",
+          "scene": null
+        },
+        {
+          "name": "pages/message/index/index",
+          "pathName": "pages/message/index/index",
+          "query": "uid=1",
+          "scene": null
+        },
+        {
+          "name": "pages/message/index/index",
+          "pathName": "pages/message/index/index",
+          "query": "uid=2",
           "scene": null
         }
       ]

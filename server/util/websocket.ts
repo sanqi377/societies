@@ -10,8 +10,26 @@ const { db } = require('./mysqlInit')
 
 let clients: string[] = []
 
-function unique(arr: any) {
+/**
+ * 数组去重
+ *
+ * @param {*} arr
+ * @return {*} 
+ */
+let unique = (arr: any) => {
   return Array.from(new Set(arr))
+}
+
+/**
+ * 新增消息
+ */
+let addMessage = (data: any) => {
+  console.log(data)
+  // 更新会话信息
+  db('s_session').where({ uid: data.send, accept: data.accept }).update({ last_message: data.message, last_datetime: data.create_time })
+  db('s_session').where({ uid: data.accept, accept: data.send }).update({ last_message: data.message, last_datetime: data.create_time })
+  // 新增消息
+  db('s_message').insert(data)
 }
 
 module.exports = {
@@ -30,8 +48,7 @@ module.exports = {
 
           // 私聊
           case 'private':
-            console.log(clients, data)
-            db('s_message')
+            addMessage(data)
             wss.clients.forEach(function each(client: any) { // 给发送方及接收方广播消息
               if (data.send === client.id) client.send(JSON.stringify(data))
               if (data.accept === client.id) client.send(JSON.stringify(data))

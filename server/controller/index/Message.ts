@@ -3,28 +3,19 @@ export { }
 const model = require(__filename.replace(/controller/, 'model'))
 module.exports = {
   /**
-   * 发送消息
+   * 获取历史消息
    * @param req 
    * @param res 
    */
-  sendMessage(req: any, res: any) {
-    let data = req.body
-    res.send({ ret: 200 })
-    // wss.on('connection', (ws: any) => {
-    //   console.log(ws)
-    //   // ws.on('message', function incoming(message) {
-    //   //   console.log('received: %s', message);
-    //   // });
-
-    //   ws.send('something');
-    // });
-    // model.sendMessage(data).then((resp: any) => {
-    //   if (resp) {
-    //     res.send({ ret: 200, data: { msg: '发送成功' } })
-    //   } else {
-    //     res.send({ ret: 200, data: { msg: '发送失败' } })
-    //   }
-    // })
+  getHistoryMsg(req: any, res: any) {
+    let { fid } = req.body
+    model.getHistoryMsg(fid).then((resp: any) => {
+      if (resp) {
+        res.send({ ret: 200, data: resp })
+      } else {
+        res.send({ ret: 200, data: { msg: '获取失败' } })
+      }
+    })
   },
   /**
    * 获取消息列表
@@ -33,9 +24,19 @@ module.exports = {
    */
   getSession(req: any, res: any) {
     let { uid } = req.body
-    model.getSession({ uid }).then((resp: any) => {
+    model.getSession(uid).then((resp: any) => {
       res.send({ ret: 200, data: resp })
     })
+  },
+  /**
+   * 更新未读信息
+   * @param {*} req
+   * @param {*} res
+   */
+  updateUnread(req: any, res: any) {
+    let { fid, u_unread, a_unread, send } = req.body
+    model.updateUnread({ fid, u_unread, a_unread, send })
+    res.send({ ret: 200, data: { msg: '更新成功' } })
   },
   getId(req: any, res: any) {
     let { open_id } = req.body

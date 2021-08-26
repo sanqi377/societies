@@ -1,3 +1,11 @@
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+
 .input {
   position: fixed;
   bottom: 0;
@@ -25,4 +33,44 @@
   padding: 6rpx 16rpx;
   font-size: 14px;
   border-radius: 8rpx;
+}
+
+.container {
+  margin: 0 30rpx;
+  padding-top: 10rpx;
+}
+
+.list .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.list .item.myself {
+  flex-direction: row-reverse;
+}
+
+.list .item.myself .avatar {
+  margin-right: 0;
+  margin-left: 20rpx;
+}
+
+.list .item:last-child {
+  margin-bottom: 40rpx;
+}
+
+.list .item .avatar {
+  margin-right: 20rpx;
+}
+
+.list .item .avatar image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.list .item .msg view {
+  padding: 25rpx 40rpx;
+  background: #fff;
+  border-radius: 20rpx;
 }

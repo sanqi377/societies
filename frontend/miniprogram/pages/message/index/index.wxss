@@ -34,6 +34,25 @@ page {
 
 .list .item .info .avatar {
   margin-right: 20rpx;
+  position: relative;
+}
+
+.list .item .info .avatar .unread {
+  position: absolute;
+  top: -5rpx;
+  right: -5rpx;
+  background: red;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+.list .item .info .avatar .unread span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .list .item .info .avatar image {

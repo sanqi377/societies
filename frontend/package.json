@@ -9,9 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "",
-  "dependencies": {
-    "goeasy": "^2.1.11"
-  },
+  "dependencies": {},
   "devDependencies": {
     "miniprogram-api-typings": "^3.4.2",
     "typescript": "^3.3.3333"

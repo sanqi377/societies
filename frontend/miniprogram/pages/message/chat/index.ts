@@ -1,14 +1,15 @@
 export { }
-const { getFont } = require('../../../utils/util')
+const { getFont, ajax } = require('../../../utils/util')
 const { io, monitor } = getApp().globalData
 Page({
   data: {
     data: {
-      text: '', // 消息,
+      message: '', // 消息,
       send: '', // 发送人
       accept: '', // 接收人
       type: 'private', // 消息类型
-      create_time: 0
+      create_time: 0,
+      fid: 0
     },
     message: [] as string[]
   },
@@ -19,7 +20,7 @@ Page({
    */
   getInput(e: any) {
     this.setData({
-      ['data.text']: e.detail.value
+      ['data.message']: e.detail.value
     })
   },
 
@@ -34,7 +35,7 @@ Page({
       data: JSON.stringify(this.data.data),
       success: () => {
         this.setData({
-          ['data.text']: ''
+          ['data.message']: ''
         })
       }
     })
@@ -43,33 +44,61 @@ Page({
   onLoad(e) {
     this.setData({
       ['data.accept']: e.accept,
-      ['data.send']: e.send
+      ['data.send']: e.send,
+      ['data.fid']: e.fid
+    }, () => {
+      ajax('http://localhost:3000/index/message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
-
     /**
      * 监听服务端消息返回
      */
-    let arr: string[] = []
     monitor((res: any) => {
       let msg = JSON.parse(res)
       if (msg.send === this.data.data.send && msg.accept === this.data.data.accept) {
-        arr.push(msg)
+        this.data.message.push(msg)
         this.setData({
-          message: arr
+          message: this.data.message,
+        }, () => {
+          let toView = `msg-${this.data.message.length - 1}`
+          this.setData({
+            toView
+          })
         })
       }
       if (msg.send === this.data.data.accept && msg.accept === this.data.data.send) {
-        arr.push(msg)
+        this.data.message.push(msg)
         this.setData({
-          message: arr
+          message: this.data.message,
+        }, () => {
+          let toView = `msg-${this.data.message.length - 1}`
+          this.setData({
+            toView
+          })
         })
       }
+      ajax('http://localhost:3000/index/message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
 
     /**
      * 加载网络字体
      */
     getFont()
+  },
+
+  /**
+   * 获取历史消息
+   */
+  getHistoryMsg() {
+    ajax('http://localhost:3000/index/message/getHistoryMsg', { fid: this.data.data.fid }).then((res: any) => {
+      this.setData({
+        message: res.data.data
+      }, () => {
+        let toView = `msg-${res.data.data.length - 1}`
+        this.setData({
+          toView
+        })
+      })
+    })
   },
 
   /**
@@ -83,7 +112,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getHistoryMsg()
   },
 
   /**
