@@ -1,4 +1,7 @@
 var { db } = require('../../util/mysqlInit')
+var md5 = require('md5-node')
+
+
 module.exports = {
   /**
    * 检测是否注册

@@ -19,7 +19,6 @@ module.exports = {
     addRole(req: any, res: any) {
         let data = req.body
         data.sign = data.sign.join(':')
-        data.create_time = new Date().getTime()
         if (data.id) {
             model.updateRole(data).then((resp: any) => {
                 if (resp) {
@@ -29,6 +28,7 @@ module.exports = {
                 }
             })
         } else {
+            data.create_time = new Date().getTime()
             model.addRole(data).then((resp: any) => {
                 if (resp) {
                     res.send({ ret: 200, data: { msg: "添加成功" } })
@@ -40,12 +40,14 @@ module.exports = {
     },
     delectRole(req: any, res: any) {
         let { id } = req.body;
-        model.delectRole(id).then((resp:any)=>{
+        model.delectRole(id).then((resp: any) => {
             if (resp) {
-                res.send({ ret: 200, data: { msg: "删除成功" } })
+                res.send({ ret: 200, data: { type:"success",msg: "删除成功" } })
             } else {
-                res.send({ ret: 200, data: { msg: "删除失败" } })
+                res.send({ ret: 200, data: { type:"error",msg: "删除失败" } })
             }
+        }).catch((e:any)=>{
+            res.send({ ret: 200, data: { type:"error",msg: "删除失败，请先移除角色下用户" } })
         })
     }
 
