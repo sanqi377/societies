@@ -2,7 +2,7 @@
   <!-- <image src="../../../public/image/user-bg.png" /> -->
 </view>
 <view class="container">
-  <view class="user-card">
+  <view class="user-card card">
     <view class="user-info">
       <view class="info">
         <view class="avatar">
@@ -37,6 +37,47 @@
       <view class="item">
         <view class="num">210</view>
         <view class="information">积分</view>
+      </view>
+    </view>
+  </view>
+  <view class="list card">
+    <view class="item">
+      <view class="main">
+        <image src="../../../public/image/user-task.png" />
+        <view>我的任务</view>
+      </view>
+      <view class="more">
+        <image src="../../../public/image/right.png" />
+      </view>
+    </view>
+
+    <view class="item">
+      <view class="main">
+        <image src="../../../public/image/user-dynamic.png" />
+        <view>全部动态</view>
+      </view>
+      <view class="more">
+        <image src="../../../public/image/right.png" />
+      </view>
+    </view>
+
+    <view class="item">
+      <view class="main">
+        <image src="../../../public/image/user-societies.png" />
+        <view>我的社团</view>
+      </view>
+      <view class="more">
+        <image src="../../../public/image/right.png" />
+      </view>
+    </view>
+
+    <view class="item">
+      <view class="main">
+        <image src="../../../public/image/user-about.png" />
+        <view>关于我们</view>
+      </view>
+      <view class="more">
+        <image src="../../../public/image/right.png" />
       </view>
     </view>
   </view>

@@ -3,11 +3,13 @@
     <tabs active="{{0}}">
       <tab title="消息">
         <view class="list">
-          <view class="item" wx:for="{{list}}" wx:key="item" data-send="{{uid}}" data-accept="{{uid == item.uid ? item.accept : item.uid}}" data-fid="{{item.id}}" bindtap="goChat">
+          <view class="item" wx:for="{{list}}" wx:key="item" data-send="{{uid}}"
+            data-accept="{{uid == item.uid ? item.accept : item.uid}}" data-fid="{{item.id}}" bindtap="goChat">
             <view class="info">
               <view class="avatar">
                 <image src="../../../public/head_pic/avatar.jpg" />
-                <view class="unread" hidden="{{uid == item.uid ? (item.u_unread ? false : true) : (item.a_unread ? false : true)}}">
+                <view class="unread"
+                  hidden="{{uid == item.uid ? (item.u_unread ? false : true) : (item.a_unread ? false : true)}}">
                   <span>{{uid == item.uid ? item.u_unread : item.a_unread}}</span>
                 </view>
                 <view class="{{item.online ? 'online' : 'unonline'}}"></view>

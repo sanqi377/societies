@@ -24,12 +24,17 @@
   top: 100px;
 }
 
-.user-card {
-  margin: 0 15px;
+.card {
+  margin: 0 30rpx;
   background: #fff;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, .1);
+  border-radius: 36rpx;
+  padding: 40rpx;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .1);
+  margin-bottom: 40rpx;
+}
+
+.card:last-child {
+  margin-bottom: 0;
 }
 
 .user-card .user-info .info .avatar {
@@ -111,4 +116,38 @@
 .user-card .user-show .item .information {
   font-size: 13px;
   color: rgba(0, 0, 0, .6);
+}
+
+.list .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.list .item:last-child {
+  margin-bottom: 0;
+}
+
+.list .item .main {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.list .item image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+
+.list .item .more {
+  display: flex;
+  align-items: center;
+}
+
+.list .item .more image {
+  margin-right: 0;
+  width: 30rpx;
+  height: 30rpx;
 }
