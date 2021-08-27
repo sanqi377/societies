@@ -48,6 +48,9 @@ const api = {
     menuSave: (param) => {
       return ajax.post("menu/menuSave", param);
     },
+    addMenu:(param)=>{
+      return ajax.post("menu/addMenu", param);
+    }
   },
   article: {
     getClassification: () => {
