@@ -132,6 +132,20 @@ class Mysql {
     return querys(sql, 'select')
   }
   /**
+   * limit查询
+   * @param arr 
+   * @returns 
+   */
+   limit(limit:number) {
+    this.limits = `limit ${limit}`
+    var sql: string = 'select *'
+    if (this.table) sql += ` from ${this.table}`
+    if (this.wheres) sql += ` where ${this.wheres}`
+    if (this.limits) sql += ` ${this.limits}`
+    return querys(sql, 'select')
+  }
+
+  /**
    * 数据更新
    * @param arr 
    * @returns 

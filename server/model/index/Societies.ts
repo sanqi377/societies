@@ -33,18 +33,18 @@ module.exports = {
   /**
    * 获取社团信息
    */
-  getSocietiesInfo(id: number,uid:number) {
+  getSocietiesInfo(id: number, uid: number) {
     return new Promise((resolve) => {
       db('s_societies').where({ id }).find().then((res: any) => {
         db('s_department').where({ id: res.department }).find().then((resp: any) => {
           res.department = resp.name
-          db('s_interest').where({societies_id:id,user_id:uid}).select().then((respo:any)=>{
-            if(respo.length!=0){
-              res.isFans=true
-            }else{
-              res.isFans=false       
+          db('s_interest').where({ societies_id: id, user_id: uid }).select().then((respo: any) => {
+            if (respo.length != 0) {
+              res.isFans = true
+            } else {
+              res.isFans = false
             }
-          resolve(res)
+            resolve(res)
           })
         })
       })
@@ -61,14 +61,34 @@ module.exports = {
   /**
    * 增加社团热度
    */
-   addHots(id:number){
-     return new Promise((resolve) => {
-      db("s_societies").where({id}).find().then((res:any) => {
+  addHots(id: number) {
+    return new Promise((resolve) => {
+      db("s_societies").where({ id }).find().then((res: any) => {
         res.hots++
-        db("s_societies").where({id}).update({hots:res.hots}).then((resp:any) => {
+        db("s_societies").where({ id }).update({ hots: res.hots }).then((resp: any) => {
           resolve(resp)
         })
       })
-     }) 
-   }
+    })
+  },
+  /**
+   * 正在纳新的社团
+   * @returns 
+   */
+  newSocietiesList() {
+    return db("s_societies").where({ welcome_status: 1 }).select()
+  },
+  /**
+   * 关注社团
+   */
+  interestSocieties(data: any) {
+    return db("s_interest").insert(data)
+  },
+
+  /**
+   * 获取热门社团
+   */
+  getHotsSocieties(limit:number){
+    return db("s_societies").order({'hots':'desc'}).limit(limit)
+  }
 }
