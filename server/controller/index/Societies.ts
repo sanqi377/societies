@@ -58,20 +58,6 @@ module.exports = {
       }
     })
   },
-  /**
-   * 关注社团
-   */
-   interestSocieties(req:any,res:any){
-     let data={user_id:req.body.uid,societies_id:req.body.id}
-     model.interestSocieties(data).then((resp:any)=>{
-       if(resp){
-         res.send({ret:200,data:{msg:"关注成功"}})
-       }else{
-        res.send({ret:201,data:{msg:"服务器错误"}})
-       }
-     })
-   },
-
    /**
     * 获取热门社团
     */

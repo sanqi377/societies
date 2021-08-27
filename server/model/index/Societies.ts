@@ -78,12 +78,6 @@ module.exports = {
   newSocietiesList() {
     return db("s_societies").where({ welcome_status: 1 }).select()
   },
-  /**
-   * 关注社团
-   */
-  interestSocieties(data: any) {
-    return db("s_interest").insert(data)
-  },
 
   /**
    * 获取热门社团
