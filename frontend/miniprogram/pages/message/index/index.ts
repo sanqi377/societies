@@ -68,8 +68,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(e) {
+    // this.setData({
+    //   uid: e.uid as any,
+    // })
+
     this.setData({
-      uid: e.uid as any,
+      uid: 2
     })
 
     /**
