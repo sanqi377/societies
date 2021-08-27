@@ -33,12 +33,19 @@ module.exports = {
   /**
    * 获取社团信息
    */
-  getSocietiesInfo(id: number) {
+  getSocietiesInfo(id: number,uid:number) {
     return new Promise((resolve) => {
       db('s_societies').where({ id }).find().then((res: any) => {
         db('s_department').where({ id: res.department }).find().then((resp: any) => {
           res.department = resp.name
+          db('s_interest').where({societies_id:id,user_id:uid}).select().then((respo:any)=>{
+            if(respo.length!=0){
+              res.isFans=true
+            }else{
+              res.isFans=false       
+            }
           resolve(res)
+          })
         })
       })
     })
@@ -50,4 +57,18 @@ module.exports = {
   getNotice(id: number) {
     return db('s_notice').where({ college_id: id }).order({ 'add_time': 'desc' }).select()
   },
+
+  /**
+   * 增加社团热度
+   */
+   addHots(id:number){
+     return new Promise((resolve) => {
+      db("s_societies").where({id}).find().then((res:any) => {
+        res.hots++
+        db("s_societies").where({id}).update({hots:res.hots}).then((resp:any) => {
+          resolve(resp)
+        })
+      })
+     }) 
+   }
 }

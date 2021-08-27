@@ -114,7 +114,7 @@ module.exports = {
     return new Promise((resolve) => {
       db('s_menu').where({ status: 1, pid: 0 }).select().then((res: any) => {
         for (let i = 0; i < res.length; i++) {
-          db("s_menu").where({ pid: res[i].id }).select().then((resp: any) => {
+          db("s_menu").where({ pid: res[i].id, status: 1 }).select().then((resp: any) => {
             res[i].children=resp;
             if (res.length-1 == i) {
               resolve(res)

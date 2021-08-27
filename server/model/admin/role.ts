@@ -27,7 +27,7 @@ module.exports = {
     getRoleSign() {
         return new Promise((resolve) => {
             let sign: any = []
-            db('s_role').select().then((res: any) => {
+            db('s_role').where({status:1}).select().then((res: any) => {
                 for (let i = 0; i < res.length; i++) {
                     let sign = res[i].sign.split(':')
                     getsign(sign).then((resp: any) => {

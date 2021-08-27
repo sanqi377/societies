@@ -289,11 +289,11 @@ export default {
     methods: {
         isNo(res) {
             this.$api.system
-                .getMenu({ status: res.status, id: res.id})
+                .saveMenu({ status: res.status, id: res.id})
                 .then((res) => {
                     this.$message({
                         type: "success",
-                        message: res,
+                        message: res.msg,
                     });
                 });
         },

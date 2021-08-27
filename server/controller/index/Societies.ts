@@ -16,8 +16,8 @@ module.exports = {
    * 获取社团信息
    */
   getSocietiesInfo(req: any, res: any) {
-    let { id } = req.body
-    model.getSocietiesInfo(id).then((resp: any) => {
+    let { id,uid } = req.body
+    model.getSocietiesInfo(id,uid).then((resp: any) => {
       res.send({ ret: 200, data: resp })
     })
   },
@@ -34,4 +34,15 @@ module.exports = {
       }
     })
   },
+  /**
+   * 增加社团热度
+   */
+  addHots(req: any, res: any) {
+    let { id } = req.body
+    model.addHots(id).then((resp:any) => {
+        res.send({ret:200,data:{msg:"浏览成功"}})
+    }).catch((e:any)=>{
+      res.send({ret:201,data:{msg:e.message}})
+    })
+  }
 }
