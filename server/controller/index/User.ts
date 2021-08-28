@@ -47,9 +47,31 @@ module.exports = {
   /**
    * 取消关注
    */
-   cancelSubscribe(req: any, res: any) {
+  cancelSubscribe(req: any, res: any) {
     let data = req.body
     model.cancelSubscribe(data).then((resp: any) => {
+      res.send(resp)
+    })
+  },
+
+  /**
+   * 申请加入社团
+   * @param req 
+   * @param res 
+   */
+  applySocieties(req: any, res: any) {
+    let data = req.body
+    model.applySocieties(data).then((resp: any) => {
+      res.send(resp)
+    })
+  },
+
+  /**
+   * 获取用户申请状态
+   */
+  getApplyStatus(req: any, res: any) {
+    let data = req.body
+    model.getApplyStatus(data).then((resp: any) => {
       res.send(resp)
     })
   }
