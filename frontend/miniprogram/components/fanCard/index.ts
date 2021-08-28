@@ -1,8 +1,5 @@
 export { }
 const app = getApp()
-const { ajax } = require('../../utils/util')
-const { $Notify } = require('@sanqi377/qui/s-notify/notify')
-const { $Dialog } = require('@sanqi377/qui/s-dialog/dialog')
 Component({
   /**
    * 组件的属性列表
@@ -57,31 +54,39 @@ Component({
         subscribe: app.globalData.uid,
         be_subscribe: e.currentTarget.dataset.be_subscribe,
       }
-      $Dialog({
-        title: '温馨提示',
-        message: '你确定要取消关注吗？',
-        showCancelButton: true
-      }).then(() => {
-        ajax('http://localhost:3000/index/user/cancelSubscribe', data).then((res: any) => {
-          if (res.data.ret === 200) {
-            $Notify({
-              type: 'warning',
-              content: res.data.msg
-            })
-          } else {
-            $Notify({
-              type: 'error',
-              content: res.data.msg
-            })
-          }
+      app.globalData.unSubscribe({
+        data, success: () => {
           this.data.info[index].fans = false
           this.setData({
             info: this.data.info
           })
-        })
-      }).catch(() => {
-        console.log("点击取消按钮回调")
+        }
       })
+      // $Dialog({
+      //   title: '温馨提示',
+      //   message: '你确定要取消关注吗？',
+      //   showCancelButton: true
+      // }).then(() => {
+      //   ajax('http://localhost:3000/index/user/cancelSubscribe', data).then((res: any) => {
+      //     if (res.data.ret === 200) {
+      //       $Notify({
+      //         type: 'warning',
+      //         content: res.data.msg
+      //       })
+      //     } else {
+      //       $Notify({
+      //         type: 'error',
+      //         content: res.data.msg
+      //       })
+      //     }
+      //     this.data.info[index].fans = false
+      //     this.setData({
+      //       info: this.data.info
+      //     })
+      //   })
+      // }).catch(() => {
+      //   console.log("点击取消按钮回调")
+      // })
     }
   }
 })

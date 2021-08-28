@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "tabs": "../../../components/tabs/index",
-    "tab": "../../../components/tab/index",
+    "s-tabs": "@sanqi377/qui/s-tabs/",
+    "s-tab": "@sanqi377/qui/s-tab/",
     "loading": "../../../components/loading/index"
   },
   "navigationStyle": "custom"

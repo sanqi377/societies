@@ -1,0 +1,59 @@
+.header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
+
+.header .btns {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30rpx;
+  align-items: center;
+}
+
+.header .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+}
+
+.header .btns .back {
+  padding: 8rpx 25rpx;
+  border: 2rpx solid #fff;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  border-right: 0;
+  position: relative;
+}
+
+.header .btns .back::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 25rpx;
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+.header .btns .back image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.header .btns .index {
+  padding: 8rpx 25rpx;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  border: 2rpx solid #fff;
+  border-left: 0;
+}
+
+.header .btns .index image {
+  width: 30rpx;
+  height: 30rpx;
+}

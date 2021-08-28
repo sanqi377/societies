@@ -1,0 +1,11 @@
+<view class="header" style="top:{{top}}px;height:{{height}}px;">
+  <view class="btns">
+    <view class="back" bindtap="back">
+      <image src="../../../../../public/icon/back.png" />
+    </view>
+    <view class="index" bindtap="index">
+      <image src="../../../../../public/image/header-index.png" />
+    </view>
+  </view>
+  <view class="title">{{title}}</view>
+</view>

@@ -31,7 +31,7 @@
         </view>
         <view style="display: {{item.fans ? 'flex' : 'none'}}" class="fan" data-index="{{idx}}"
           data-be_subscribe="{{item.admin}}" catchtap="cancelSubscribe">
-          <view style="background-color: #f5f7f9;color: #000;">
+          <view style="border: 1px solid #ccc;background-color:#fff;color: #000;">
             <span>已关注</span>
           </view>
         </view>

@@ -1,9 +1,9 @@
 <view class="header">
 </view>
 <view class="tabs">
-  <tabs active="{{1}}">
-    <tab title="关注">关注</tab>
-    <tab title="推荐">
+  <s-tabs active="{{1}}">
+    <s-tab title="关注">关注</s-tab>
+    <s-tab title="推荐">
       <view class="dynamic-card">
         <view class="head">
           <view class="info">
@@ -35,8 +35,8 @@
           </view>
         </view>
       </view>
-    </tab>
-    <tab title="社团">社团</tab>
-  </tabs>
+    </s-tab>
+    <s-tab title="社团">社团</s-tab>
+  </s-tabs>
 </view>
 <loading show="{{show}}" />

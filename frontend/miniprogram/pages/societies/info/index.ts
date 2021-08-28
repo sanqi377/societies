@@ -1,8 +1,6 @@
 export { }
 var id: number
 const { ajax } = require('../../../utils/util')
-const { $Notify } = require('@sanqi377/qui/s-notify/notify')
-const { $Dialog } = require('@sanqi377/qui/s-dialog/dialog')
 const app = getApp()
 Page({
 
@@ -49,30 +47,13 @@ Page({
       subscribe: app.globalData.uid,
       be_subscribe: e.currentTarget.dataset.be_subscribe,
     }
-    $Dialog({
-      title: '温馨提示',
-      message: '你确定要取消关注吗？',
-      showCancelButton: true
-    }).then(() => {
-      ajax('http://localhost:3000/index/user/cancelSubscribe', data).then((res: any) => {
-        if (res.data.ret === 200) {
-          $Notify({
-            type: 'success',
-            content: res.data.msg
-          })
-        } else {
-          $Notify({
-            type: 'error',
-            content: res.data.msg
-          })
-        }
+    app.globalData.unSubscribe({
+      data, success: () => {
         this.data.info.fans = false
         this.setData({
           info: this.data.info
         })
-      })
-    }).catch(() => {
-      console.log("点击取消按钮回调")
+      }
     })
   },
 
