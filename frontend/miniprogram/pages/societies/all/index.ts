@@ -1,22 +1,11 @@
 export { }
-var { ajax, checkLogin } = require('../../../utils/util')
+const { ajax } = require('../../../utils/util')
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    data: {},
-    animationData: {},
-    title: [
-      {
-        title: "全部",
-        active: true
-      },
-      {
-        title: "入职",
-        active: false
-      }
-    ],
     sidebar: [],
   },
 
@@ -25,35 +14,12 @@ Page({
   */
   getSocieties() {
     var _this = this
-    ajax('http://localhost:3000/index/class/getClass').then((res: any) => {
+    ajax('http://localhost:3000/index/class/getClass', { uid: app.globalData.uid }).then((res: any) => {
       if (res.data.ret === 200) {
         _this.setData({
           sidebar: res.data.data
         })
       }
-    })
-  },
-
-  /**
-   * Tabs 切换
-   * @param e.detail 获取点击 index
-   */
-  changeTabs(e: any) {
-    let index: number = e.detail
-    var _this = this
-    if (!checkLogin()) {
-      // $Notify({
-      //   type: 'error',
-      //   content: '抱歉，您未登录'
-      // })
-      return
-    }
-    _this.data.title.forEach((el: any, idx: number) => {
-      el.active = false
-      if (idx === index) el.active = true
-    })
-    _this.setData({
-      title: _this.data.title
     })
   },
 
@@ -70,12 +36,6 @@ Page({
     })
     _this.setData({
       sidebar: _this.data.sidebar
-    })
-  },
-
-  changeShow(e: any) {
-    this.setData({
-      show: e.detail
     })
   },
 

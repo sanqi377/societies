@@ -17,9 +17,12 @@
     </view>
   </view>
   <view class="fan">
-    <view class="count">{{info.number?info.number:0}} 成员 · 2 条内容</view>
+    <view class="count">{{info.number?info.number:0}} 成员 · 2 条动态</view>
     <view class="fans">
-      <view class="gz">关注</view>
+      <view style="display:{{info.fans?'none':'flex'}};" class="gz" data-be_subscribe="{{info.admin}}"
+        bindtap="subscribe">关注</view>
+      <view style="display:{{info.fans?'flex':'none'}};" class="gz" data-be_subscribe="{{info.admin}}"
+        bindtap="cancelSubscribe">取消关注</view>
       <view class="share">
         <image src="../../../public/image/share.png" />
       </view>
@@ -41,45 +44,23 @@
     </view>
   </view>
 </view>
+
 <view class="dynamic">
-  <view class="title">最新动态</view>
-  <view class="item" wx:for="{{2}}">
-    <view class="head">
-      <view class="info">
-        <view class="logos">
-          <image src="../../../public/image/logo.jpg" />
-        </view>
-        <view class="information">
-          <view class="name">
-            <span>官方</span>
-            <view>计算机协会</view>
-          </view>
-          <view class="num">2021年8月22日</view>
-        </view>
-      </view>
-      <view class="fan">
-        <view>
-          <image src="../../../public/image/fan.png" />
-          关注
-        </view>
-      </view>
+  <!-- <view class="title">
+    <view class="l">
+      <span></span>
+      <span></span>
+      <span></span>
     </view>
-    <view class="value">
-      这个憨批阿巴阿巴说了一堆。。。
+    <view>最新动态</view>
+    <view class="r">
+      <span></span>
+      <span></span>
+      <span></span>
     </view>
-    <view class="btns">
-      <view class="zan">
-        <image src="../../../public/icon/zan.png" />
-        点赞
-      </view>
-      <view class="comment">
-        <image src="../../../public/icon/comment.png" />
-        回复
-      </view>
-      <view class="share">
-        <image src="../../../public/icon/share.png" />
-        分享
-      </view>
-    </view>
-  </view>
+  </view> -->
+  <dynamic />
 </view>
+
+<s-notify id="notify" />
+<s-dialog id="dialog" />

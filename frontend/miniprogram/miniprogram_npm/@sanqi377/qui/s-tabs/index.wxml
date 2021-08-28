@@ -1,0 +1,15 @@
+<view class="container {{direction === 'left' ? 'left' : ''}}">
+  <view class="title">
+    <view class="item" wx:for="{{title}}" wx:for-index="idx" wx:key="item" data-idx="{{idx}}" style="{{direction === 'left' && idx === active ? 'background:#fff' : ''}}" bindtap="changeHandle">
+      <view class="{{idx === active ? 'active' : ''}}">{{item}}</view>
+    </view>
+  </view>
+  <block wx:if="{{direction != 'top'}}">
+    <view class="leftItem">
+      <slot />
+    </view>
+  </block>
+</view>
+<block wx:if="{{direction === 'top'}}">
+  <slot />
+</block>

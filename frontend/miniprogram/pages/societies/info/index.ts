@@ -1,13 +1,18 @@
+export { }
 var id: number
-var { ajax } = require('../../../utils/util')
+const { ajax } = require('../../../utils/util')
+const { $Notify } = require('@sanqi377/qui/s-notify/notify')
+const { $Dialog } = require('@sanqi377/qui/s-dialog/dialog')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    info: {},
-    notic: {}
+    info: {
+      fans: false
+    }
   },
   /**
    * 返回上一页
@@ -17,12 +22,66 @@ Page({
       delta: 1
     })
   },
+
+  /**
+   * 关注社团
+   */
+  subscribe(e: any) {
+    let data = {
+      subscribe: app.globalData.uid,
+      be_subscribe: e.currentTarget.dataset.be_subscribe,
+      update_time: Date.parse((new Date() as any)) / 1000
+    }
+    app.globalData.subscribe(data).then(() => {
+      this.data.info.fans = true
+      this.setData({
+        info: this.data.info
+      })
+    })
+  },
+
+  /**
+   * 取消关注
+   */
+
+  cancelSubscribe(e: any) {
+    let data = {
+      subscribe: app.globalData.uid,
+      be_subscribe: e.currentTarget.dataset.be_subscribe,
+    }
+    $Dialog({
+      title: '温馨提示',
+      message: '你确定要取消关注吗？',
+      showCancelButton: true
+    }).then(() => {
+      ajax('http://localhost:3000/index/user/cancelSubscribe', data).then((res: any) => {
+        if (res.data.ret === 200) {
+          $Notify({
+            type: 'success',
+            content: res.data.msg
+          })
+        } else {
+          $Notify({
+            type: 'error',
+            content: res.data.msg
+          })
+        }
+        this.data.info.fans = false
+        this.setData({
+          info: this.data.info
+        })
+      })
+    }).catch(() => {
+      console.log("点击取消按钮回调")
+    })
+  },
+
   /**
    * 获取社团基本信息
    */
   getSocietiesInfo() {
     var _this = this
-    ajax('http://localhost:3000/index/societies/getSocietiesInfo', { id }).then((res: any) => {
+    ajax('http://localhost:3000/index/societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
       if (res.data.ret === 200) {
         _this.setData({
           info: res.data.data
@@ -30,19 +89,7 @@ Page({
       }
     })
   },
-  /**
-   * 获取社团公告
-   */
-  getNotic() {
-    var _this = this
-    ajax('http://localhost:3000/index/societies/getNotice', { id }).then((res: any) => {
-      if (res.data.ret === 200) {
-        _this.setData({
-          notic: res.data.data
-        })
-      }
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -55,7 +102,6 @@ Page({
    */
   onReady() {
     this.getSocietiesInfo()
-    this.getNotic()
   },
 
   /**

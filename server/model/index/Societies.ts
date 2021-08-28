@@ -33,22 +33,17 @@ module.exports = {
   /**
    * 获取社团信息
    */
-  getSocietiesInfo(id: number,uid:number) {
-    return new Promise((resolve) => {
-      db('s_societies').where({ id }).find().then((res: any) => {
-        db('s_department').where({ id: res.department }).find().then((resp: any) => {
-          res.department = resp.name
-          db('s_interest').where({societies_id:id,user_id:uid}).select().then((respo:any)=>{
-            if(respo.length!=0){
-              res.isFans=true
-            }else{
-              res.isFans=false       
-            }
-          resolve(res)
-          })
-        })
-      })
-    })
+  async getSocietiesInfo(id: number, uid: number) {
+    let info = await db('s_societies').where({ id }).find()
+    let department = await db('s_department').where({ id: info.department }).find()
+    info.department = department.name
+    let fans = await db('s_subscribe').where({ subscribe: uid, be_subscribe: info.admin }).find()
+    if (fans) {
+      info.fans = true
+    } else {
+      info.fans = false
+    }
+    return info
   },
 
   /**
@@ -61,14 +56,14 @@ module.exports = {
   /**
    * 增加社团热度
    */
-   addHots(id:number){
-     return new Promise((resolve) => {
-      db("s_societies").where({id}).find().then((res:any) => {
+  addHots(id: number) {
+    return new Promise((resolve) => {
+      db("s_societies").where({ id }).find().then((res: any) => {
         res.hots++
-        db("s_societies").where({id}).update({hots:res.hots}).then((resp:any) => {
+        db("s_societies").where({ id }).update({ hots: res.hots }).then((resp: any) => {
           resolve(resp)
         })
       })
-     }) 
-   }
+    })
+  }
 }

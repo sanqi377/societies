@@ -1,0 +1,70 @@
+.dynamic-card {
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.dynamic-card .avatar {
+  margin-right: 20rpx;
+}
+
+.dynamic-card .avatar image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.dynamic-card .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.dynamic-card .head .info {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic-card .head .info .name {
+  font-size: 16px;
+}
+
+.dynamic-card .head .info .date {
+  margin-top: 10rpx;
+  font-size: 12px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.dynamic-card .head .more image {
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: -10rpx;
+}
+
+.dynamic-card .main {
+  font-size: 14px;
+}
+
+.dynamic-card .btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.dynamic-card .btns>view {
+  display: flex;
+  align-items: center;
+}
+
+.dynamic-card .btns>view view {
+  font-size: 13px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.dynamic-card .btns image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}

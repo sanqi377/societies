@@ -102,7 +102,7 @@ class Mysql {
         }
       })
     })
-    this.wheres =" find_in_set("+arrs.toString()+")"
+    this.wheres = " find_in_set(" + arrs.toString() + ")"
     return this
   }
 
@@ -129,6 +129,7 @@ class Mysql {
     if (this.wheres) sql += ` where ${this.wheres}`
     if (this.orders) sql += ` ${this.orders}`
     if (this.likes) sql += ` where ${this.likes}`
+    if (this.limits) sql += ` ${this.limits}`
     return querys(sql, 'select')
   }
   /**
@@ -228,6 +229,23 @@ class Mysql {
     this.likes = arrs.toString()
     return this
   }
+
+  /**
+   * limit 返回指定数目及指定区间的数据
+   *
+   * @param {number} num
+   * @param {number} [nums]
+   * @return {*} 
+   * @memberof Mysql
+   */
+  limit(num: number, nums?: number) {
+    if (!nums) {
+      this.limits = `limit ${num}`
+    } else {
+      this.limits = `limit ${num},${nums}`
+    }
+    return this
+  }
 }
 
 /**
@@ -254,7 +272,7 @@ let querys = (sql: string, type?: string) => {
 //   return new Mysql(table)
 // }
 
-// ini('table').like({ name: '%计算%' }).select()
+// ini('table').limit(10000, 20000).select()
 
 module.exports = {
   db(table: string) {

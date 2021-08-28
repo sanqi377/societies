@@ -8,6 +8,10 @@ let io = wx.connectSocket({
 
 let hostId = 0
 
+const { $Notify } = require('@sanqi377/qui/s-notify/notify')
+const { $Dialog } = require('@sanqi377/qui/s-dialog/dialog')
+const { ajax } = require('./utils/util')
+
 App<IAppOption>({
   globalData: {
     io,
@@ -24,13 +28,36 @@ App<IAppOption>({
           console.log(`绑定主机信息成功：主机号为${info.send}`)
         }
       })
+    },
+    uid: wx.getStorageSync('uid'),
+    /**
+     * 关注
+     * @param data 
+     */
+    subscribe(data: object) {
+      return new Promise((resolve) => {
+        ajax('http://localhost:3000/index/user/subscribe', data).then((res: any) => {
+          resolve(res)
+          if (res.data.ret === 200) {
+            $Notify({
+              type: 'success',
+              content: res.data.msg
+            })
+          } else {
+            $Notify({
+              type: 'error',
+              content: res.data.msg
+            })
+          }
+        })
+      })
     }
   },
   onLaunch() {
     wx.onSocketOpen(() => {
       console.log('监听到 WebSocket 连接已打开！');
     })
-
+    console.log(this)
     io.onOpen(() => {
       console.log('连接打开成功');
     });

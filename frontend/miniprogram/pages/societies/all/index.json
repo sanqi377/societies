@@ -1,9 +1,10 @@
 {
   "usingComponents": {
-    "s-tab": "../../../components/s-tabs/index",
     "s-sidebar": "../../../components/s-sidebar/index",
     "fanCard": "../../../components/fanCard/index",
     "s-search": "../../../components/s-search/index",
-    "societiesInfo": "../../../components/societiesInfo/index"
+    "societiesInfo": "../../../components/societiesInfo/index",
+    "s-notify": "@sanqi377/qui/s-notify/",
+    "s-dialog": "@sanqi377/qui/s-dialog/"
   }
 }

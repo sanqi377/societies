@@ -1,0 +1,3 @@
+<view class="s-message {{type}} {{ visible ? 's-message-show' : '' }}">
+    {{ content }}
+</view>

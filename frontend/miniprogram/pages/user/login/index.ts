@@ -31,11 +31,11 @@ Page({
                         data: res.data.token,
                         success: () => {
                           wx.setStorage({
-                            key: "openid",
-                            data: res.data.openid,
+                            key: "uid",
+                            data: res.data.uid,
                             success: () => {
                               setTimeout(() => {
-                                wx.reLaunch({ url: '/pages/index/index' })
+                                wx.reLaunch({ url: '/pages/index/index/index' })
                               }, 2000)
                             }
                           })

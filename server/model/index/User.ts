@@ -13,5 +13,44 @@ module.exports = {
    */
   reg(data: any) {
     return db('s_users').insert(data)
-  }
+  },
+  /**
+   * 关注
+   *
+   * @param {*} data
+   * @return {*} 
+   */
+  subscribe(data: any) {
+    return new Promise((resolve) => {
+      db('s_subscribe').where({ subscribe: data.subscribe, be_subscribe: data.be_subscribe }).find().then((res: any) => {
+        if (res) {
+          resolve({ ret: 201, msg: '不能重复关注' })
+        } else {
+          db('s_subscribe').insert(data).then(() => {
+            resolve({ ret: 200, msg: '关注成功' })
+          })
+        }
+      })
+    })
+  },
+  /**
+   * 取消关注
+   *
+   * @param {*} data
+   * @return {*} 
+   */
+  async cancelSubscribe(data: any) {
+    let send = {
+      ret: 200,
+      msg: '取消关注成功'
+    }
+    let subscribe = await db('s_subscribe').where({ subscribe: data.subscribe, be_subscribe: data.be_subscribe }).find()
+    if (subscribe) {
+      await db('s_subscribe').where({ id: subscribe.id }).delete()
+    } else {
+      send.ret = 201
+      send.msg = '服务器错误'
+    }
+    return send
+  },
 }

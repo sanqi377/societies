@@ -14,7 +14,7 @@ module.exports = {
         if (!resp) {
           res.send({ code: 201, msg: '用户未注册' })
         } else {
-          res.send({ code: 200, msg: '登录成功', token, openid })
+          res.send({ code: 200, msg: '登录成功', token, uid: resp.id })
         }
       })
     })
@@ -33,6 +33,24 @@ module.exports = {
       model.reg(data).then((resp: any) => {
         if (resp) res.send({ code: 200, msg: '注册成功', token, openid })
       })
+    })
+  },
+  /**
+   * 关注
+   */
+  subscribe(req: any, res: any) {
+    let data = req.body
+    model.subscribe(data).then((resp: any) => {
+      res.send(resp)
+    })
+  },
+  /**
+   * 取消关注
+   */
+   cancelSubscribe(req: any, res: any) {
+    let data = req.body
+    model.cancelSubscribe(data).then((resp: any) => {
+      res.send(resp)
     })
   }
 }

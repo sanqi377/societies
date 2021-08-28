@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "dynamic": "../../../components/dynamic/index",
+    "s-notify": "@sanqi377/qui/s-notify/",
+    "s-dialog": "@sanqi377/qui/s-dialog/"
+  },
   "navigationStyle": "custom"
 }

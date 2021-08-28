@@ -1,0 +1,31 @@
+<view class="dynamic-card" wx:for="{{5}}">
+  <view class="head">
+    <view class="info">
+      <view class="avatar">
+        <image src="../../../../../public/head_pic/avatar.jpg" />
+      </view>
+      <view>
+        <view class="name">叁柒</view>
+        <view class="date">2021-08-24</view>
+      </view>
+    </view>
+    <view class="more">
+      <image src="../../../../../public/image/more.png" />
+    </view>
+  </view>
+  <view class="main">阿巴阿巴像个傻瓜...</view>
+  <view class="btns">
+    <view class="share">
+      <image src="../../../../../public/image/share.png" />
+      <view>分享</view>
+    </view>
+    <view class="comment">
+      <image src="../../../../../public/image/comment.png" />
+      <view>评论</view>
+    </view>
+    <view class="praise">
+      <image src="../../../../../public/image/praise.png" />
+      <view>点赞</view>
+    </view>
+  </view>
+</view>
