@@ -1,9 +1,9 @@
 export { }
-const { getFont } = require('../../../utils/util')
-
+const { getFont, ajax, formatMsgTime } = require('../../../utils/util')
+let list: any = []
+let count = 1
 Page({
-  data: {
-  },
+  list: [],
 
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -11,13 +11,25 @@ Page({
         selected: 1
       })
     }
+    this.getDynamic(1)
   },
 
-  /**
-   * 获取社团列表
-   */
-  getSocieties() {
+  goPublish() {
+    wx.navigateTo({
+      url: "/pages/societies/publish/index"
+    })
+  },
 
+  getDynamic(page: number) {
+    ajax('http://localhost:3000/index/dynamic/getList', { page }).then((res: any) => {
+      for (let key in res.data.data) {
+        res.data.data[key].create_time = formatMsgTime(res.data.data[key].create_time * 1000)
+        list.push(res.data.data[key])
+      }
+      this.setData({
+        list
+      })
+    })
   },
 
   /**
@@ -66,7 +78,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    count++
+    this.getDynamic(count)
   },
 
   /**

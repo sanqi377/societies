@@ -4,22 +4,22 @@
   <s-tabs active="{{1}}">
     <s-tab title="关注">关注</s-tab>
     <s-tab title="推荐">
-      <view class="dynamic-card">
+      <view class="dynamic-card" wx:for="{{list}}" wx:key="item">
         <view class="head">
           <view class="info">
             <view class="avatar">
-              <image src="../../../public/head_pic/avatar.jpg" />
+              <image src="{{item.avatar}}" />
             </view>
             <view>
-              <view class="name">叁柒</view>
-              <view class="date">2021-08-24</view>
+              <view class="name">{{item.name}}</view>
+              <view class="date">{{item.create_time}}</view>
             </view>
           </view>
           <view class="more">
             <image src="../../../public/image/more.png" />
           </view>
         </view>
-        <view class="main">阿巴阿巴像个傻瓜...</view>
+        <view class="main">{{item.value}}</view>
         <view class="btns">
           <view class="share">
             <image src="../../../public/image/share.png" />
@@ -38,5 +38,10 @@
     </s-tab>
     <s-tab title="社团">社团</s-tab>
   </s-tabs>
+</view>
+<view class="publish" bindtap="goPublish">
+  <view>
+    <image src="../../../public/image/publish.png" />
+  </view>
 </view>
 <loading show="{{show}}" />

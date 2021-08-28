@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="publish">
+    <view bindtap="publish">发布</view>
+  </view>
+  <view class="value">
+    <textarea focus value="{{value}}" bindinput="getValue" placeholder="输入你要发布的内容..." maxlength="{{-1}}" />
+  </view>
+  <view class="function">
+    <view class="item">
+      <view class="icon">
+        <image src="../../../public/image/picture.png" />
+      </view>
+      <view class="title">
+        图片
+      </view>
+    </view>
+    <!-- <view class="item">
+      <view class="icon">
+        <image src="../../../public/image/picture.png" />
+      </view>
+      <view class="title">
+        视频
+      </view>
+    </view> -->
+  </view>
+</view>
+<s-notify id="notify" />

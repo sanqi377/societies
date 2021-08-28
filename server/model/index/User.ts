@@ -7,6 +7,7 @@ module.exports = {
   isReg(openid: string) {
     return db('s_users').where({ open_id: openid }).find()
   },
+
   /**
    * 注册
    * @param data 用户信息
@@ -14,6 +15,7 @@ module.exports = {
   reg(data: any) {
     return db('s_users').insert(data)
   },
+
   /**
    * 关注
    *
@@ -78,20 +80,19 @@ module.exports = {
   /**
    * 查询当前社团申请状态
    */
-
-  async getApplyStatus(data:any){
-   let apply= await db('s_apply').where({ user_id: data.uid, societies_id: data.societiesId }).find()
-   let send = {
-    ret: 200,
-    msg: '立即申请'
-  }
-    if(apply){
-      if(apply.status==0){
+  async getApplyStatus(data: any) {
+    let apply = await db('s_apply').where({ user_id: data.uid, societies_id: data.societiesId }).find()
+    let send = {
+      ret: 200,
+      msg: '立即申请'
+    }
+    if (apply) {
+      if (apply.status == 0) {
         send = {
           ret: 200,
           msg: '已申请'
         }
-      }else{
+      } else {
         send = {
           ret: 200,
           msg: '已通过'
@@ -99,5 +100,33 @@ module.exports = {
       }
     }
     return send
+  },
+
+  /**
+   * 获取基本信息
+   *
+   * @param {number} uid
+   * @return {*} 
+   */
+  async getInfo(uid: number) {
+    let focus = await db('s_subscribe').where({ subscribe: uid }).select()
+    let fans = await db('s_subscribe').where({ be_subscribe: uid }).select()
+    let info = await db('s_users').where({ id: uid }).find()
+    let dynamic = await db('s_dynamic').where({ uid }).select()
+    let infos = {
+      name: '',
+      avatar: '',
+      student_id: '',
+      focus: 0,
+      fans: 0,
+      dynamic: 0
+    }
+    infos.name = info.name
+    infos.avatar = info.avatar
+    infos.student_id = info.student_id
+    infos.focus = focus.length
+    infos.fans = fans.length
+    infos.dynamic = dynamic.length
+    return { ret: 200, data: infos }
   }
 }

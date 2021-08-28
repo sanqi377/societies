@@ -74,5 +74,17 @@ module.exports = {
     model.getApplyStatus(data).then((resp: any) => {
       res.send(resp)
     })
+  },
+  /**
+   * 获取基本信息
+   *
+   * @param {*} req
+   * @param {*} res
+   */
+  getInfo(req: any, res: any) {
+    let { uid } = req.body
+    model.getInfo(uid).then((resp: any) => {
+      res.send(resp)
+    })
   }
 }

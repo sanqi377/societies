@@ -9,10 +9,10 @@
           <image src="../../../public/head_pic/avatar.jpg" />
         </view>
         <view class="name">
-          <view>叁柒</view>
+          <view>{{info.name}}</view>
           <view class="id">
             <image src="../../../public/image/user-id.png" />
-            <span>学号：202000549</span>
+            <span>学号：{{info.student_id}}</span>
           </view>
         </view>
       </view>
@@ -23,20 +23,20 @@
     </view>
     <view class="user-show">
       <view class="item">
-        <view class="num">5</view>
+        <view class="num">{{info.dynamic}}</view>
         <view class="information">动态</view>
       </view>
       <view class="item">
-        <view class="num">20</view>
+        <view class="num">{{info.focus}}</view>
         <view class="information">关注</view>
+      </view>
+      <view class="item">
+        <view class="num">{{info.fans}}</view>
+        <view class="information">粉丝</view>
       </view>
       <view class="item">
         <view class="num">2</view>
         <view class="information">社团</view>
-      </view>
-      <view class="item">
-        <view class="num">210</view>
-        <view class="information">积分</view>
       </view>
     </view>
   </view>

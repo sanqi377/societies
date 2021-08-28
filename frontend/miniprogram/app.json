@@ -12,7 +12,8 @@
     "pages/message/index/index",
     "pages/index/notify/index",
     "pages/societies/welcomeInfo/index",
-    "pages/message/chat/index"
+    "pages/message/chat/index",
+    "pages/societies/publish/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

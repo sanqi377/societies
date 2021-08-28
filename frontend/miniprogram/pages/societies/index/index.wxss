@@ -13,6 +13,7 @@
   padding: 30rpx;
   background: #fff;
   border-radius: 16rpx;
+  margin-bottom: 30rpx;
 }
 
 .dynamic-card .avatar {
@@ -73,4 +74,27 @@
   width: 30rpx;
   height: 30rpx;
   margin-right: 10rpx;
+}
+
+.publish {
+  position: fixed;
+  bottom: 250rpx;
+  right: 30rpx;
+}
+
+.publish>view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  height: 90rpx;
+  width: 90rpx;
+  padding: 10rpx;
+  background: rgba(15, 131, 255, .9);
+}
+
+.publish image {
+  width: 55rpx;
+  height: 55rpx;
 }

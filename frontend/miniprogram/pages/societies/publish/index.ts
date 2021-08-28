@@ -1,26 +1,49 @@
 export { }
-
 const { getFont, ajax } = require('../../../utils/util')
-
 const app = getApp()
-
+const { $Notify } = require('@sanqi377/qui/s-notify/notify')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    info: {}
+    value: ''
   },
 
   /**
-   * 获取关注粉丝
+   * 获取动态内容
+   * @param e 
    */
-  getInfo() {
-    ajax('http://localhost:3000/index/user/getInfo', { uid: app.globalData.uid }).then((res: any) => {
+  getValue(e: any) {
+    this.setData({
+      value: e.detail.value
+    })
+  },
+
+  /**
+   * 发布动态
+   */
+  publish() {
+    let data = {
+      value: this.data.value,
+      uid: app.globalData.uid,
+      create_time: Date.parse((new Date() as any)) / 1000
+    }
+    ajax('http://localhost:3000/index/dynamic/addDynamic', data).then((res: any) => {
+      if (res.data.ret === 200) {
+        $Notify({
+          type: 'success',
+          content: res.data.data.msg
+        })
+      } else {
+        $Notify({
+          type: 'warning',
+          content: res.data.data.msg
+        })
+      }
       this.setData({
-        info: res.data.data
+        value: ''
       })
+      setTimeout(() => {
+        wx.navigateBack()
+      }, 1500);
     })
   },
 
@@ -28,14 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    var _this = this
-    getFont().then((res: boolean) => {
-      if (res) {
-        _this.setData({
-          show: true
-        })
-      }
-    })
+    getFont()
   },
 
   /**
@@ -49,12 +65,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 3
-      })
-    }
-    this.getInfo()
+
   },
 
   /**
@@ -82,7 +93,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    
   },
 
   /**

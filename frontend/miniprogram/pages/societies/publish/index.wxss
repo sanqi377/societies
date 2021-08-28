@@ -1,0 +1,61 @@
+page {
+  background: #fff;
+}
+
+.container {
+  margin: 0 30rpx;
+  margin-top: 15rpx;
+}
+
+.publish {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.value {
+  margin-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.value textarea {
+  width: 100%;
+}
+
+.publish>view {
+  background: #1082ff;
+  color: #fff;
+  font-size: 14px;
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+}
+
+.function {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 30rpx;
+  border-top: 1px solid #8f8f8f;
+}
+
+.function .item {
+  margin-right: 30rpx;
+}
+
+.function .item:last-child {
+  margin-right: 0;
+}
+
+.function .item .icon {
+  display: flex;
+  align-items: center;
+}
+
+.function .item .title {
+  text-align: center;
+  font-size: 13px;
+  color: #8f8f8f;
+}
+
+.function image {
+  width: 55rpx;
+  height: 55rpx;
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "s-notify": "@sanqi377/qui/s-notify/"
+  }
+}

@@ -7,15 +7,30 @@ module.exports = {
      * @param data 
      * @returns 
      */
-    getList(data: any) {
-        let page = data.page || 0
+    async getList(data: any) {
+        let page = data.page || 1
         let limit = data.limit || 10
         let order = data.order ? data.order : "hot"
         let type = data.type ? data.type : "societies"
+        let dynamic
+        let getInfo = (uid: number) => {
+            return db("s_users").where({ id: uid }).find()
+        }
+        let datas: any = []
         if (type === "societies") {
-            return db("s_dynamic").limit(page, limit).order({ [order]: "desc" }).select()
+            dynamic = await db("s_dynamic").limit(page > 1 ? page * limit - limit : 1, page * limit).order({ 'id': 'desc' }).select()
+            for (let key in dynamic) {
+                let info = await getInfo(dynamic[key].uid)
+                dynamic[key].name = info.name
+                dynamic[key].avatar = info.avatar
+                datas.push(dynamic[key])
+            }
         } else {
 
         }
+        return datas
+    },
+    addDynamic(data: object) {
+        return db('s_dynamic').insert(data)
     }
 }
