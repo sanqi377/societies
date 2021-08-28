@@ -83,12 +83,11 @@ class Mysql {
         }
       })
     })
-    if (arr.arrs > 1) {
+    if (arrs.length > 1) {
       this.wheres += " and " + arrs.toString().replace(/,/g, ' and ')
     } else {
-      this.wheres += arrs.toString().replace(/,/g, ' and ')
+      this.wheres = `${Object.keys(arr)[0]} != ${arr.pid}`
     }
-
     return this
   }
   /**
@@ -278,7 +277,7 @@ let querys = (sql: string, type?: string) => {
 //   return new Mysql(table)
 // }
 
-// ini('table').limit(10000, 20000).select()
+// ini("s_menu").whereNo({ pid: 0 }).select()
 
 module.exports = {
   db(table: string) {

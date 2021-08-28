@@ -14,7 +14,7 @@ Page({
   */
   getSocieties() {
     var _this = this
-    ajax('http://localhost:3000/index/class/getClass', { uid: app.globalData.uid }).then((res: any) => {
+    ajax('class/getClass', { uid: app.globalData.uid }).then((res: any) => {
       if (res.data.ret === 200) {
         _this.setData({
           sidebar: res.data.data

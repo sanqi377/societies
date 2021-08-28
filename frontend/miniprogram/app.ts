@@ -36,7 +36,7 @@ App<IAppOption>({
      */
     subscribe(data: object) {
       return new Promise((resolve) => {
-        ajax('http://localhost:3000/index/user/subscribe', data).then((res: any) => {
+        ajax('user/subscribe', data).then((res: any) => {
           resolve(res)
           if (res.data.ret === 200) {
             $Notify({
@@ -61,7 +61,7 @@ App<IAppOption>({
         message: '你确定要取消关注吗？',
         showCancelButton: true
       }).then(() => {
-        ajax('http://localhost:3000/index/user/cancelSubscribe', data).then((res: any) => {
+        ajax('user/cancelSubscribe', data).then((res: any) => {
           if (res.data.ret === 200) {
             $Notify({
               type: 'warning',

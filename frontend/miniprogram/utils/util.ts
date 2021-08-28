@@ -7,7 +7,7 @@ var ajaxHttp = (url: string, data: object) => {
   let token = wx.getStorageSync('token')
   return new Promise((resolve, reject) => {
     wx.request({
-      url: url,
+      url: 'http://localhost:3000/index/' + url,
       method: 'POST',
       data: data,
       header: {

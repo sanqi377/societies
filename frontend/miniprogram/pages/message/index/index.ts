@@ -30,7 +30,7 @@ Page({
   updateMessage() {
     console.log('更新消息列表')
     let _this = this
-    ajax('http://localhost:3000/index/message/getSession', { uid: this.data.uid }).then((res: any) => {
+    ajax('message/getSession', { uid: this.data.uid }).then((res: any) => {
       res.data.data.forEach((item: any) => {
         item.last_datetime = formatMsgTime(item.last_datetime * 1000)
       })
@@ -127,7 +127,7 @@ Page({
           } else {
             item.u_unread += 1
           }
-          ajax('http://localhost:3000/index/message/updateUnread', { fid: item.id, u_unread: item.u_unread, a_unread: item.a_unread })
+          ajax('message/updateUnread', { fid: item.id, u_unread: item.u_unread, a_unread: item.a_unread })
         }
       })
       this.setData({

@@ -21,7 +21,7 @@ Page({
   },
 
   getDynamic(page: number) {
-    ajax('http://localhost:3000/index/dynamic/getList', { page }).then((res: any) => {
+    ajax('dynamic/getList', { page }).then((res: any) => {
       for (let key in res.data.data) {
         res.data.data[key].create_time = formatMsgTime(res.data.data[key].create_time * 1000)
         list.push(res.data.data[key])

@@ -86,7 +86,7 @@ Page({
           ['form.code']: res.code
         })
         if (res.code) {
-          ajax('http://localhost:3000/index/user/reg', data).then((res: any) => {
+          ajax('user/reg', data).then((res: any) => {
             if (res.data.code === 200) {
               wx.setStorage({
                 key: "token",

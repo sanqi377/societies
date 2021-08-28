@@ -13,12 +13,10 @@
   font-size: 14px;
   z-index: 1010;
   opacity: 0;
-  -webkit-transform: translateZ(0) translateY(-100%);
   transition: all .4s ease-in-out
 }
 
 .s-message-show {
-  -webkit-transform: translateZ(0) translateY(0);
   opacity: 1
 }
 

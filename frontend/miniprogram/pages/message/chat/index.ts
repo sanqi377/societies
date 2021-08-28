@@ -47,7 +47,7 @@ Page({
       ['data.send']: e.send,
       ['data.fid']: e.fid
     }, () => {
-      ajax('http://localhost:3000/index/message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
+      ajax('message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
     /**
      * 监听服务端消息返回
@@ -76,7 +76,7 @@ Page({
           })
         })
       }
-      ajax('http://localhost:3000/index/message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
+      ajax('message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
 
     /**
@@ -89,7 +89,7 @@ Page({
    * 获取历史消息
    */
   getHistoryMsg() {
-    ajax('http://localhost:3000/index/message/getHistoryMsg', { fid: this.data.data.fid }).then((res: any) => {
+    ajax('message/getHistoryMsg', { fid: this.data.data.fid }).then((res: any) => {
       this.setData({
         message: res.data.data
       }, () => {

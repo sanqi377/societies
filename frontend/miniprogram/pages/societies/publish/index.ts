@@ -26,7 +26,7 @@ Page({
       uid: app.globalData.uid,
       create_time: Date.parse((new Date() as any)) / 1000
     }
-    ajax('http://localhost:3000/index/dynamic/addDynamic', data).then((res: any) => {
+    ajax('dynamic/addDynamic', data).then((res: any) => {
       if (res.data.ret === 200) {
         $Notify({
           type: 'success',

@@ -41,7 +41,7 @@ Page({
       status: 0,
       apply_time: Date.parse((new Date() as any)) / 1000
     }
-    ajax('http://localhost:3000/index/societies/applySocieties', data).then((res: any) => {
+    ajax('societies/applySocieties', data).then((res: any) => {
       if (res.data.ret === 200) {
         $Notify({
           type: 'success',
@@ -72,7 +72,7 @@ Page({
         })
       }
     })
-    ajax('http://localhost:3000/index/societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
+    ajax('societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
       _this.setData({
         info: res.data.data
       })

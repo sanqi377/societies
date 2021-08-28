@@ -35,7 +35,7 @@ Page({
         })
       }
     })
-    ajax('http://localhost:3000/index/societies/newSocietiesList').then((res: any) => {
+    ajax('societies/newSocietiesList').then((res: any) => {
       this.setData({
         list: res.data.data
       })

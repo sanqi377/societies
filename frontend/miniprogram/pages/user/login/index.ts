@@ -17,7 +17,7 @@ Page({
         wx.login({
           success(res) {
             if (res.code) {
-              ajax('http://localhost:3000/index/user/login', { code: res.code }).then((res: any) => {
+              ajax('user/login', { code: res.code }).then((res: any) => {
                 let code = res.data.code
                 if (code === 201) wx.reLaunch({ url: '/pages/user/reg/index' })
                 if (code === 200) {

@@ -17,7 +17,7 @@ Page({
    * 获取关注粉丝
    */
   getInfo() {
-    ajax('http://localhost:3000/index/user/getInfo', { uid: app.globalData.uid }).then((res: any) => {
+    ajax('user/getInfo', { uid: app.globalData.uid }).then((res: any) => {
       this.setData({
         info: res.data.data
       })

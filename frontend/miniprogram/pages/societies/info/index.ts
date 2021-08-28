@@ -62,7 +62,7 @@ Page({
    */
   getSocietiesInfo() {
     var _this = this
-    ajax('http://localhost:3000/index/societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
+    ajax('societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
       if (res.data.ret === 200) {
         _this.setData({
           info: res.data.data
