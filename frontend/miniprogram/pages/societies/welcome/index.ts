@@ -1,5 +1,5 @@
 export { }
-const { getFont } = require('../../../utils/util')
+const { getFont, ajax } = require('../../../utils/util')
 Page({
 
   /**
@@ -11,6 +11,10 @@ Page({
 
   back() {
     wx.navigateBack()
+  },
+
+  getWelcome() {
+
   },
 
   goInfo() {

@@ -30,7 +30,7 @@
     <textarea focus value="{{value}}" bindinput="getValue" placeholder="在这里输入简短的自我介绍..." maxlength="{{-1}}" />
   </view>
 </view>
-<view class="apply">
+<view class="apply" bindtap="apply">
   <view>申请加入</view>
 </view>
 <loading show="{{show}}" />

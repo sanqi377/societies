@@ -65,5 +65,15 @@ module.exports = {
     model.getHotsSocieties(limit).then((resp: any) => {
       res.send({ ret: 200, data: resp })
     })
+  },
+  /**
+   * 申请加入社团
+   *
+   * @param {*} req
+   * @param {*} res
+   */
+  applySocieties(req: any, res: any) {
+    let data = req.body
+    model.applySocieties(data)
   }
 }

@@ -1,5 +1,6 @@
 export { }
-const { getFont } = require('../../../utils/util')
+const { getFont, ajax } = require('../../../utils/util')
+const app = getApp()
 Page({
 
   /**
@@ -17,6 +18,17 @@ Page({
     this.setData({
       interduce: e.detail.value
     })
+  },
+
+  apply() {
+    // let data = {
+    //   uid: app.globalData.uid,
+    //   societies:
+    //   introduce: this.data.value
+    // }
+    // ajax('http://localhost:3000/index/societies/applySocieties', data).then((res: any) => {
+    //   console.log(res.data)
+    // })
   },
 
   /**
