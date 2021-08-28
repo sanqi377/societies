@@ -9,11 +9,6 @@
   color: #fff;
 }
 
-.head image {
-  width: 16px;
-  height: 16px;
-}
-
 .bg {
   position: absolute;
   top: 0;

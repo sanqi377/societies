@@ -1,10 +1,5 @@
-<capsule title="社团信息" bgClore="{{bgClore}}" />
+<capsule title="社团信息" />
 <view class="container">
-  <!-- <view class="head">
-    <view class="back" bindtap="back">
-      <image src="../../../public/icon/back.png"></image>
-    </view>
-  </view> -->
   <view class="bg">
     <image src="../../../public/img/bg.jpg"></image>
   </view>

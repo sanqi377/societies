@@ -1,20 +1,6 @@
-.container:first-child {
-  padding-top: 55px;
-}
-
 .container {
-  margin: 0 15px;
-}
-
-.head {
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
-}
-
-.head image {
-  width: 16px;
-  height: 16px;
+  margin: 0 30rpx;
+  margin-top: 210rpx;
 }
 
 .bg {

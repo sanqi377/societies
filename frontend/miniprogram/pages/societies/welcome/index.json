@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "loading": "../../../components/loading/index"
+    "loading": "../../../components/loading/index",
+    "capsule": "../../../components/capsule/index"
   },
   "navigationStyle": "custom"
 }

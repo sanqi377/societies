@@ -1,9 +1,5 @@
+<capsule title="迎新主页" />
 <view class="container">
-  <view class="head">
-    <view class="back" bindtap="back">
-      <image src="../../../public/icon/back.png"></image>
-    </view>
-  </view>
   <view class="bg">
     <image src="../../../public/img/bg.jpg"></image>
   </view>

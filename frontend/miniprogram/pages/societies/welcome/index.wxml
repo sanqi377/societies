@@ -1,6 +1,6 @@
+<capsule />
 <view class="top-pic">
   <image class="top" src="../../../public/image/xin-top.png" />
-  <image class="back" src="../../../public/icon/back.png" bindtap="back" />
 </view>
 <view class="container">
   <view class="user-card" wx:for="{{4}}" wx:key="item" bindtap="goInfo">

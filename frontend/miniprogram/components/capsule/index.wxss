@@ -3,6 +3,7 @@
   left: 0;
   width: 100%;
   color: #fff;
+  z-index: 99999;
 }
 
 .header .btns {
