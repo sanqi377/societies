@@ -6,11 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    interduce: ''
   },
 
   back() {
     wx.navigateBack()
+  },
+
+  getValue(e: any) {
+    this.setData({
+      interduce: e.detail.value
+    })
   },
 
   /**

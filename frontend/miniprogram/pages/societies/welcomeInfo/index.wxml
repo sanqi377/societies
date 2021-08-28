@@ -25,6 +25,10 @@
   <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
   <view class="title">加入本社团你可以获得</view>
   <view class="dsc">阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴</view>
+  <view class="title">自我介绍</view>
+  <view class="introduce">
+    <textarea focus value="{{value}}" bindinput="getValue" placeholder="在这里输入简短的自我介绍..." maxlength="{{-1}}" />
+  </view>
 </view>
 <view class="apply">
   <view>申请加入</view>

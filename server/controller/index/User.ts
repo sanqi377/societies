@@ -55,27 +55,6 @@ module.exports = {
   },
 
   /**
-   * 申请加入社团
-   * @param req 
-   * @param res 
-   */
-  applySocieties(req: any, res: any) {
-    let data = req.body
-    model.applySocieties(data).then((resp: any) => {
-      res.send(resp)
-    })
-  },
-
-  /**
-   * 获取用户申请状态
-   */
-  getApplyStatus(req: any, res: any) {
-    let data = req.body
-    model.getApplyStatus(data).then((resp: any) => {
-      res.send(resp)
-    })
-  },
-  /**
    * 获取基本信息
    *
    * @param {*} req
