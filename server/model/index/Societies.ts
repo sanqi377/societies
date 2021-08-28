@@ -66,8 +66,12 @@ module.exports = {
    * 正在纳新的社团
    * @returns 
    */
-  newSocietiesList() {
-    return db("s_societies").where({ welcome_status: 1 }).select()
+  async newSocietiesList() {
+    let societies = await db("s_societies").where({ welcome_status: 1 }).select()
+    let dynamic = (uid: number) => {
+      return db("s_dynamic").where({ welcome_status: 1 }).select()
+    }
+
   },
 
   /**
@@ -75,5 +79,14 @@ module.exports = {
    */
   getHotsSocieties(limit: number) {
     return db("s_societies").order({ 'hots': 'desc' }).limit(limit).select()
+  },
+
+  /**
+   * 申请加入社团
+   *
+   * @param {object} data
+   */
+  applySocieties(data: object) {
+
   }
 }
