@@ -1,7 +1,7 @@
 <view class="container">
   <view class="tabs">
-    <tabs active="{{0}}">
-      <tab title="消息">
+    <s-tabs active="{{0}}">
+      <s-tab title="消息">
         <view class="list">
           <view class="item" wx:for="{{list}}" wx:key="item" data-send="{{uid}}"
             data-accept="{{uid == item.uid ? item.accept : item.uid}}" data-fid="{{item.id}}" bindtap="goChat">
@@ -22,8 +22,8 @@
             <view class="date">{{item.last_datetime}}</view>
           </view>
         </view>
-      </tab>
-      <tab title="通知">通知</tab>
-    </tabs>
+      </s-tab>
+      <s-tab title="通知">通知</s-tab>
+    </s-tabs>
   </view>
 </view>

@@ -1,0 +1,3 @@
+<view class="tab" hidden="{{title === titles[active] ? false : true}}">
+  <slot />
+</view>

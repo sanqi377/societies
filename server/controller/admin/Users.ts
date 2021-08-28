@@ -66,8 +66,8 @@ module.exports = {
   },
   delect(req: any, res: any) {
     let { id } = req.body
-    model.delectUser(id).then((resp:any)=>{
-      res.send({ret:200,data:{msg:"删除成功"}})
+    model.delectUser(id).then((resp: any) => {
+      res.send({ ret: 200, data: { msg: "删除成功" } })
     })
   }
 }
