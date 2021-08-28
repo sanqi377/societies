@@ -65,5 +65,19 @@ module.exports = {
         })
       })
     })
+  },
+  /**
+   * 正在纳新的社团
+   * @returns 
+   */
+  newSocietiesList() {
+    return db("s_societies").where({ welcome_status: 1 }).select()
+  },
+
+  /**
+   * 获取热门社团
+   */
+  getHotsSocieties(limit: number) {
+    return db("s_societies").order({ 'hots': 'desc' }).limit(limit)
   }
 }

@@ -39,10 +39,33 @@ module.exports = {
    */
   addHots(req: any, res: any) {
     let { id } = req.body
-    model.addHots(id).then(() => {
+    model.addHots(id).then((resp: any) => {
       res.send({ ret: 200, data: { msg: "浏览成功" } })
     }).catch((e: any) => {
       res.send({ ret: 201, data: { msg: e.message } })
+    })
+  },
+
+  /**
+   * 正在纳新的社团
+   */
+  newSocietiesList(req: any, res: any) {
+    model.newSocietiesList().then((resp: any) => {
+      if (resp.length != 0) {
+        res.send({ ret: 200, data: resp })
+      } else {
+        res.send({ ret: 200, data: { type: 'error', msg: '当前无正在纳新的社团' } })
+      }
+    })
+  },
+  /**
+   * 获取热门社团
+   */
+
+  getHotsSocieties(req: any, res: any) {
+    let limit = req.body.limit
+    model.getHotsSocieties(limit).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
     })
   }
 }
