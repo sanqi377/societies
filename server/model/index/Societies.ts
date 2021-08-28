@@ -56,15 +56,11 @@ module.exports = {
   /**
    * 增加社团热度
    */
-  addHots(id: number) {
-    return new Promise((resolve) => {
-      db("s_societies").where({ id }).find().then((res: any) => {
-        res.hots++
-        db("s_societies").where({ id }).update({ hots: res.hots }).then((resp: any) => {
-          resolve(resp)
-        })
-      })
-    })
+  async addHots(id: number) {
+    let hots = await db("s_societies").where({ id }).find()
+    hots.hots++
+    let res = await db("s_societies").where({ id }).update({ hots: hots.hots })
+    return res
   },
   /**
    * 正在纳新的社团
@@ -78,6 +74,6 @@ module.exports = {
    * 获取热门社团
    */
   getHotsSocieties(limit: number) {
-    return db("s_societies").order({ 'hots': 'desc' }).limit(limit)
+    return db("s_societies").order({ 'hots': 'desc' }).limit(limit).select()
   }
 }

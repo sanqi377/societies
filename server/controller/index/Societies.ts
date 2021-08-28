@@ -41,8 +41,6 @@ module.exports = {
     let { id } = req.body
     model.addHots(id).then((resp: any) => {
       res.send({ ret: 200, data: { msg: "浏览成功" } })
-    }).catch((e: any) => {
-      res.send({ ret: 201, data: { msg: e.message } })
     })
   },
 
