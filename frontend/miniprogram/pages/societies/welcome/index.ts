@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: []
   },
 
   back() {
@@ -17,9 +17,9 @@ Page({
 
   },
 
-  goInfo() {
+  goInfo(e: any) {
     wx.navigateTo({
-      url: "/pages/societies/welcomeInfo/index"
+      url: "/pages/societies/welcomeInfo/index?id=" + e.currentTarget.dataset.id
     })
   },
 
@@ -34,6 +34,11 @@ Page({
           show: true
         })
       }
+    })
+    ajax('http://localhost:3000/index/societies/newSocietiesList').then((res: any) => {
+      this.setData({
+        list: res.data.data
+      })
     })
   },
 

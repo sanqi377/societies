@@ -43,6 +43,14 @@ module.exports = {
     } else {
       info.fans = false
     }
+    let dynamic = await db('s_dynamic').where({ uid: info.admin }).select()
+    info.dynamic = dynamic.length
+    let status = await db('s_apply_log').where({ uid, societies: id }).find()
+    if (!status) {
+      info.apply = 2
+    } else {
+      info.apply = status.status
+    }
     return info
   },
 
@@ -68,10 +76,15 @@ module.exports = {
    */
   async newSocietiesList() {
     let societies = await db("s_societies").where({ welcome_status: 1 }).select()
-    let dynamic = (uid: number) => {
-      return db("s_dynamic").where({ welcome_status: 1 }).select()
+    for (let key in societies) {
+      let dynamic = await db("s_dynamic").where({ uid: societies[key].admin }).select()
+      let fans = await db("s_subscribe").where({ be_subscribe: societies[key].admin }).select()
+      let department = await db('s_department').where({ id: societies[key].department }).find()
+      societies[key].dynamic = dynamic.length
+      societies[key].fans = fans.length
+      societies[key].department = department.name
     }
-
+    return societies
   },
 
   /**
@@ -87,6 +100,6 @@ module.exports = {
    * @param {object} data
    */
   applySocieties(data: object) {
-
+    return db('s_apply_log').insert(data)
   }
 }

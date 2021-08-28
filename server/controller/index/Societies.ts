@@ -49,10 +49,10 @@ module.exports = {
    */
   newSocietiesList(req: any, res: any) {
     model.newSocietiesList().then((resp: any) => {
-      if (resp.length != 0) {
+      if (resp) {
         res.send({ ret: 200, data: resp })
       } else {
-        res.send({ ret: 200, data: { type: 'error', msg: '当前无正在纳新的社团' } })
+        res.send({ ret: 200, data: { msg: '请求失败' } })
       }
     })
   },
@@ -74,6 +74,12 @@ module.exports = {
    */
   applySocieties(req: any, res: any) {
     let data = req.body
-    model.applySocieties(data)
+    model.applySocieties(data).then((resp: any) => {
+      if (resp) {
+        res.send({ ret: 200, data: { msg: '申请成功' } })
+      } else {
+        res.send({ ret: 201, data: { msg: '申请失败' } })
+      }
+    })
   }
 }

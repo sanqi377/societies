@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-08-28 19:12:14
+Date: 2021-08-28 20:24:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,12 +44,15 @@ CREATE TABLE `s_apply_log` (
   `societies` int(11) DEFAULT NULL COMMENT '社团id',
   `introduce` text COMMENT '自我介绍',
   `apply_time` int(11) DEFAULT NULL COMMENT '申请时间',
+  `status` int(1) DEFAULT NULL COMMENT '1 = 通过，-1 未通过  ，0 审核中',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_apply_log
 -- ----------------------------
+INSERT INTO `s_apply_log` VALUES ('2', '18', '6', '111', '1630152515', '0');
+INSERT INTO `s_apply_log` VALUES ('3', '18', '7', '1111111', '1630153248', '0');
 
 -- ----------------------------
 -- Table structure for s_classification
@@ -109,9 +112,9 @@ CREATE TABLE `s_dynamic` (
 -- Records of s_dynamic
 -- ----------------------------
 INSERT INTO `s_dynamic` VALUES ('1', '18', '测试发布动态', '0', '1629901237');
-INSERT INTO `s_dynamic` VALUES ('2', '18', '再发一条', '0', '1629901237');
+INSERT INTO `s_dynamic` VALUES ('2', '15', '再发一条', '0', '1629901237');
 INSERT INTO `s_dynamic` VALUES ('3', '18', '发第三条', '0', '1629901237');
-INSERT INTO `s_dynamic` VALUES ('4', '18', '好多条了', '0', '1629901237');
+INSERT INTO `s_dynamic` VALUES ('4', '15', '好多条了', '0', '1629901237');
 INSERT INTO `s_dynamic` VALUES ('5', '18', '213231321', '0', '1630143514');
 INSERT INTO `s_dynamic` VALUES ('6', '18', '你阿巴阿巴像个傻瓜', '0', '1630143554');
 INSERT INTO `s_dynamic` VALUES ('7', '18', '小柴睡不醒', '0', '1630143589');
@@ -551,13 +554,13 @@ CREATE TABLE `s_societies` (
 -- ----------------------------
 -- Records of s_societies
 -- ----------------------------
-INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '111', '2', '2', '计算机协会', '4', '0', '2', '15');
-INSERT INTO `s_societies` VALUES ('7', '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', '3', null, '2', '1', '赛复赛', '5', '0', '0', '1');
-INSERT INTO `s_societies` VALUES ('8', '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', null, null, '1', '1', '11', null, null, '0', '2');
-INSERT INTO `s_societies` VALUES ('9', '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', null, null, '2', '1', '11', null, null, '0', '3');
-INSERT INTO `s_societies` VALUES ('11', '5554', '5554', '3', '11', '2', '1', '11', '5', '0', '0', '4');
-INSERT INTO `s_societies` VALUES ('12', 'dsdd', 'dsdsd', '2', '22', '2', '1', '22', '4', '0', '0', '5');
-INSERT INTO `s_societies` VALUES ('13', 'ds', 'dsd', '2', '22', '2', '1', '22', '4', '0', '0', '6');
+INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '111', '2', '2', '计算机协会', '4', '1', '2', '15');
+INSERT INTO `s_societies` VALUES ('7', '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', '3', null, '2', '1', '赛复赛', '5', '1', '0', '1');
+INSERT INTO `s_societies` VALUES ('8', '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', null, null, '1', '1', '11', null, '1', '0', '2');
+INSERT INTO `s_societies` VALUES ('9', '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', null, null, '2', '1', '11', null, '1', '0', '3');
+INSERT INTO `s_societies` VALUES ('11', '5554', '5554', '3', '11', '2', '1', '11', '5', '1', '0', '4');
+INSERT INTO `s_societies` VALUES ('12', 'dsdd', 'dsdsd', '2', '22', '2', '1', '22', '4', '1', '0', '5');
+INSERT INTO `s_societies` VALUES ('13', 'ds', 'dsd', '2', '22', '2', '1', '22', '4', '1', '0', '6');
 
 -- ----------------------------
 -- Table structure for s_societies_type

@@ -8,12 +8,12 @@
       <image src="../../../public/head_pic/avatar.jpg" />
     </view>
     <view class="dsc">
-      <view class="title">计算机协会</view>
-      <view class="department">简介：阿巴阿巴像个傻瓜</view>
+      <view class="title">{{info.name}}</view>
+      <view class="department">简介：{{info.about}}</view>
     </view>
   </view>
   <view class="fan">
-    <view class="count">111 成员 · 2 条动态</view>
+    <view class="count">{{info.number ? info.number : 0}} 成员 · {{info.dynamic}} 条动态</view>
   </view>
 </view>
 <view class="container list">
@@ -30,7 +30,8 @@
     <textarea focus value="{{value}}" bindinput="getValue" placeholder="在这里输入简短的自我介绍..." maxlength="{{-1}}" />
   </view>
 </view>
-<view class="apply" bindtap="apply">
-  <view>申请加入</view>
+<view class="apply {{info.apply === 2 ? '' : 'disable'}}" bindtap="apply">
+  <view>{{info.apply === 2 ? '申请加入' : (info.apply === 1 ? '已通过' : (info.apply === -1 ? '未通过' : (info.apply === 0 ? '审核中' : '其他')))}}</view>
 </view>
 <loading show="{{show}}" />
+<s-notify id="notify" />

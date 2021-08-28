@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "loading": "../../../components/loading/index",
-    "capsule": "../../../components/capsule/index"
+    "capsule": "../../../components/capsule/index",
+    "s-notify": "@sanqi377/qui/s-notify/"
   },
   "navigationStyle": "custom"
 }

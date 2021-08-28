@@ -3,16 +3,16 @@
   <image class="top" src="../../../public/image/xin-top.png" />
 </view>
 <view class="container">
-  <view class="user-card" wx:for="{{4}}" wx:key="item" bindtap="goInfo">
+  <view class="user-card" wx:for="{{list}}" wx:key="item" data-id="{{item.id}}" bindtap="goInfo">
     <view class="user-info">
       <view class="info">
         <view class="avatar">
           <image src="../../../public/head_pic/avatar.jpg" />
         </view>
         <view class="name">
-          <view>计算机协会</view>
+          <view>{{item.name}}</view>
           <view class="id">
-            <span>信息工程系</span>
+            <span>{{item.department}}</span>
           </view>
         </view>
       </view>
@@ -23,19 +23,19 @@
     </view>
     <view class="user-show">
       <view class="item">
-        <view class="num">5</view>
+        <view class="num">{{item.dynamic}}</view>
         <view class="information">动态</view>
       </view>
       <view class="item">
-        <view class="num">20</view>
+        <view class="num">{{item.fans}}</view>
         <view class="information">粉丝</view>
       </view>
       <view class="item">
-        <view class="num">2</view>
+        <view class="num">{{item.number ? item.number : 0}}</view>
         <view class="information">成员</view>
       </view>
       <view class="item">
-        <view class="num">210</view>
+        <view class="num">{{item.hots}}</view>
         <view class="information">热度</view>
       </view>
     </view>
