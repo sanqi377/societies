@@ -11,17 +11,17 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 27/08/2021 16:04:17
+ Date: 28/08/2021 12:51:26
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for s_activity
+-- Table structure for s_active
 -- ----------------------------
-DROP TABLE IF EXISTS `s_activity`;
-CREATE TABLE `s_activity`  (
+DROP TABLE IF EXISTS `s_active`;
+CREATE TABLE `s_active`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '活动id',
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '活动标题',
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '活动内容',
@@ -33,8 +33,26 @@ CREATE TABLE `s_activity`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of s_activity
+-- Records of s_active
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for s_apply
+-- ----------------------------
+DROP TABLE IF EXISTS `s_apply`;
+CREATE TABLE `s_apply`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `societies_id` int(11) NULL DEFAULT NULL,
+  `introduction` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '申请理由',
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '申请状态：0为以申请 1为已通过',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of s_apply
+-- ----------------------------
+INSERT INTO `s_apply` VALUES (1, 5, 6, '测试', '1');
 
 -- ----------------------------
 -- Table structure for s_classification
@@ -78,6 +96,29 @@ INSERT INTO `s_department` VALUES (6, '车辆工程系');
 INSERT INTO `s_department` VALUES (7, '经济管理系');
 
 -- ----------------------------
+-- Table structure for s_dynamic
+-- ----------------------------
+DROP TABLE IF EXISTS `s_dynamic`;
+CREATE TABLE `s_dynamic`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `avatart` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_time` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `like` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `societies_id` int(11) NULL DEFAULT NULL,
+  `hots` int(255) NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of s_dynamic
+-- ----------------------------
+INSERT INTO `s_dynamic` VALUES (1, 'svanrj', 'http://www.baidu.com', '16000000', '测试', '10', '20', 5, 6, 0);
+
+-- ----------------------------
 -- Table structure for s_interest
 -- ----------------------------
 DROP TABLE IF EXISTS `s_interest`;
@@ -86,12 +127,13 @@ CREATE TABLE `s_interest`  (
   `user_id` int(11) NOT NULL COMMENT '用户id',
   `societies_id` int(11) NOT NULL COMMENT '社团id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of s_interest
 -- ----------------------------
 INSERT INTO `s_interest` VALUES (1, 5, 6);
+INSERT INTO `s_interest` VALUES (2, 5, 7);
 
 -- ----------------------------
 -- Table structure for s_menu
@@ -181,7 +223,7 @@ CREATE TABLE `s_role`  (
 -- ----------------------------
 -- Records of s_role
 -- ----------------------------
-INSERT INTO `s_role` VALUES (3, '超级管理', '17:88:92:93:91', '最高管理人员', 1, 3, '1629551540226');
+INSERT INTO `s_role` VALUES (3, '超级管理', '17:65:45:46:74:75:76:88:92:93:91', '最高管理人员', 1, 3, '1629551540226');
 INSERT INTO `s_role` VALUES (4, '测试', '17:37:40:78:65:45:46:88:92:93', '测试', 1, 3, '1629965660393');
 
 -- ----------------------------
@@ -212,9 +254,9 @@ CREATE TABLE `s_societies`  (
 -- ----------------------------
 -- Records of s_societies
 -- ----------------------------
-INSERT INTO `s_societies` VALUES (6, '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', 2, 111, '2', 2, '计算机协会', 4, 0, 2);
-INSERT INTO `s_societies` VALUES (7, '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', 3, NULL, '2', 1, '赛复赛', 5, 0, 0);
-INSERT INTO `s_societies` VALUES (8, '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', NULL, NULL, '1', 1, '11', NULL, NULL, 0);
+INSERT INTO `s_societies` VALUES (6, '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', 2, 111, '2', 2, '计算机协会', 4, 1, 16);
+INSERT INTO `s_societies` VALUES (7, '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', 3, NULL, '2', 1, '赛复赛', 5, 1, 7);
+INSERT INTO `s_societies` VALUES (8, '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', NULL, NULL, '1', 1, '11', NULL, NULL, 10);
 INSERT INTO `s_societies` VALUES (9, '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', NULL, NULL, '2', 1, '11', NULL, NULL, 0);
 INSERT INTO `s_societies` VALUES (11, '5554', '5554', 3, 11, '2', 1, '11', 5, 0, 0);
 INSERT INTO `s_societies` VALUES (12, 'dsdd', 'dsdsd', 2, 22, '2', 1, '22', 4, 0, 0);

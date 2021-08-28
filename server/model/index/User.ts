@@ -53,4 +53,51 @@ module.exports = {
     }
     return send
   },
+
+  /**
+   * 申请加入社团
+   * @param data 
+   */
+  async applySocieties(data: any) {
+    let apply = await db('s_apply').where({ user_id: data.uid, societies_id: data.societiesId }).find()
+    let send = {
+      ret: 200,
+      msg: '申请成功'
+    }
+    if (apply) {
+      send = {
+        ret: 200,
+        msg: '已经申请过了，请耐心等待'
+      }
+    } else {
+      await db("s_apply").insert({ user_id: data.uid, societies_id: data.societiesId, introduction: data.introduction })
+    }
+    return send
+  },
+
+  /**
+   * 查询当前社团申请状态
+   */
+
+  async getApplyStatus(data:any){
+   let apply= await db('s_apply').where({ user_id: data.uid, societies_id: data.societiesId }).find()
+   let send = {
+    ret: 200,
+    msg: '立即申请'
+  }
+    if(apply){
+      if(apply.status==0){
+        send = {
+          ret: 200,
+          msg: '已申请'
+        }
+      }else{
+        send = {
+          ret: 200,
+          msg: '已通过'
+        }
+      }
+    }
+    return send
+  }
 }
