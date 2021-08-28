@@ -1,6 +1,6 @@
 <view class="container">
   <view class="icon">
-    <image src="../../public/image/search.png" />
+    <image src="../../public/icon/search.png" />
   </view>
   <view class="input">
     <input type="text" placeholder="搜索你感兴趣的社团吧..." />

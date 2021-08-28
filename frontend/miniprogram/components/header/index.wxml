@@ -10,7 +10,7 @@
       <view class="name">叁柒</view>
     </view>
     <view class="icon" bindtap="goNotify">
-      <image src="../../public/image/notify.png" />
+      <image src="../../public/icon/notify.png" />
     </view>
   </view>
 </view>

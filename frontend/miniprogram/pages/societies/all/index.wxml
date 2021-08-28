@@ -2,7 +2,7 @@
   <s-search />
   <view class="create">
     <view class="title">
-      <image class="icon" src="../../../public/image/fan.png" />
+      <image class="icon" src="../../../public/icon/fan.png" />
       <view>新建社团</view>
     </view>
     <view class="subtitle">快点创建专属于你的社团</view>

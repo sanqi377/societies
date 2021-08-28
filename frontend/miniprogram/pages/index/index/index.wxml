@@ -42,7 +42,7 @@
       <view class="head">
         <view class="info">
           <view class="logo">
-            <image src="../../../public/image/logo.jpg" />
+            <image src="../../../public/head_pic/avatar.jpg" />
           </view>
           <view class="information">
             <view class="name">
@@ -54,7 +54,7 @@
         </view>
         <view class="fan">
           <view>
-            <image src="../../../public/image/fan.png" />
+            <image src="../../../public/icon/fan.png" />
             关注
           </view>
         </view>

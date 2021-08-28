@@ -4,7 +4,7 @@
       <image src="../../../../../public/icon/back.png" />
     </view>
     <view class="index" bindtap="index">
-      <image src="../../../../../public/image/header-index.png" />
+      <image src="../../../../../public/icon/index.png" />
     </view>
   </view>
   <view class="title">{{title}}</view>

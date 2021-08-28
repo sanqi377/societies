@@ -83,7 +83,12 @@ class Mysql {
         }
       })
     })
-    this.wheres += " and " + arrs.toString().replace(/,/g, ' and ')
+    if (arr.arrs > 1) {
+      this.wheres += " and " + arrs.toString().replace(/,/g, ' and ')
+    } else {
+      this.wheres += arrs.toString().replace(/,/g, ' and ')
+    }
+
     return this
   }
   /**

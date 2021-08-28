@@ -4,7 +4,7 @@
       <view class="info">
         <view class="name">
           <view class="icon">
-            <image src="../../../public/image/notify_s.png" />
+            <image src="../../../public/icon/notify_s.png" />
           </view>
           <view>创客项目大赛</view>
         </view>
@@ -14,7 +14,7 @@
       <view class="detail">
         <view>查看详情</view>
         <view>
-          <image src="../../../public/image/right.png" />
+          <image src="../../../public/icon/right.png" />
         </view>
       </view>
     </view>

@@ -25,7 +25,7 @@
         <view style="display: {{item.fans ? 'none' : 'flex'}}" class="fan" data-index="{{idx}}"
           data-be_subscribe="{{item.admin}}" catchtap="subscribe">
           <view>
-            <image src="../../public/image/fan.png" />
+            <image src="../../public/icon/fan.png" />
             <span>关注</span>
           </view>
         </view>

@@ -8,7 +8,7 @@
   <view class="function">
     <view class="item">
       <view class="icon">
-        <image src="../../../public/image/picture.png" />
+        <image src="../../../public/icon/picture.png" />
       </view>
       <view class="title">
         图片

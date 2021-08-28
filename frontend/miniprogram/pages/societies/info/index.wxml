@@ -1,7 +1,7 @@
 <capsule title="社团信息" />
 <view class="container">
   <view class="bg">
-    <image src="../../../public/img/bg.jpg"></image>
+    <image src="../../../public/image/bg.jpg"></image>
   </view>
   <view class="info">
     <view class="logo">
@@ -20,7 +20,7 @@
       <view style="display:{{info.fans?'flex':'none'}};" class="gz" data-be_subscribe="{{info.admin}}"
         bindtap="cancelSubscribe">取消关注</view>
       <view class="share">
-        <image src="../../../public/image/share.png" />
+        <image src="../../../public/icon/share.png" />
       </view>
     </view>
   </view>
@@ -30,7 +30,7 @@
     <view class="name">社团成员</view>
     <view class="more">
       <span>查看更多</span>
-      <image src="../../../public/icon/more.png"></image>
+      <image src="../../../public/icon/right.png"></image>
     </view>
   </view>
   <view class="group">

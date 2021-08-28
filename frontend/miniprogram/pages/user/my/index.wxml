@@ -11,14 +11,14 @@
         <view class="name">
           <view>{{info.name}}</view>
           <view class="id">
-            <image src="../../../public/image/user-id.png" />
+            <image src="../../../public/icon/user-id.png" />
             <span>学号：{{info.student_id}}</span>
           </view>
         </view>
       </view>
       <view class="index">
         <span>个人主页</span>
-        <image src="../../../public/icon/more.png" />
+        <image src="../../../public/icon/right.png" />
       </view>
     </view>
     <view class="user-show">
@@ -43,41 +43,41 @@
   <view class="list card">
     <view class="item">
       <view class="main">
-        <image src="../../../public/image/user-task.png" />
+        <image src="../../../public/icon/user-task.png" />
         <view>我的任务</view>
       </view>
       <view class="more">
-        <image src="../../../public/image/right.png" />
+        <image src="../../../public/icon/right.png" />
       </view>
     </view>
 
     <view class="item">
       <view class="main">
-        <image src="../../../public/image/user-dynamic.png" />
+        <image src="../../../public/icon/user-dynamic.png" />
         <view>全部动态</view>
       </view>
       <view class="more">
-        <image src="../../../public/image/right.png" />
+        <image src="../../../public/icon/right.png" />
       </view>
     </view>
 
     <view class="item">
       <view class="main">
-        <image src="../../../public/image/user-societies.png" />
+        <image src="../../../public/icon/user-societies.png" />
         <view>我的社团</view>
       </view>
       <view class="more">
-        <image src="../../../public/image/right.png" />
+        <image src="../../../public/icon/right.png" />
       </view>
     </view>
 
     <view class="item">
       <view class="main">
-        <image src="../../../public/image/user-about.png" />
+        <image src="../../../public/icon/user-about.png" />
         <view>关于我们</view>
       </view>
       <view class="more">
-        <image src="../../../public/image/right.png" />
+        <image src="../../../public/icon/right.png" />
       </view>
     </view>
   </view>
