@@ -4,7 +4,7 @@
   <s-tabs active="{{1}}">
     <s-tab title="关注">关注</s-tab>
     <s-tab title="推荐">
-      <view class="dynamic-card" wx:for="{{list}}" wx:key="item">
+      <view class="dynamic-card" wx:for="{{list}}" wx:for-index="idx" wx:key="item">
         <view class="head">
           <view class="info">
             <view class="avatar">
@@ -15,8 +15,18 @@
               <view class="date">{{item.create_time}}</view>
             </view>
           </view>
-          <view class="more">
-            <image src="../../../public/icon/more.png" />
+          <view style="display: {{item.fans ? 'none' : 'flex'}}" class="fan" data-index="{{idx}}"
+            data-be_subscribe="{{item.uid}}" bindtap="subscribe">
+            <view>
+              <image src="../../../public/icon/fan.png" />
+              <span>关注</span>
+            </view>
+          </view>
+          <view style="display: {{item.fans ? 'flex' : 'none'}}" class="fan" data-index="{{idx}}"
+            data-be_subscribe="{{item.uid}}" bindtap="cancelSubscribe">
+            <view style="border: 1px solid #ccc;background-color:#fff;color: #000;">
+              <span>已关注</span>
+            </view>
           </view>
         </view>
         <view class="main">{{item.value}}</view>
@@ -44,3 +54,5 @@
     <image src="../../../public/icon/publish.png" />
   </view>
 </view>
+<s-notify id="notify" />
+<s-dialog id="dialog" />

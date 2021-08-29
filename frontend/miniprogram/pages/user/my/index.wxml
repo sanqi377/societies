@@ -6,7 +6,7 @@
     <view class="user-info">
       <view class="info">
         <view class="avatar">
-          <image src="../../../public/head_pic/avatar.jpg" />
+          <image src="{{info.avatar}}" />
         </view>
         <view class="name">
           <view>{{info.name}}</view>

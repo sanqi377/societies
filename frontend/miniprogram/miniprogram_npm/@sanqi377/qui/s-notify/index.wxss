@@ -1,24 +1,24 @@
 .s-message {
   display: block;
-  width: 100%;
+  width: 30%;
   min-height: 32px;
   line-height: 2.3;
   position: fixed;
-  top: -32px;
-  left: 0;
-  right: 0;
+  right: -100%;
   background: #2d8cf0;
   color: #fff;
   text-align: center;
   font-size: 14px;
   z-index: 1010;
   opacity: 0;
-  transition: all .4s ease-in-out
+  transition: all .4s ease-in-out;
+  border-radius: 16rpx;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
 }
 
 .s-message-show {
-  top: 0;
-  opacity: 1
+  opacity: 1;
+  right: 30rpx;
 }
 
 .default {

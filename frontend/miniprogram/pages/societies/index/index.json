@@ -2,7 +2,9 @@
   "usingComponents": {
     "s-tabs": "@sanqi377/qui/s-tabs/",
     "s-tab": "@sanqi377/qui/s-tab/",
-    "loading": "../../../components/loading/index"
+    "loading": "../../../components/loading/index",
+    "s-notify": "@sanqi377/qui/s-notify/",
+    "s-dialog": "@sanqi377/qui/s-dialog/"
   },
   "navigationStyle": "custom",
   "enablePullDownRefresh": true

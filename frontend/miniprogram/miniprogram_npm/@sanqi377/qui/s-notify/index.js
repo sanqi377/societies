@@ -13,7 +13,8 @@ var default_data = {
     visible: false,
     content: '',
     duration: 2,
-    type: 'default', // default || success || warning || error
+    type: 'default',
+    bottom: wx.getSystemInfoSync().screenHeight - (wx.getMenuButtonBoundingClientRect().top + wx.getMenuButtonBoundingClientRect().height + 40)
 };
 var timmer = 0;
 Component({

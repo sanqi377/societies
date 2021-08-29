@@ -24,10 +24,15 @@ module.exports = {
    */
   subscribe(data: any) {
     return new Promise((resolve) => {
+      if (data.subscribe === data.be_subscribe) {
+        resolve({ ret: 201, msg: '不能关注自己' })
+        return
+      }
       db('s_subscribe').where({ subscribe: data.subscribe, be_subscribe: data.be_subscribe }).find().then((res: any) => {
         if (res) {
           resolve({ ret: 201, msg: '不能重复关注' })
         } else {
+          console.log(11)
           db('s_subscribe').insert(data).then(() => {
             resolve({ ret: 200, msg: '关注成功' })
           })

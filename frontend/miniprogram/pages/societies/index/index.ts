@@ -1,5 +1,6 @@
 export { }
 const { ajax, formatMsgTime } = require('../../../utils/util')
+const app = getApp()
 let list: any = []
 let count = 0
 let isBottom = false
@@ -21,10 +22,49 @@ Page({
     })
   },
 
+  /**
+     * 关注
+     * @param e 
+     */
+  subscribe(e: any) {
+    let index = e.currentTarget.dataset.index
+    let data = {
+      subscribe: app.globalData.uid,
+      be_subscribe: e.currentTarget.dataset.be_subscribe,
+      update_time: Date.parse((new Date() as any)) / 1000
+    }
+    app.globalData.subscribe(data).then(() => {
+      this.data.list[index].fans = true
+      this.setData({
+        list: this.data.list
+      })
+    })
+  },
+
+  /**
+     * 取消关注
+     * @param e 
+     */
+  cancelSubscribe(e: any) {
+    let index = e.currentTarget.dataset.index
+    let data = {
+      subscribe: app.globalData.uid,
+      be_subscribe: e.currentTarget.dataset.be_subscribe,
+    }
+    app.globalData.unSubscribe({
+      data, success: () => {
+        this.data.list[index].fans = false
+        this.setData({
+          list: this.data.list
+        })
+      }
+    })
+  },
+
   getDynamic() {
     count++
     if (!isBottom) {
-      ajax('Dynamic/getList', { page: count }).then((res: any) => {
+      ajax('Dynamic/getList', { uid: app.globalData.uid, page: count }).then((res: any) => {
         wx.stopPullDownRefresh()
         if (res.data.data.length > 0) {
           for (let key in res.data.data) {

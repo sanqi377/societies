@@ -76,6 +76,25 @@
   margin-right: 10rpx;
 }
 
+.dynamic-card .fan {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.dynamic-card .fan image {
+  width: 10px;
+  height: 10px;
+  margin-right: 3px;
+}
+
+.dynamic-card .fan>view {
+  background: #276EF9;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
 .publish {
   position: fixed;
   bottom: 250rpx;

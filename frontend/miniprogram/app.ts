@@ -38,8 +38,8 @@ App<IAppOption>({
     subscribe(data: object) {
       return new Promise((resolve) => {
         ajax('user/subscribe', data).then((res: any) => {
-          resolve(res)
           if (res.data.ret === 200) {
+            resolve(res)
             $Notify({
               type: 'success',
               content: res.data.msg
