@@ -1,7 +1,7 @@
 <capsule title="迎新主页" />
 <view class="container">
   <view class="bg">
-    <image src="../../../public/img/bg.jpg"></image>
+    <image src="../../../public/image/bg.jpg"></image>
   </view>
   <view class="info">
     <view class="logo">
@@ -33,5 +33,4 @@
 <view class="apply {{info.apply === 2 ? '' : 'disable'}}" bindtap="apply">
   <view>{{info.apply === 2 ? '申请加入' : (info.apply === 1 ? '已通过' : (info.apply === -1 ? '未通过' : (info.apply === 0 ? '审核中' : '其他')))}}</view>
 </view>
-<loading show="{{show}}" />
 <s-notify id="notify" />

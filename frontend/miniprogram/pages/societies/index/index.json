@@ -4,5 +4,6 @@
     "s-tab": "@sanqi377/qui/s-tab/",
     "loading": "../../../components/loading/index"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true
 }

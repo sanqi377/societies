@@ -1,4 +1,4 @@
-var { Verification } = require("../../util/jwt")
+var { Verification } = require("../../util/Jwt")
 var { setting } = require("../../config/setting")
 var noAuth = setting.index.noAuth
 var init = (app: any) => {

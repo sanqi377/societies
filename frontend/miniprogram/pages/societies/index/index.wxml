@@ -44,4 +44,3 @@
     <image src="../../../public/icon/publish.png" />
   </view>
 </view>
-<loading show="{{show}}" />

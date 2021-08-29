@@ -18,7 +18,8 @@ module.exports = {
         }
         let datas: any = []
         if (type === "societies") {
-            dynamic = await db("s_dynamic").limit(page > 1 ? page * limit - limit : 1, page * limit).order({ 'id': 'desc' }).select()
+            dynamic = await db("s_dynamic").limit(page > 1 ? page * limit - limit : 0, limit).order({ 'id': 'desc' }).select()
+            console.log(dynamic.length)
             for (let key in dynamic) {
                 let info = await getInfo(dynamic[key].uid)
                 dynamic[key].name = info.name

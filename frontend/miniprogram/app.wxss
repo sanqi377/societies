@@ -1,4 +1,6 @@
+@import './public/css/font.wxss';
+
 page {
   background: #f5f7f9;
-  font-family: "PingFang";
+  font-family: 'Noto Sans SC', sans-serif;
 }

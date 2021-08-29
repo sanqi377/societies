@@ -1,5 +1,5 @@
 export { }
-const { getFont, ajax } = require('../../../utils/util')
+const { ajax } = require('../../../utils/util')
 Page({
 
   /**
@@ -27,14 +27,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    var _this = this
-    getFont().then((res: boolean) => {
-      if (res) {
-        _this.setData({
-          show: true
-        })
-      }
-    })
     ajax('societies/newSocietiesList').then((res: any) => {
       this.setData({
         list: res.data.data

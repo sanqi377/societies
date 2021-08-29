@@ -1,4 +1,4 @@
-var { Verification } = require("../../util/jwt");
+var { Verification } = require("../../util/Jwt");
 var init = (app: any) => {
   app.use('/admin', (req: any, res: any, next: any) => {
     let token = req.headers.authorization

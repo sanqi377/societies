@@ -1,5 +1,5 @@
 export { }
-const { getFont, ajax } = require('../../../utils/util')
+const {  ajax } = require('../../../utils/util')
 const { io, monitor } = getApp().globalData
 Page({
   data: {
@@ -78,11 +78,6 @@ Page({
       }
       ajax('message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
-
-    /**
-     * 加载网络字体
-     */
-    getFont()
   },
 
   /**

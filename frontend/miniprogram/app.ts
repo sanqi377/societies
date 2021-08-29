@@ -1,6 +1,7 @@
 export { }
 let io = wx.connectSocket({
-  url: 'ws://127.0.0.1:3001',
+  // url: 'wss://wss.zhouwaizai.club/wss',
+  url: 'ws://localhost:3001',
   success: () => {
     console.log('socket 连接成功')
   }
