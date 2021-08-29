@@ -62,4 +62,3 @@
     </view>
   </view>
 </view>
-<loading show="{{show}}" />

@@ -1,7 +1,5 @@
 export { }
 
-const { getFont } = require('../../../utils/util')
-
 Page({
   data: {
     info: {
@@ -13,14 +11,6 @@ Page({
     },
   },
   onLoad() {
-    var _this = this
-    getFont().then((res: boolean) => {
-      if (res) {
-        _this.setData({
-          show: true
-        })
-      }
-    })
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

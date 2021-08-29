@@ -27,7 +27,7 @@
     "scopeDataCheck": false,
     "uglifyFileName": false,
     "checkInvalidKey": true,
-    "checkSiteMap": true,
+    "checkSiteMap": false,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
@@ -54,6 +54,6 @@
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "appid": "wxe9cf93cfd4b2619f",
+  "appid": "wxecc6a5f0450d91ca",
   "condition": {}
 }

@@ -33,21 +33,6 @@ var checkLogin: any = () => {
   return true
 }
 
-/**
- * 加载网络字体
- * @returns 
- */
-var getFont = () => {
-  return new Promise((resolve) => {
-    wx.loadFontFace({
-      family: 'PingFang',
-      source: 'url("http://localhost:3000/index/index/getFont")',
-      success: () => {
-        resolve(true)
-      }
-    })
-  })
-}
 
 let formatMsgTime = (timespan: any) => {
 
@@ -88,6 +73,5 @@ let formatMsgTime = (timespan: any) => {
 module.exports = {
   ajax: ajaxHttp,
   checkLogin,
-  getFont,
   formatMsgTime
 }

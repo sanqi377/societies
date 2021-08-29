@@ -260,7 +260,6 @@ class Mysql {
  * @returns 
  */
 let querys = (sql: string, type?: string) => {
-  console.log(sql)
   return new Promise((resolve, reject) => {
     connection.query(sql, (err: any, res: any) => {
       if (err) {

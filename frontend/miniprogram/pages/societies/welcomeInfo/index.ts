@@ -1,5 +1,5 @@
 export { }
-const { getFont, ajax } = require('../../../utils/util')
+const {  ajax } = require('../../../utils/util')
 const app = getApp()
 let id: number
 const { $Notify } = require('@sanqi377/qui/s-notify/notify')
@@ -65,13 +65,6 @@ Page({
   onLoad(e: any) {
     id = e.id
     let _this = this
-    getFont().then((res: boolean) => {
-      if (res) {
-        _this.setData({
-          show: true
-        })
-      }
-    })
     ajax('societies/getSocietiesInfo', { id, uid: app.globalData.uid }).then((res: any) => {
       _this.setData({
         info: res.data.data

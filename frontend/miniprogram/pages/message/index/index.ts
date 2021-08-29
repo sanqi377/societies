@@ -1,5 +1,5 @@
 export { }
-const { getFont, ajax, formatMsgTime } = require('../../../utils/util')
+const {ajax, formatMsgTime } = require('../../../utils/util')
 const { wlecome, monitor, io } = getApp().globalData
 Page({
 
@@ -72,11 +72,6 @@ Page({
     this.setData({
       uid
     })
-
-    /**
-     * 加载网络字体
-     */
-    getFont()
 
     /**
      * 监听服务端消息返回

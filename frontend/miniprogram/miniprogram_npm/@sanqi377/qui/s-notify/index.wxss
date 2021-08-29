@@ -4,7 +4,7 @@
   min-height: 32px;
   line-height: 2.3;
   position: fixed;
-  top: 0;
+  top: -32px;
   left: 0;
   right: 0;
   background: #2d8cf0;
@@ -17,6 +17,7 @@
 }
 
 .s-message-show {
+  top: 0;
   opacity: 1
 }
 

@@ -1,5 +1,5 @@
 export { }
-const { getFont, ajax } = require('../../../utils/util')
+const { ajax } = require('../../../utils/util')
 const app = getApp()
 const { $Notify } = require('@sanqi377/qui/s-notify/notify')
 Page({
@@ -51,7 +51,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    getFont()
   },
 
   /**
@@ -93,7 +92,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    
+
   },
 
   /**

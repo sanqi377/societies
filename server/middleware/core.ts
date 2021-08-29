@@ -4,7 +4,7 @@ var init = (app: any) => {
     res.header("Access-Control-Allow-Headers", "*");
     res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
     if (req.method.toLowerCase() == 'options')
-    res.sendStatus(200);
+      res.sendStatus(200);
     else
       next();
   });
