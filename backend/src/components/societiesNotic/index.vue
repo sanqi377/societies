@@ -2,7 +2,8 @@
     <el-drawer
         title="公告管理"
         :visible="show"
-        size="80%"
+        size="75%"
+        direction="btt"
         :before-close="handleClose"
     >
         <el-card shadow="never">
@@ -130,9 +131,6 @@ export default {
                 .then((res) => {
                     this.data = res;
                 });
-        },
-        handleClose() {
-            this.$emit("handleClose", !this.show);
         },
         /**
          * 添加公告

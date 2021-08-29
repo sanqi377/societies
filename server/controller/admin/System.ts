@@ -16,7 +16,8 @@ module.exports = {
    */
 
   getAllMenu(req:any,res:any){
-    model.getAllMenu().then((resp:any)=>{
+    let status=req.body.status
+    model.getAllMenu(status).then((resp:any)=>{
       res.send({ret:200,data:resp})
     })
   },

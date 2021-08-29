@@ -96,5 +96,28 @@ module.exports = {
    */
   deleteClassification(id: number) {
     return db('s_classification').where({ id }).delete()
+  },
+  /**
+   * 获取当前社团申请用户
+   */
+  async getApply(id: number) {
+    let apply = await db('s_apply_log').where({ societies: id, status: 0 }).select()
+    let user = await db('s_users').select()
+
+    apply.forEach((el: any) => {
+      user.forEach((element: any) => {
+        if (element.id == el.uid) {
+          el.user = element
+        }
+      });
+    });
+    return apply
+  },
+
+  /**
+   * 同意用户加入社团
+   */
+  applyResult(data: any) {
+    return db('s_apply_log').where({id:data.id,}).update({status:data.status})
   }
 }

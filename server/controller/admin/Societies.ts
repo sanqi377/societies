@@ -133,7 +133,7 @@ module.exports = {
         }
       })
     } else {
-      model.getClassification({name:data.name}).then((result: any) => {
+      model.getClassification({ name: data.name }).then((result: any) => {
         if (result) {
           res.send({ ret: 201, data: { msg: "当前分类已存在" } })
         } else {
@@ -149,6 +149,11 @@ module.exports = {
       })
     }
   },
+  /**
+   * 删除社团分类
+   * @param req 
+   * @param res 
+   */
   deleteClassification(req: any, res: any) {
     let { id } = req.body
     model.deleteClassification(id).then((resp: any) => {
@@ -157,8 +162,27 @@ module.exports = {
       } else {
         res.send({ ret: 200, data: { type: 'error', msg: '服务器错误' } })
       }
-    }).catch((e:any)=>{
+    }).catch((e: any) => {
       res.send({ ret: 200, data: { type: 'error', msg: '删除失败，请先移除分类下社团' } })
+    })
+  },
+
+  /**
+   * 获取当前申请社团的用户
+   */
+  getApply(req: any, res: any) {
+    let { id }=req.body
+    model.getApply(id).then((resp:any)=>{
+      res.send({ret:200,data:resp})
+    })
+  },
+  /**
+   * 同意用户加入
+   */
+  applyResult(req:any,res:any){
+    let data=req.body
+    model.applyResult(data).then((resp:any)=>{
+      res.send({ret:200,data:{msg:'操作成功'}})
     })
   }
 }

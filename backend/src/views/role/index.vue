@@ -314,7 +314,7 @@ export default {
     },
     getMenu() {
       this.$api.system
-        .getAllMenu()
+        .getAllMenu({status:1})
         .then((res) => {
           this.loading = false;
           this.options = res;

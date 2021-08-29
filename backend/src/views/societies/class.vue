@@ -218,7 +218,7 @@ import Treeselect from "@riophae/vue-treeselect"; // 下拉树
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
 export default {
-  name: "SysMenu",
+  name: "SocClass",
   components: { Treeselect },
   data() {
     return {
