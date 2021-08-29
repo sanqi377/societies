@@ -37,8 +37,8 @@ const api = {
     getDefaultEditor: () => {
       return ajax.post("system/getDefaultEditor");
     },
-    getAllMenu: () => {
-      return ajax.post("system/getallmenu");
+    getAllMenu: (param) => {
+      return ajax.post("system/getallmenu",param);
     },
   },
   menu: {

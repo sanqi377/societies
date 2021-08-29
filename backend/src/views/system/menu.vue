@@ -301,7 +301,7 @@ export default {
         query() {
             this.loading = true;
             this.$api.system
-                .getAllMenu({role:store.state.userinfo.role})
+                .getAllMenu()
                 .then((res) => {
                     this.loading = false;
                     this.data = this.$util.toTreeData(res, "id", "pid");

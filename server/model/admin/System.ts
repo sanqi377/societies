@@ -110,19 +110,25 @@ module.exports = {
   /**
    * 获取所有子类菜单
    */
-  getAllMenu() {
-    return new Promise((resolve) => {
-      db('s_menu').where({ status: 1, pid: 0 }).select().then((res: any) => {
-        for (let i = 0; i < res.length; i++) {
-          db("s_menu").where({ pid: res[i].id, status: 1 }).select().then((resp: any) => {
-            res[i].children=resp;
-            if (res.length-1 == i) {
-              resolve(res)
-            }
-          })
+  async getAllMenu(status: number) {
+    let menu, children: any
+    if (status) {
+      menu = await db('s_menu').where({ pid: 0, status: status }).select()
+      children = await db("s_menu").where({status:status}).select()
+    } else {
+      menu = await db('s_menu').where({ pid: 0 }).select()
+      children = await db("s_menu").whereNo({ pid: 0 }).select()
+    }
+    menu.forEach((ele: any) => {
+      let childrens: any = []
+      children.forEach((el: any) => {
+        if (ele.id == el.pid) {
+          childrens.push(el)
         }
-      })
-    })
+      });
+      ele.children = childrens
+    });
+    return menu
   },
   /**
    * 后台删除菜单

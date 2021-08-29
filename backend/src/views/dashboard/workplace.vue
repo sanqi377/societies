@@ -53,7 +53,7 @@
                 <el-card shadow="hover" body-style="padding:0;">
                     <div
                         class="app-link-block"
-                        @click="$router.push('/system/user')"
+                        @click="$router.push('/role/index')"
                     >
                         <i class="app-link-icon el-icon-user"></i>
                         <div class="app-link-title">用户</div>
