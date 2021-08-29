@@ -18,7 +18,7 @@
             <div class="two">副会长：柯南</div>
           </div>
           <div style="padding: 14px" class="enter">
-            <el-button type="primary" @click="$router.push('/societies/details/1')">进入管理</el-button>
+            <el-button type="primary" @click="$router.push('/societies/details/'+item.id)">进入管理</el-button>
           </div>
         </el-col>
       </el-card>

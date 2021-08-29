@@ -196,6 +196,18 @@ const api = {
     deleteClassification: (param) => {
       return ajax.post("societies/deleteclassification",param);
     },
+    /**
+     * 获取当前申请人数
+     */
+    getApply:(param)=>{
+      return ajax.post("societies/getApply",param);
+    },
+    /**
+     * 同意加入社团
+     */
+    applyResult:(param)=>{
+      return ajax.post("societies/applyResult",param);
+    }
   },
   dashboard: {
     trafficRank: () => {
