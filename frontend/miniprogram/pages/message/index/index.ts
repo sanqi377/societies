@@ -1,6 +1,6 @@
 export { }
-const {ajax, formatMsgTime } = require('../../../utils/util')
-const { wlecome, monitor, io } = getApp().globalData
+const { ajax, formatMsgTime } = require('../../../utils/util')
+const { monitor, io } = getApp().globalData
 Page({
 
   /**
@@ -16,6 +16,7 @@ Page({
    * 跳转私聊页面
    */
   goChat(e: any) {
+    console.log(e)
     let send = e.currentTarget.dataset.send
     let accept = e.currentTarget.dataset.accept
     let fid = e.currentTarget.dataset.fid
@@ -148,7 +149,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    wlecome({ send: this.data.uid, type: 'welcome' })
+
   },
 
   /**

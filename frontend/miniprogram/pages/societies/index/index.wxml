@@ -7,7 +7,7 @@
       <view class="dynamic-card" wx:for="{{list}}" wx:for-index="idx" wx:key="item">
         <view class="head">
           <view class="info">
-            <view class="avatar">
+            <view class="avatar" data-uid="{{item.uid}}" bindtap="goInfo">
               <image src="{{item.avatar}}" />
             </view>
             <view>

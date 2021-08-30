@@ -35,6 +35,17 @@ module.exports = {
         }
         return datas
     },
+    /**
+     * 获取动态列表
+     * @param data 
+     * @returns 
+     */
+    async getUserList(data: any) {
+        let page = data.page || 1
+        let limit = data.limit || 10
+        let dynamic = await db("s_dynamic").where({ uid: data.uid }).limit(page > 1 ? page * limit - limit : 0, limit).order({ 'id': 'desc' }).select()
+        return dynamic
+    },
     addDynamic(data: object) {
         return db('s_dynamic').insert(data)
     }

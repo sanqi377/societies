@@ -68,8 +68,8 @@ module.exports = {
           case 'private':
             addMessage(data)
             wss.clients.forEach(function each(client: any) { // 给发送方及接收方广播消息
-              if (data.send === client.id) client.send(JSON.stringify(data))
-              if (data.accept === client.id) client.send(JSON.stringify(data))
+              if (data.send == client.id) client.send(JSON.stringify(data))
+              if (data.accept == client.id) client.send(JSON.stringify(data))
             })
             break;
           // 用户下线

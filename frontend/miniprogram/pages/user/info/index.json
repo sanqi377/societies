@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "capsule": "../../../components/capsule/index"
+  },
+  "navigationStyle": "custom"
 }

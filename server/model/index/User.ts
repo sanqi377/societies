@@ -32,7 +32,6 @@ module.exports = {
         if (res) {
           resolve({ ret: 201, msg: '不能重复关注' })
         } else {
-          console.log(11)
           db('s_subscribe').insert(data).then(() => {
             resolve({ ret: 200, msg: '关注成功' })
           })
@@ -49,7 +48,7 @@ module.exports = {
   async cancelSubscribe(data: any) {
     let send = {
       ret: 200,
-      msg: '取消关注成功'
+      msg: '取消成功'
     }
     let subscribe = await db('s_subscribe').where({ subscribe: data.subscribe, be_subscribe: data.be_subscribe }).find()
     if (subscribe) {
@@ -87,5 +86,15 @@ module.exports = {
     infos.fans = fans.length
     infos.dynamic = dynamic.length
     return { ret: 200, data: infos }
+  },
+  async getSession(data: any) {
+    console.log(data)
+    let fid = await db('s_session').where({ uid: data.uid, accept: data.accept }).find()
+    if(!fid) {
+      db('s_session').insert(data).then(() => {
+        this.getSession(data)
+      })
+    }
+    if(fid) return fid
   }
 }

@@ -41,6 +41,12 @@ Page({
     })
   },
 
+  goInfo(e: any) {
+    wx.navigateTo({
+      url: "/pages/user/info/index?uid=" + e.currentTarget.dataset.uid
+    })
+  },
+
   /**
      * 取消关注
      * @param e 
