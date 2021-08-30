@@ -6,8 +6,9 @@ let count = 0
 let isBottom = false
 let type: string
 Page({
-  list: [],
-
+  data: {
+    list: [] as any,
+  },
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
@@ -25,6 +26,9 @@ Page({
 
   handle(e: any) {
     list = []
+    this.setData({
+      list
+    })
     count = 0
     isBottom = false
     type = e.detail === 0 ? 'focus' : (e.detail === 1 ? '' : 'societies')
@@ -132,6 +136,9 @@ Page({
   onPullDownRefresh() {
     list = []
     count = 0
+    this.setData({
+      list
+    })
     this.getDynamic(type)
   },
 

@@ -28,22 +28,25 @@ module.exports = {
 
                 break;
             case 'focus':
-                let wheres = []
-                for (let key = 0; key < fans.length; key++) {
-                    let where = JSON.parse(`{"uid":"${fans[key].be_subscribe}"}`)
-                    wheres.push(where)
-                }
-                dynamic = await db("s_dynamic").sql(wheres).limit(page > 1 ? page * limit - limit : 0, limit).order({ 'create_time': 'desc' }).select()
-                for (let key in dynamic) {
-                    dynamic[key].fans = false
-                    for (let keys in fans) {
-                        if (fans[keys].be_subscribe === dynamic[key].uid) dynamic[key].fans = true
+                if (fans.length > 0) {
+                    let wheres = []
+                    for (let key = 0; key < fans.length; key++) {
+                        let where = JSON.parse(`{"uid":"${fans[key].be_subscribe}"}`)
+                        wheres.push(where)
                     }
-                    let info = await getInfo(dynamic[key].uid)
-                    dynamic[key].name = info.name
-                    dynamic[key].avatar = info.avatar
-                    datas.push(dynamic[key])
+                    dynamic = await db("s_dynamic").sql(wheres).limit(page > 1 ? page * limit - limit : 0, limit).order({ 'create_time': 'desc' }).select()
+                    for (let key in dynamic) {
+                        dynamic[key].fans = false
+                        for (let keys in fans) {
+                            if (fans[keys].be_subscribe === dynamic[key].uid) dynamic[key].fans = true
+                        }
+                        let info = await getInfo(dynamic[key].uid)
+                        dynamic[key].name = info.name
+                        dynamic[key].avatar = info.avatar
+                        datas.push(dynamic[key])
+                    }
                 }
+                console.log(datas)
                 break
             default:
                 dynamic = await db("s_dynamic").limit(page > 1 ? page * limit - limit : 0, limit).order({ 'create_time': 'desc' }).select()
