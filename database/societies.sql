@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-08-30 13:15:37
+Date: 2021-08-30 14:38:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -220,7 +220,7 @@ CREATE TABLE `s_message` (
   `type` varchar(255) DEFAULT NULL,
   `status` int(1) DEFAULT '0' COMMENT '消息是否未读   0=未读  1=已读',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=396 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=398 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_message
@@ -537,6 +537,8 @@ INSERT INTO `s_message` VALUES ('392', '14', '20', '18', '？？？？', '163028
 INSERT INTO `s_message` VALUES ('393', '14', '20', '18', '？？？、', '1630283930', 'private', '0');
 INSERT INTO `s_message` VALUES ('394', '13', '19', '18', '??', '1630283935', 'private', '0');
 INSERT INTO `s_message` VALUES ('395', '13', '19', '18', '????????', '1630283937', 'private', '0');
+INSERT INTO `s_message` VALUES ('396', '13', '18', '19', '11111', '1630300741', 'private', '0');
+INSERT INTO `s_message` VALUES ('397', '13', '18', '19', '麻瓜', '1630300747', 'private', '0');
 
 -- ----------------------------
 -- Table structure for s_notice
@@ -602,7 +604,7 @@ CREATE TABLE `s_session` (
 -- ----------------------------
 INSERT INTO `s_session` VALUES ('2', '1', '3', '嗡嗡嗡嗡嗡嗡嗡嗡嗡', '1629959101', '0', '2');
 INSERT INTO `s_session` VALUES ('3', '2', '1', '11111', '1629966633', '0', '0');
-INSERT INTO `s_session` VALUES ('13', '19', '18', '????????', '1630283937', '0', '0');
+INSERT INTO `s_session` VALUES ('13', '19', '18', '麻瓜', '1630300747', '2', '0');
 INSERT INTO `s_session` VALUES ('14', '18', '20', '？？？、', '1630283930', '0', '0');
 INSERT INTO `s_session` VALUES ('15', '20', '19', '麻瓜', '1630283795', '0', '0');
 
@@ -634,7 +636,7 @@ CREATE TABLE `s_societies` (
 -- ----------------------------
 -- Records of s_societies
 -- ----------------------------
-INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '2', '2', '计算机协会', '4', '1', '2', '15');
+INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '信息工程系', '2', '计算机协会', '4', '1', '2', '15');
 INSERT INTO `s_societies` VALUES ('7', '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', '3', '2', '1', '赛复赛', '5', '1', '0', '1');
 INSERT INTO `s_societies` VALUES ('8', '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', null, '1', '1', '11', null, '1', '0', '2');
 INSERT INTO `s_societies` VALUES ('9', '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', null, '2', '1', '11', null, '1', '0', '3');
@@ -651,12 +653,14 @@ CREATE TABLE `s_societies_job` (
   `uid` int(11) DEFAULT NULL COMMENT '用户id',
   `societies` int(11) DEFAULT NULL COMMENT '社团id',
   `job` varchar(255) DEFAULT NULL COMMENT '对应职务',
+  `create_time` int(11) DEFAULT NULL COMMENT '任职时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_societies_job
 -- ----------------------------
+INSERT INTO `s_societies_job` VALUES ('1', '18', '6', '会长', '1630304309');
 
 -- ----------------------------
 -- Table structure for s_societies_member
