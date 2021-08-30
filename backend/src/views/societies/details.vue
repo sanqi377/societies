@@ -37,7 +37,7 @@
           <div slot="header" class="clearfix">
             <span>当前公告</span>
           </div>
-          <div class="notice-content">{{ data.notice.content }}</div>
+          <div class="notice-content" v-if="data.notice">{{ data.notice.content||"当前暂未公告" }}</div>
         </el-card>
       </el-col>
       <el-col :span="12">
