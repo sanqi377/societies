@@ -34,7 +34,8 @@ module.exports = {
     */
   async getSocietiesInfo(id: number) {
     let info = await db('s_societies').where({ id }).find()
-    let department = await db('s_department').where({ name: info.department }).find()
+    console.log(info)
+    let department = await db('s_department').where({ id: info.department }).find()
     info.department = department.name
     let fans = await db('s_subscribe').where({ be_subscribe: id }).select()
     info.fans = fans.length

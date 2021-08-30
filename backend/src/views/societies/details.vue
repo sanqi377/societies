@@ -185,7 +185,6 @@ export default {
             this.$api.societies
                 .getSocietiesInfo({ id: this.$route.params.id })
                 .then((res) => {
-                    this.data = res;
                     this.form = res;
                     this.form.admin = res.admin.id;
                     if (res.welcome_status) {
@@ -202,13 +201,14 @@ export default {
         },
         onSubmit() {
             const loading = this.$loading({ lock: true });
-            this.$api.societies.updateSocieties(this.form).then((res) => {
-                loading.close();
-                this.$message({
-                    type: "success",
-                    message: res.msg,
-                });
-            });
+            console.log(this.form, this.department);
+            // this.$api.societies.updateSocieties(this.form).then((res) => {
+            //     loading.close();
+            //     this.$message({
+            //         type: "success",
+            //         message: res.msg,
+            //     });
+            // });
         },
     },
     components: { societiesNotic, societiesNew, societiesJob },
