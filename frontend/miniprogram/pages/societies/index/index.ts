@@ -4,6 +4,7 @@ const app = getApp()
 let list: any = []
 let count = 0
 let isBottom = false
+let type: string
 Page({
   list: [],
 
@@ -20,6 +21,15 @@ Page({
     wx.navigateTo({
       url: "/pages/societies/publish/index"
     })
+  },
+
+  handle(e: any) {
+    list = []
+    count = 0
+    isBottom = false
+    type = e.detail === 0 ? 'focus' : (e.detail === 1 ? '' : 'societies')
+    this.getDynamic(type)
+    console.log(e.detail, type)
   },
 
   /**
@@ -67,10 +77,11 @@ Page({
     })
   },
 
-  getDynamic() {
+  getDynamic(type?: any) {
     count++
     if (!isBottom) {
-      ajax('Dynamic/getList', { uid: app.globalData.uid, page: count }).then((res: any) => {
+      console.log(type)
+      ajax('Dynamic/getList', { uid: app.globalData.uid, page: count, type }).then((res: any) => {
         wx.stopPullDownRefresh()
         if (res.data.data.length > 0) {
           for (let key in res.data.data) {
@@ -121,7 +132,7 @@ Page({
   onPullDownRefresh() {
     list = []
     count = 0
-    this.getDynamic()
+    this.getDynamic(type)
   },
 
   /**
@@ -129,7 +140,7 @@ Page({
    */
   onReachBottom() {
 
-    this.getDynamic()
+    this.getDynamic(type)
   },
 
   /**
