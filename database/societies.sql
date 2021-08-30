@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-08-28 20:24:12
+Date: 2021-08-30 12:59:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `s_apply_log` (
 -- ----------------------------
 -- Records of s_apply_log
 -- ----------------------------
-INSERT INTO `s_apply_log` VALUES ('2', '18', '6', '111', '1630152515', '0');
+INSERT INTO `s_apply_log` VALUES ('2', '18', '6', '111', '1630152515', '1');
 INSERT INTO `s_apply_log` VALUES ('3', '18', '7', '1111111', '1630153248', '0');
 
 -- ----------------------------
@@ -106,7 +106,7 @@ CREATE TABLE `s_dynamic` (
   `views` int(11) DEFAULT '0' COMMENT '浏览量',
   `create_time` int(11) DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_dynamic
@@ -123,6 +123,42 @@ INSERT INTO `s_dynamic` VALUES ('9', '18', '测试动态数量', '0', '163014418
 INSERT INTO `s_dynamic` VALUES ('10', '18', '测试动态数量', '0', '1630144252');
 INSERT INTO `s_dynamic` VALUES ('11', '18', '王企鹅王企鹅', '0', '1630144355');
 INSERT INTO `s_dynamic` VALUES ('12', '18', '文本域标签', '0', '1630144392');
+INSERT INTO `s_dynamic` VALUES ('13', '18', '', '0', '1630217977');
+INSERT INTO `s_dynamic` VALUES ('14', '18', '阿巴阿巴', '0', '1630217993');
+INSERT INTO `s_dynamic` VALUES ('15', '18', '测试', '0', '1630218162');
+INSERT INTO `s_dynamic` VALUES ('16', '18', '222222', '0', '1630218255');
+INSERT INTO `s_dynamic` VALUES ('17', '18', '333333', '0', '1630218329');
+INSERT INTO `s_dynamic` VALUES ('18', '18', '3333', '0', '1630218422');
+INSERT INTO `s_dynamic` VALUES ('19', '18', '33333', '0', '1630218484');
+INSERT INTO `s_dynamic` VALUES ('20', '18', '3333332121', '0', '1630218568');
+INSERT INTO `s_dynamic` VALUES ('21', '18', '333333', '0', '1630219186');
+INSERT INTO `s_dynamic` VALUES ('22', '18', '22222', '0', '1630219401');
+INSERT INTO `s_dynamic` VALUES ('23', '18', '', '0', '1630225914');
+INSERT INTO `s_dynamic` VALUES ('24', '18', '33333', '0', '1630229092');
+INSERT INTO `s_dynamic` VALUES ('25', '18', '21121122', '0', '1630229098');
+INSERT INTO `s_dynamic` VALUES ('26', '18', '31dqad的亲吻全额', '0', '1630229209');
+INSERT INTO `s_dynamic` VALUES ('27', '18', '123123eqeqwe从服务范围', '0', '1630229270');
+INSERT INTO `s_dynamic` VALUES ('28', '18', '阿巴阿巴', '0', '1630229270');
+INSERT INTO `s_dynamic` VALUES ('29', '18', 'jwiqejiqowjeoiwqje', '0', '1630230762');
+INSERT INTO `s_dynamic` VALUES ('30', '18', '23123123', '0', '1630230790');
+INSERT INTO `s_dynamic` VALUES ('31', '18', 'sdadsa', '0', '1630230805');
+INSERT INTO `s_dynamic` VALUES ('32', '18', 'wqewqewqe', '0', '1630230833');
+INSERT INTO `s_dynamic` VALUES ('33', '18', 'dsf  wqeq委屈饿', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('34', '18', '阿坝', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('35', '18', '额为全额', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('36', '18', 'kk', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('37', '18', 'aa', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('38', '18', '嘚嘚', '0', '1630230872');
+INSERT INTO `s_dynamic` VALUES ('39', '18', '嘚嘚你个嘚嘚', '0', '1630231283');
+INSERT INTO `s_dynamic` VALUES ('40', '19', '阿巴阿巴', '0', '1630233395');
+INSERT INTO `s_dynamic` VALUES ('41', '18', '阿巴阿巴像个麻瓜', '0', '1630233465');
+INSERT INTO `s_dynamic` VALUES ('42', '19', '????????', '0', '1630236486');
+INSERT INTO `s_dynamic` VALUES ('43', '19', '阿巴', '0', '1630238861');
+INSERT INTO `s_dynamic` VALUES ('44', '20', '麻瓜', '0', '1630283670');
+INSERT INTO `s_dynamic` VALUES ('45', '19', '测试关注', '0', '1630286599');
+INSERT INTO `s_dynamic` VALUES ('46', '20', '123', '0', '1630292112');
+INSERT INTO `s_dynamic` VALUES ('47', '18', '阿巴阿巴', '0', '1630293610');
+INSERT INTO `s_dynamic` VALUES ('48', '18', '阿巴', '0', '1630295142');
 
 -- ----------------------------
 -- Table structure for s_menu
@@ -134,7 +170,6 @@ CREATE TABLE `s_menu` (
   `title` varchar(30) NOT NULL COMMENT '菜单标题',
   `icon` varchar(50) DEFAULT NULL COMMENT '图标',
   `path` varchar(150) DEFAULT NULL COMMENT '菜单路径',
-  `permission` varchar(150) DEFAULT NULL COMMENT '权限标识',
   `status` tinyint(1) unsigned DEFAULT '1' COMMENT '是否显示：1显示 2不显示',
   `sort` smallint(5) unsigned DEFAULT '125' COMMENT '显示顺序',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
@@ -146,30 +181,30 @@ CREATE TABLE `s_menu` (
 -- ----------------------------
 -- Records of s_menu
 -- ----------------------------
-INSERT INTO `s_menu` VALUES ('1', '0', '系统管理', 'el-icon-setting', null, null, '1', '3', '1605787979');
-INSERT INTO `s_menu` VALUES ('6', '0', '用户管理', 'el-icon-_user-group', null, null, '1', '5', '1605787979');
-INSERT INTO `s_menu` VALUES ('17', '1', '菜单管理', 'el-icon-s-operation', '/system/menu', 'sys:menu:view', '1', '2', '1605787979');
-INSERT INTO `s_menu` VALUES ('37', '1', '登录日志', 'el-icon-date', '/system/loginlog', 'sys:loginlog:view', '1', '3', '1605787979');
-INSERT INTO `s_menu` VALUES ('40', '1', '操作日志', 'el-icon-_template', '/system/actionlog', 'sys:operlog:view', '0', '4', '1605787979');
-INSERT INTO `s_menu` VALUES ('44', '0', '仪表盘111', 'el-icon-stopwatch', '', null, '1', '1', '1605787979');
-INSERT INTO `s_menu` VALUES ('45', '44', '工作台', 'el-icon-monitor', '/dashboard/workplace', null, '1', '1', '1605787979');
-INSERT INTO `s_menu` VALUES ('46', '44', '数据分析', 'el-icon-data-analysis', '/dashboard/analysis', null, '1', '2', '1605787979');
-INSERT INTO `s_menu` VALUES ('65', '6', '全部用户', 'el-icon-user', '/user/index', null, '1', '1', '1605787979');
-INSERT INTO `s_menu` VALUES ('73', '0', '文章管理', 'el-icon-document-copy', null, null, '1', '2', '0');
-INSERT INTO `s_menu` VALUES ('74', '73', '新建文章', 'el-icon-_feedback', '/article/new', null, '1', '1', '0');
-INSERT INTO `s_menu` VALUES ('75', '73', '文章列表', 'el-icon-tickets', '/article/list', null, '1', '2', '0');
-INSERT INTO `s_menu` VALUES ('76', '73', '分类列表', 'el-icon-folder-opened', '/article/classification', null, '1', '3', '0');
-INSERT INTO `s_menu` VALUES ('77', '73', '标签列表', 'el-icon-discount', '/article/tags', null, '0', '4', '0');
-INSERT INTO `s_menu` VALUES ('78', '1', '站点设置11', 'el-icon-_network', '/system/site', null, '1', '1', '0');
-INSERT INTO `s_menu` VALUES ('79', '0', '评论管理', 'el-icon-chat-dot-square', '/comment/index', null, '1', '6', '0');
-INSERT INTO `s_menu` VALUES ('85', '0', '用户管理', 'el-icon-_user-group', '/user/index', null, '1', '10', '0');
-INSERT INTO `s_menu` VALUES ('86', '0', '社团管理', 'el-icon-bangzhu', '', null, '1', '10', '0');
-INSERT INTO `s_menu` VALUES ('87', '86', '社团列表', 'el-icon-_nav', '/societies/index', null, '0', '4', '0');
-INSERT INTO `s_menu` VALUES ('88', '86', '添加社团', 'el-icon-_user-add', '/societies/add', null, '1', '2', '0');
-INSERT INTO `s_menu` VALUES ('89', '0', '角色管理', 'el-icon-user', '', null, '1', '8', '0');
-INSERT INTO `s_menu` VALUES ('91', '89', '角色列表', 'el-icon-document', '/role/index', null, '1', '2', '0');
-INSERT INTO `s_menu` VALUES ('92', '86', '社团分类', 'el-icon-_menu', '/societies/class', null, '1', '3', '0');
-INSERT INTO `s_menu` VALUES ('93', '86', '社团列表', 'el-icon-_integral', '/societies/list', null, '1', '4', '0');
+INSERT INTO `s_menu` VALUES ('1', '0', '系统管理', 'el-icon-setting', null, '1', '3', '1605787979');
+INSERT INTO `s_menu` VALUES ('6', '0', '用户管理', 'el-icon-_user-group', null, '1', '5', '1605787979');
+INSERT INTO `s_menu` VALUES ('17', '1', '菜单管理', 'el-icon-s-operation', '/system/menu', '1', '2', '1605787979');
+INSERT INTO `s_menu` VALUES ('37', '1', '登录日志', 'el-icon-date', '/system/loginlog', '1', '3', '1605787979');
+INSERT INTO `s_menu` VALUES ('40', '1', '操作日志', 'el-icon-_template', '/system/actionlog', '0', '4', '1605787979');
+INSERT INTO `s_menu` VALUES ('44', '0', '仪表盘111', 'el-icon-stopwatch', '', '1', '1', '1605787979');
+INSERT INTO `s_menu` VALUES ('45', '44', '工作台', 'el-icon-monitor', '/dashboard/workplace', '1', '1', '1605787979');
+INSERT INTO `s_menu` VALUES ('46', '44', '数据分析', 'el-icon-data-analysis', '/dashboard/analysis', '1', '2', '1605787979');
+INSERT INTO `s_menu` VALUES ('65', '6', '全部用户', 'el-icon-user', '/user/index', '1', '1', '1605787979');
+INSERT INTO `s_menu` VALUES ('73', '0', '文章管理', 'el-icon-document-copy', null, '1', '2', '0');
+INSERT INTO `s_menu` VALUES ('74', '73', '新建文章', 'el-icon-_feedback', '/article/new', '1', '1', '0');
+INSERT INTO `s_menu` VALUES ('75', '73', '文章列表', 'el-icon-tickets', '/article/list', '1', '2', '0');
+INSERT INTO `s_menu` VALUES ('76', '73', '分类列表', 'el-icon-folder-opened', '/article/classification', '1', '3', '0');
+INSERT INTO `s_menu` VALUES ('77', '73', '标签列表', 'el-icon-discount', '/article/tags', '0', '4', '0');
+INSERT INTO `s_menu` VALUES ('78', '1', '站点设置11', 'el-icon-_network', '/system/site', '1', '1', '0');
+INSERT INTO `s_menu` VALUES ('79', '0', '评论管理', 'el-icon-chat-dot-square', '/comment/index', '1', '6', '0');
+INSERT INTO `s_menu` VALUES ('85', '0', '用户管理', 'el-icon-_user-group', '/user/index', '1', '10', '0');
+INSERT INTO `s_menu` VALUES ('86', '0', '社团管理', 'el-icon-bangzhu', '', '1', '10', '0');
+INSERT INTO `s_menu` VALUES ('87', '86', '社团列表', 'el-icon-_nav', '/societies/index', '0', '4', '0');
+INSERT INTO `s_menu` VALUES ('88', '86', '添加社团', 'el-icon-_user-add', '/societies/add', '1', '2', '0');
+INSERT INTO `s_menu` VALUES ('89', '0', '角色管理', 'el-icon-user', '', '1', '8', '0');
+INSERT INTO `s_menu` VALUES ('91', '89', '角色列表', 'el-icon-document', '/role/index', '1', '2', '0');
+INSERT INTO `s_menu` VALUES ('92', '86', '社团分类', 'el-icon-_menu', '/societies/class', '1', '3', '0');
+INSERT INTO `s_menu` VALUES ('93', '86', '社团列表', 'el-icon-_integral', '/societies/list', '1', '4', '0');
 
 -- ----------------------------
 -- Table structure for s_message
@@ -185,7 +220,7 @@ CREATE TABLE `s_message` (
   `type` varchar(255) DEFAULT NULL,
   `status` int(1) DEFAULT '0' COMMENT '消息是否未读   0=未读  1=已读',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=352 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=396 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_message
@@ -458,6 +493,50 @@ INSERT INTO `s_message` VALUES ('348', '3', '2', '1', '213131321', '1629966452',
 INSERT INTO `s_message` VALUES ('349', '3', '1', '2', '2222', '1629966499', 'private', '0');
 INSERT INTO `s_message` VALUES ('350', '3', '1', '2', '2222222', '1629966501', 'private', '0');
 INSERT INTO `s_message` VALUES ('351', '3', '1', '2', '11111', '1629966633', 'private', '0');
+INSERT INTO `s_message` VALUES ('352', null, '18', '19', '1111', '1630248196', 'private', '0');
+INSERT INTO `s_message` VALUES ('353', '12', '18', '19', '2222', '1630249401', 'private', '0');
+INSERT INTO `s_message` VALUES ('354', '12', '19', '18', '阿巴', '1630249424', 'private', '0');
+INSERT INTO `s_message` VALUES ('355', '12', '19', '18', '？？', '1630249436', 'private', '0');
+INSERT INTO `s_message` VALUES ('356', '12', '18', '19', '2222', '1630249507', 'private', '0');
+INSERT INTO `s_message` VALUES ('357', '12', '19', '18', '333', '1630249564', 'private', '0');
+INSERT INTO `s_message` VALUES ('358', '12', '19', '18', '22', '1630249619', 'private', '0');
+INSERT INTO `s_message` VALUES ('359', '12', '18', '19', '111', '1630249697', 'private', '0');
+INSERT INTO `s_message` VALUES ('360', '12', '19', '18', '3333', '1630249763', 'private', '0');
+INSERT INTO `s_message` VALUES ('361', '12', '18', '19', '22222', '1630249768', 'private', '0');
+INSERT INTO `s_message` VALUES ('362', '13', '19', '18', '3333', '1630249933', 'private', '0');
+INSERT INTO `s_message` VALUES ('363', '13', '18', '19', '2222', '1630249948', 'private', '0');
+INSERT INTO `s_message` VALUES ('364', '13', '19', '18', '23123213123', '1630249950', 'private', '0');
+INSERT INTO `s_message` VALUES ('365', '13', '18', '19', '231313123', '1630249952', 'private', '0');
+INSERT INTO `s_message` VALUES ('366', '13', '19', '18', '213213123', '1630249954', 'private', '0');
+INSERT INTO `s_message` VALUES ('367', '13', '19', '18', '213213123', '1630249955', 'private', '0');
+INSERT INTO `s_message` VALUES ('368', '13', '19', '18', '3213123', '1630249955', 'private', '0');
+INSERT INTO `s_message` VALUES ('369', '13', '18', '19', '3213123123', '1630249957', 'private', '0');
+INSERT INTO `s_message` VALUES ('370', '13', '19', '18', '阿巴阿巴', '1630250114', 'private', '0');
+INSERT INTO `s_message` VALUES ('371', '13', '19', '18', '阿巴', '1630250120', 'private', '0');
+INSERT INTO `s_message` VALUES ('372', '13', '19', '18', '恶趣味我去', '1630250122', 'private', '0');
+INSERT INTO `s_message` VALUES ('373', '13', '18', '19', '你阿巴阿巴像个麻瓜', '1630250133', 'private', '0');
+INSERT INTO `s_message` VALUES ('374', '13', '18', '19', '麻瓜', '1630250138', 'private', '0');
+INSERT INTO `s_message` VALUES ('375', '13', '18', '19', '麻瓜', '1630250142', 'private', '0');
+INSERT INTO `s_message` VALUES ('376', '13', '19', '18', '?????', '1630250586', 'private', '0');
+INSERT INTO `s_message` VALUES ('377', '13', '19', '18', '1111', '1630283444', 'private', '0');
+INSERT INTO `s_message` VALUES ('378', '13', '19', '18', '2222', '1630283528', 'private', '0');
+INSERT INTO `s_message` VALUES ('379', '13', '19', '18', '32131232131', '1630283529', 'private', '0');
+INSERT INTO `s_message` VALUES ('380', '13', '18', '19', 'weqweqwe', '1630283535', 'private', '0');
+INSERT INTO `s_message` VALUES ('381', '13', '19', '18', 'wqeqwewqeqwe', '1630283550', 'private', '0');
+INSERT INTO `s_message` VALUES ('382', '14', '18', '20', '你是麻瓜', '1630283692', 'private', '0');
+INSERT INTO `s_message` VALUES ('383', '14', '20', '18', '？？？', '1630283702', 'private', '0');
+INSERT INTO `s_message` VALUES ('384', '14', '20', '18', '麻瓜', '1630283724', 'private', '0');
+INSERT INTO `s_message` VALUES ('385', '14', '20', '18', '？？', '1630283728', 'private', '0');
+INSERT INTO `s_message` VALUES ('386', '14', '18', '20', '1111', '1630283732', 'private', '0');
+INSERT INTO `s_message` VALUES ('387', '15', '20', '19', '？？', '1630283773', 'private', '0');
+INSERT INTO `s_message` VALUES ('388', '15', '19', '20', '11111', '1630283785', 'private', '0');
+INSERT INTO `s_message` VALUES ('389', '15', '20', '19', '阿巴', '1630283792', 'private', '0');
+INSERT INTO `s_message` VALUES ('390', '15', '19', '20', '麻瓜', '1630283795', 'private', '0');
+INSERT INTO `s_message` VALUES ('391', '14', '20', '18', '？？？？？？？？？？？', '1630283926', 'private', '0');
+INSERT INTO `s_message` VALUES ('392', '14', '20', '18', '？？？？', '1630283928', 'private', '0');
+INSERT INTO `s_message` VALUES ('393', '14', '20', '18', '？？？、', '1630283930', 'private', '0');
+INSERT INTO `s_message` VALUES ('394', '13', '19', '18', '??', '1630283935', 'private', '0');
+INSERT INTO `s_message` VALUES ('395', '13', '19', '18', '????????', '1630283937', 'private', '0');
 
 -- ----------------------------
 -- Table structure for s_notice
@@ -516,14 +595,16 @@ CREATE TABLE `s_session` (
   `u_unread` int(11) DEFAULT '0' COMMENT '对应 uid 的未读消息',
   `a_unread` int(11) DEFAULT '0' COMMENT '对应 accept 的未读消息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_session
 -- ----------------------------
 INSERT INTO `s_session` VALUES ('2', '1', '3', '嗡嗡嗡嗡嗡嗡嗡嗡嗡', '1629959101', '0', '2');
 INSERT INTO `s_session` VALUES ('3', '2', '1', '11111', '1629966633', '0', '0');
-INSERT INTO `s_session` VALUES ('4', '2', '3', '？？？？', '1629959088', '0', '0');
+INSERT INTO `s_session` VALUES ('13', '19', '18', '????????', '1630283937', '0', '0');
+INSERT INTO `s_session` VALUES ('14', '18', '20', '？？？、', '1630283930', '0', '0');
+INSERT INTO `s_session` VALUES ('15', '20', '19', '麻瓜', '1630283795', '0', '0');
 
 -- ----------------------------
 -- Table structure for s_societies
@@ -563,6 +644,37 @@ INSERT INTO `s_societies` VALUES ('12', 'dsdd', 'dsdsd', '2', '22', '2', '1', '2
 INSERT INTO `s_societies` VALUES ('13', 'ds', 'dsd', '2', '22', '2', '1', '22', '4', '1', '0', '6');
 
 -- ----------------------------
+-- Table structure for s_societies_job
+-- ----------------------------
+DROP TABLE IF EXISTS `s_societies_job`;
+CREATE TABLE `s_societies_job` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL COMMENT '用户id',
+  `societies` int(11) DEFAULT NULL COMMENT '社团id',
+  `job` varchar(255) DEFAULT NULL COMMENT '对应职务',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of s_societies_job
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for s_societies_member
+-- ----------------------------
+DROP TABLE IF EXISTS `s_societies_member`;
+CREATE TABLE `s_societies_member` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL COMMENT '用户id',
+  `societies` int(11) DEFAULT NULL COMMENT '社团id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of s_societies_member
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for s_societies_type
 -- ----------------------------
 DROP TABLE IF EXISTS `s_societies_type`;
@@ -588,14 +700,15 @@ CREATE TABLE `s_subscribe` (
   `subscribe` int(11) DEFAULT NULL COMMENT '关注id',
   `update_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of s_subscribe
 -- ----------------------------
-INSERT INTO `s_subscribe` VALUES ('27', '3', '18', '1630086096');
-INSERT INTO `s_subscribe` VALUES ('38', '1', '18', '1630129333');
-INSERT INTO `s_subscribe` VALUES ('39', '2', '18', '1630129335');
+INSERT INTO `s_subscribe` VALUES ('81', '20', '19', '1630286123');
+INSERT INTO `s_subscribe` VALUES ('82', '18', '19', '1630286328');
+INSERT INTO `s_subscribe` VALUES ('83', '18', '20', '1630286515');
+INSERT INTO `s_subscribe` VALUES ('89', '19', '18', '1630293596');
 
 -- ----------------------------
 -- Table structure for s_task
@@ -638,7 +751,7 @@ CREATE TABLE `s_users` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `role` (`role`) USING BTREE,
   CONSTRAINT `role` FOREIGN KEY (`role`) REFERENCES `s_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of s_users
@@ -647,3 +760,5 @@ INSERT INTO `s_users` VALUES ('5', null, '柯南', null, null, null, null, null,
 INSERT INTO `s_users` VALUES ('15', null, '叁柒', null, null, null, null, null, null, '1', 'admin', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', '3');
 INSERT INTO `s_users` VALUES ('16', null, 'weilaikeqi333', null, null, null, null, null, null, '1', 'weilaikeqi333', '2b4b14eee5d08c4f93417ed0f68c6266', 'H5nJ8c', '4');
 INSERT INTO `s_users` VALUES ('18', 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒', 'https://avatars.githubusercontent.com/u/75518418?v=4', '123', '123', '123456', '-1', '13333333333', '1', null, null, null, null);
+INSERT INTO `s_users` VALUES ('19', null, '测试', 'https://avatars.githubusercontent.com/u/56516409?v=4', '456', '456', '456789', null, null, '1', null, null, null, null);
+INSERT INTO `s_users` VALUES ('20', null, '测试二号', 'https://avatars.githubusercontent.com/u/37279175?v=4', null, '阿巴', '451236', null, null, '1', null, null, null, null);

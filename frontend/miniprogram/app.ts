@@ -77,7 +77,7 @@ App<IAppOption>({
           success()
         })
       }).catch(() => {
-        error()
+        if (error) error()
       })
     }
   },

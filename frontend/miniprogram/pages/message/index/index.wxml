@@ -23,7 +23,7 @@
           </view>
         </view>
       </s-tab>
-      <s-tab title="通知">通知</s-tab>
+      <s-tab title="通讯录">通讯录</s-tab>
     </s-tabs>
   </view>
 </view>

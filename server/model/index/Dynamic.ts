@@ -19,14 +19,20 @@ module.exports = {
             return db("s_users").where({ id: uid }).find()
         }
 
+        // let societies = await db('s_societies').select()
+
+        // console.log(societies)
+
         // 我关注的人
         let fans = await db('s_subscribe').where({ subscribe: data.uid }).select()
         let datas: any = []
 
         switch (type) {
+            // 社团动态
             case 'societies':
 
                 break;
+            // 关注动态
             case 'focus':
                 if (fans.length > 0) {
                     let wheres = []
@@ -46,8 +52,8 @@ module.exports = {
                         datas.push(dynamic[key])
                     }
                 }
-                console.log(datas)
                 break
+            // 默认推荐
             default:
                 dynamic = await db("s_dynamic").limit(page > 1 ? page * limit - limit : 0, limit).order({ 'create_time': 'desc' }).select()
                 for (let key in dynamic) {
