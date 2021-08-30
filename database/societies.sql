@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2021-08-30 12:59:39
+Date: 2021-08-30 13:15:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -615,7 +615,6 @@ CREATE TABLE `s_societies` (
   `name` varchar(255) NOT NULL COMMENT '社团名称',
   `logo` varchar(255) NOT NULL COMMENT '社团头像',
   `notice_id` int(11) DEFAULT NULL COMMENT '公告ID',
-  `number` int(11) DEFAULT NULL COMMENT '社团人数',
   `department` varchar(255) NOT NULL COMMENT '所属院系',
   `type_id` int(11) NOT NULL COMMENT '社团级别',
   `about` varchar(255) NOT NULL COMMENT '社团简介',
@@ -635,13 +634,13 @@ CREATE TABLE `s_societies` (
 -- ----------------------------
 -- Records of s_societies
 -- ----------------------------
-INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '111', '2', '2', '计算机协会', '4', '1', '2', '15');
-INSERT INTO `s_societies` VALUES ('7', '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', '3', null, '2', '1', '赛复赛', '5', '1', '0', '1');
-INSERT INTO `s_societies` VALUES ('8', '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', null, null, '1', '1', '11', null, '1', '0', '2');
-INSERT INTO `s_societies` VALUES ('9', '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', null, null, '2', '1', '11', null, '1', '0', '3');
-INSERT INTO `s_societies` VALUES ('11', '5554', '5554', '3', '11', '2', '1', '11', '5', '1', '0', '4');
-INSERT INTO `s_societies` VALUES ('12', 'dsdd', 'dsdsd', '2', '22', '2', '1', '22', '4', '1', '0', '5');
-INSERT INTO `s_societies` VALUES ('13', 'ds', 'dsd', '2', '22', '2', '1', '22', '4', '1', '0', '6');
+INSERT INTO `s_societies` VALUES ('6', '计算机协会', 'http://localhost:3000/dist/uploads/5bfb8acf2b27a4ed4c56e9f9d455c835.jpg', '2', '2', '2', '计算机协会', '4', '1', '2', '15');
+INSERT INTO `s_societies` VALUES ('7', '信息中心', 'http://localhost:3000/dist/uploads\\\\eb57d49c0230e89d253fa612463cab88.jpg', '3', '2', '1', '赛复赛', '5', '1', '0', '1');
+INSERT INTO `s_societies` VALUES ('8', '11', 'http://localhost:3000/dist/uploads\03f774e3f1b4f4b6d52326f6e44ab88f.jpg', null, '1', '1', '11', null, '1', '0', '2');
+INSERT INTO `s_societies` VALUES ('9', '11', 'http://localhost:3000/dist/uploadsca4b90bdbd7091f4ffd6513ff89864ab.jpg', null, '2', '1', '11', null, '1', '0', '3');
+INSERT INTO `s_societies` VALUES ('11', '5554', '5554', '3', '2', '1', '11', '5', '1', '0', '4');
+INSERT INTO `s_societies` VALUES ('12', 'dsdd', 'dsdsd', '2', '2', '1', '22', '4', '1', '0', '5');
+INSERT INTO `s_societies` VALUES ('13', 'ds', 'dsd', '2', '2', '1', '22', '4', '1', '0', '6');
 
 -- ----------------------------
 -- Table structure for s_societies_job
@@ -668,11 +667,12 @@ CREATE TABLE `s_societies_member` (
   `uid` int(11) DEFAULT NULL COMMENT '用户id',
   `societies` int(11) DEFAULT NULL COMMENT '社团id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_societies_member
 -- ----------------------------
+INSERT INTO `s_societies_member` VALUES ('1', '18', '6');
 
 -- ----------------------------
 -- Table structure for s_societies_type
@@ -741,7 +741,6 @@ CREATE TABLE `s_users` (
   `class` varchar(255) DEFAULT NULL COMMENT '班级',
   `departments` varchar(255) DEFAULT NULL COMMENT '系部',
   `student_id` varchar(255) DEFAULT NULL COMMENT '学号',
-  `college_id` int(11) DEFAULT NULL COMMENT '所属社团',
   `phone` varchar(255) DEFAULT NULL COMMENT '手机号',
   `status` int(11) DEFAULT '1' COMMENT '状态0为关闭1为启用',
   `user` varchar(255) DEFAULT NULL COMMENT '账号',
@@ -756,9 +755,9 @@ CREATE TABLE `s_users` (
 -- ----------------------------
 -- Records of s_users
 -- ----------------------------
-INSERT INTO `s_users` VALUES ('5', null, '柯南', null, null, null, null, null, null, '1', 'svanrj', 'cdc1b953046cddd69f0258c50f8fd726', 'H5nJ8c', '3');
-INSERT INTO `s_users` VALUES ('15', null, '叁柒', null, null, null, null, null, null, '1', 'admin', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', '3');
-INSERT INTO `s_users` VALUES ('16', null, 'weilaikeqi333', null, null, null, null, null, null, '1', 'weilaikeqi333', '2b4b14eee5d08c4f93417ed0f68c6266', 'H5nJ8c', '4');
-INSERT INTO `s_users` VALUES ('18', 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒', 'https://avatars.githubusercontent.com/u/75518418?v=4', '123', '123', '123456', '-1', '13333333333', '1', null, null, null, null);
-INSERT INTO `s_users` VALUES ('19', null, '测试', 'https://avatars.githubusercontent.com/u/56516409?v=4', '456', '456', '456789', null, null, '1', null, null, null, null);
-INSERT INTO `s_users` VALUES ('20', null, '测试二号', 'https://avatars.githubusercontent.com/u/37279175?v=4', null, '阿巴', '451236', null, null, '1', null, null, null, null);
+INSERT INTO `s_users` VALUES ('5', null, '柯南', null, null, null, null, null, '1', 'svanrj', 'cdc1b953046cddd69f0258c50f8fd726', 'H5nJ8c', '3');
+INSERT INTO `s_users` VALUES ('15', null, '叁柒', null, null, null, null, null, '1', 'admin', '33b6a749ca776f112555cf32d82072f0', 'H5nJ8c', '3');
+INSERT INTO `s_users` VALUES ('16', null, 'weilaikeqi333', null, null, null, null, null, '1', 'weilaikeqi333', '2b4b14eee5d08c4f93417ed0f68c6266', 'H5nJ8c', '4');
+INSERT INTO `s_users` VALUES ('18', 'oCyJb4xF_IpSqyyqn5kEiGG7UxeM', '叁柒', 'https://avatars.githubusercontent.com/u/75518418?v=4', '123', '123', '123456', '13333333333', '1', null, null, null, null);
+INSERT INTO `s_users` VALUES ('19', null, '测试', 'https://avatars.githubusercontent.com/u/56516409?v=4', '456', '456', '456789', null, '1', null, null, null, null);
+INSERT INTO `s_users` VALUES ('20', null, '测试二号', 'https://avatars.githubusercontent.com/u/37279175?v=4', null, '阿巴', '451236', null, '1', null, null, null, null);

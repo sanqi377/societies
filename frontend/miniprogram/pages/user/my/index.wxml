@@ -35,7 +35,7 @@
         <view class="information">粉丝</view>
       </view>
       <view class="item">
-        <view class="num">2</view>
+        <view class="num">{{info.societies}}</view>
         <view class="information">社团</view>
       </view>
     </view>
