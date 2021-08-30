@@ -71,13 +71,15 @@ module.exports = {
     let fans = await db('s_subscribe').where({ be_subscribe: uid }).select()
     let info = await db('s_users').where({ id: uid }).find()
     let dynamic = await db('s_dynamic').where({ uid }).select()
+    let societies = await db('s_societies_member').where({ uid }).select()
     let infos = {
       name: '',
       avatar: '',
       student_id: '',
       focus: 0,
       fans: 0,
-      dynamic: 0
+      dynamic: 0,
+      societies: 0
     }
     infos.name = info.name
     infos.avatar = info.avatar
@@ -85,16 +87,17 @@ module.exports = {
     infos.focus = focus.length
     infos.fans = fans.length
     infos.dynamic = dynamic.length
+    infos.societies = societies.length
     return { ret: 200, data: infos }
   },
   async getSession(data: any) {
     console.log(data)
     let fid = await db('s_session').where({ uid: data.uid, accept: data.accept }).find()
-    if(!fid) {
+    if (!fid) {
       db('s_session').insert(data).then(() => {
         this.getSession(data)
       })
     }
-    if(fid) return fid
+    if (fid) return fid
   }
 }

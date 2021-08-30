@@ -38,6 +38,8 @@ module.exports = {
     let department = await db('s_department').where({ id: info.department }).find()
     info.department = department.name
     let fans = await db('s_subscribe').where({ subscribe: uid, be_subscribe: info.admin }).find()
+    let number = await db('s_societies_member').where({ societies: info.id }).select()
+    info.number = number.length
     if (fans) {
       info.fans = true
     } else {
@@ -80,9 +82,11 @@ module.exports = {
       let dynamic = await db("s_dynamic").where({ uid: societies[key].admin }).select()
       let fans = await db("s_subscribe").where({ be_subscribe: societies[key].admin }).select()
       let department = await db('s_department').where({ id: societies[key].department }).find()
+      let number = await db('s_societies_member').where({ societies: societies[key].id }).select()
       societies[key].dynamic = dynamic.length
       societies[key].fans = fans.length
       societies[key].department = department.name
+      societies[key].number = number.length
     }
     return societies
   },

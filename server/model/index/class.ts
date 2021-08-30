@@ -20,7 +20,9 @@ module.exports = {
             for (let key in societies) {
                 if (classification[keys].id === societies[key].class_id) {
                     let fan = await fans(uid.uid, societies[key].admin)
+                    let number = await db('s_societies_member').where({ societies: societies[key].id }).select()
                     societies[key].fans = fan
+                    societies[key].number = number.length
                     classification[keys].class_societies.push(societies[key])
                 }
             }
