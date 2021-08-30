@@ -30,10 +30,21 @@ module.exports = {
   },
 
   /**
-   * 获取社团信息
-   */
-  getSocietiesInfo(id: number) {
-    return db('s_societies').where({ id }).find()
+    * 获取社团信息
+    */
+  async getSocietiesInfo(id: number) {
+    let info = await db('s_societies').where({ id }).find()
+    let department = await db('s_department').where({ id: info.department }).find()
+    info.department = department.name
+    let fans = await db('s_subscribe').where({ be_subscribe: id }).select()
+    info.fans = fans.length
+    let dynamic = await db('s_dynamic').where({ uid: info.admin }).select()
+    info.dynamic = dynamic.length
+    let notice = await db('s_notice').where({ id: info.notice_id }).find()
+    info.notice = notice
+    let admin=await db('s_users').where({id:info.admin}).find()
+    info.admin=admin
+    return info
   },
 
   /**
@@ -118,6 +129,14 @@ module.exports = {
    * 同意用户加入社团
    */
   applyResult(data: any) {
-    return db('s_apply_log').where({id:data.id,}).update({status:data.status})
+    return db('s_apply_log').where({ id: data.id, }).update({ status: data.status })
+  },
+
+  /**
+   * 更新社团信息
+   * @param data 
+   */
+  updateSocieties(data:any){
+    return db('s_societies').where({id:data.id}).update(data)
   }
 }

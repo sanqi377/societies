@@ -8,7 +8,9 @@
           </div>
           <div class="title">
             <h4>{{ data.name }}</h4>
-            <i class="el-icon-_fire"></i>
+            <i class="el-icon-_fire">
+              {{ data.hots || 0 }}
+            </i>
           </div>
         </div>
         <div class="right">
@@ -17,7 +19,7 @@
               ><i class="el-icon-_feedback"></i>
               粉丝数量
             </el-tag>
-            <div class="num">15</div>
+            <div class="num">{{ data.fans || 0 }}</div>
           </div>
           <div class="member">
             <el-tag size="small" class="ele-tag-round"
@@ -35,7 +37,7 @@
           <div slot="header" class="clearfix">
             <span>当前公告</span>
           </div>
-          <div class="notice-content">当前公告</div>
+          <div class="notice-content" v-if="data.notice">{{ data.notice.content||"当前暂未公告" }}</div>
         </el-card>
       </el-col>
       <el-col :span="12">
@@ -49,6 +51,39 @@
     </el-row>
     <el-row class="fun">
       <el-col :span="12">
+        <el-col :span="24">
+          <el-card class="fun-btn">
+            <el-form ref="form" :model="form" label-width="80px">
+              <el-form-item label="社团名称">
+                <el-input v-model="form.name"></el-input>
+              </el-form-item>
+              <el-form-item label="所属院系">
+                <el-select
+                  v-model="form.department"
+                  placeholder="请选择活动区域"
+                >
+                  <el-option
+                    v-for="item in department"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="是否纳新">
+                <el-switch v-model="form.welcome_status"></el-switch>
+              </el-form-item>
+              <el-form-item label="社团简介">
+                <el-input type="textarea" v-model="form.about"></el-input>
+              </el-form-item>
+              <el-form-item size="large">
+                <el-button type="primary" @click="onSubmit">更新</el-button>
+              </el-form-item>
+            </el-form>
+          </el-card>
+        </el-col>
+      </el-col>
+      <el-col :span="12">
         <el-col :span="6">
           <el-card class="fun-btn">
             <div class="app-link-block" @click="notic = true">
@@ -60,8 +95,8 @@
         <el-col :span="6">
           <el-card class="fun-btn"
             ><div class="app-link-block" @click="newp = true">
-              <i class="app-link-icon el-icon-user"></i>
-              <div class="app-link-title">用户</div>
+              <i class="app-link-icon el-icon-discount"></i>
+              <div class="app-link-title">纳新管理</div>
             </div>
           </el-card>
         </el-col>
@@ -83,8 +118,24 @@
         </el-col>
       </el-col>
     </el-row>
-    <societiesNotic :show="notic" :id="data.id" v-on:handleClose="(e)=>{notic=false}" />
-    <societiesNew :show="newp" :id="data.id" v-on:handleClose="(e)=>{newp=false}" />
+    <societiesNotic
+      :show="notic"
+      :id="data.id"
+      v-on:handleClose="
+        (e) => {
+          notic = false;
+        }
+      "
+    />
+    <societiesNew
+      :show="newp"
+      :id="data.id"
+      v-on:handleClose="
+        (e) => {
+          newp = false;
+        }
+      "
+    />
   </div>
 </template>
 
@@ -98,10 +149,13 @@ export default {
       notic: false,
       newp: false,
       data: {},
+      department: [],
+      form: {},
     };
   },
   created() {
     this.query();
+    this.getDepartment();
   },
   methods: {
     query() {
@@ -109,7 +163,29 @@ export default {
         .getSocietiesInfo({ id: this.$route.params.id })
         .then((res) => {
           this.data = res;
+          this.form = res;
+          this.form.admin = res.admin.id;
+          if (res.welcome_status) {
+            this.form.welcome_status = true;
+          } else {
+            this.form.welcome_status = false;
+          }
         });
+    },
+    getDepartment() {
+      this.$api.societies.getDepartment().then((res) => {
+        this.department = res;
+      });
+    },
+    onSubmit() {
+      const loading = this.$loading({ lock: true });
+      this.$api.societies.updateSocieties(this.form).then((res) => {
+        loading.close();
+        this.$message({
+          type: "success",
+          message: res.msg,
+        });
+      });
     },
   },
   components: { societiesNotic, societiesNew },

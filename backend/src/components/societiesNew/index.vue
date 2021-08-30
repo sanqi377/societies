@@ -17,7 +17,11 @@
         >
         </el-table-column>
         <el-table-column property="date" label="申请人" align="center">
-          <template slot-scope="{ row }">{{ row.user.name }}</template>
+          <template slot-scope="{ row }">
+            <el-link type="primary" @click="clickUser(row)">
+              {{ row.user.name }}
+            </el-link>
+          </template>
         </el-table-column>
         <el-table-column property="content" label="申请人信息" align="center">
           <template slot-scope="{ row }">{{ row.introduce }}</template>
@@ -27,18 +31,33 @@
             (row.apply_time * 1000) | toDateString
           }}</template>
         </el-table-column>
-        <el-table-column
-          label="操作"
-          align="center"
-          :resizable="false"
-        >
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="{ row }">
             <el-button type="success" @click="agree(row)">同意加入</el-button>
-            <el-button type="danger">拒绝加入</el-button>
+            <el-button type="danger" @click="rech(row)">拒绝加入</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-card>
+    <el-dialog
+      title="申请人信息"
+      :visible.sync="dialogTableVisible"
+      :modal="false"
+      @close="user = []"
+    >
+      <el-table :data="user">
+        <el-table-column prop="name" label="姓名" width="150">
+        </el-table-column>
+        <el-table-column
+          prop="class"
+          label="班级"
+          width="200"
+        ></el-table-column>
+        <el-table-column prop="departments" label="院系"></el-table-column>
+        <el-table-column prop="phone" label="电话号"></el-table-column>
+        <el-table-column prop="student_id" label="学号"></el-table-column>
+      </el-table>
+    </el-dialog>
   </el-drawer>
 </template>
 
@@ -47,6 +66,8 @@ export default {
   data() {
     return {
       gridData: [],
+      dialogTableVisible: false,
+      user: [],
     };
   },
   props: ["show", "id"],
@@ -65,11 +86,36 @@ export default {
         this.gridData = res;
       });
     },
-    agree(data){
-        this.$api.societies.applyResult({ id: data.id,status:1 }).then((res) => {
-            console.log(res)
+    agree(data) {
+      this.loading = true;
+      
+      this.$api.societies
+        .applyResult({ id: data.id, status: 1 })
+        .then((res) => {
+          this.loading = false;
+          this.$message({
+            type: "success",
+            message: res.msg,
+          });
+          this.getApply();
         });
-    }
+    },
+    rech(data) {
+      this.$api.societies
+        .applyResult({ id: data.id, status: 3 })
+        .then((res) => {
+          this.loading = false;
+          this.$message({
+            type: "success",
+            message: res.msg,
+          });
+          this.getApply();
+        });
+    },
+    clickUser(data) {
+      this.user.push(data.user);
+      this.dialogTableVisible = true;
+    },
   },
   watch: {
     show: function () {
