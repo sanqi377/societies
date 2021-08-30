@@ -67,6 +67,18 @@ class Mysql {
     return this
   }
 
+  sql(...arr: any) {
+    arr = arr[0]
+    let arrs: string[] = []
+    for (let key in arr) {
+      Object.keys(arr[key]).forEach(item => {
+        arrs.push(`${item}=${arr[key].uid}`)
+      })
+    }
+    this.wheres = arrs.toString().replace(/,/g, ' or ')
+    return this
+  }
+
   /**
    * 拼接 where 条件
    * @param arr 
@@ -260,6 +272,7 @@ class Mysql {
  * @returns 
  */
 let querys = (sql: string, type?: string) => {
+  console.log(sql)
   return new Promise((resolve, reject) => {
     connection.query(sql, (err: any, res: any) => {
       if (err) {

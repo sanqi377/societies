@@ -1,18 +1,22 @@
-// {{page}}.ts
+export { }
+const { ajax, formatMsgTime } = require('../../../utils/util')
+const app = getApp()
+let uid: number
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    info: {},
+    dynamic: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-
+  onLoad(e: any) {
+    uid = e.uid
   },
 
   /**
@@ -22,11 +26,39 @@ Page({
 
   },
 
+  getInfo() {
+    ajax('user/getInfo', { uid }).then((res: any) => {
+      this.setData({
+        info: res.data.data
+      })
+    })
+  },
+
+  goChat() {
+    ajax('user/getSession', { uid: app.globalData.uid, accept: uid }).then((res: any) => {
+      wx.navigateTo({
+        url: `/pages/message/chat/index?fid=${res.data.data}&send=${app.globalData.uid}&accept=${uid}`
+      })
+    })
+  },
+
+  getDynamic() {
+    ajax('dynamic/getUserList', { uid }).then((res: any) => {
+      res.data.data.forEach((item: any) => {
+        item.create_time = formatMsgTime(item.create_time * 1000)
+      })
+      this.setData({
+        dynamic: res.data.data
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getInfo()
+    this.getDynamic()
   },
 
   /**

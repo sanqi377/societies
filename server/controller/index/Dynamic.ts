@@ -10,6 +10,12 @@ module.exports = {
             res.send({ ret: 200, data: resp })
         })
     },
+    getUserList(req: any, res: any) {
+        let data = req.body
+        model.getUserList(data).then((resp: any) => {
+            res.send({ ret: 200, data: resp })
+        })
+    },
     addDynamic(req: any, res: any) {
         let data = req.body
         model.addDynamic(data).then((resp: any) => {

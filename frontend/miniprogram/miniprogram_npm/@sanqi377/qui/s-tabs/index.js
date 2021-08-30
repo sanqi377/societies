@@ -38,6 +38,7 @@ Component({
             this.setData({
                 active: idx
             });
+            this.triggerEvent('handle', idx)
         },
         changeCurrent: function (activeKey, elements) {
             if (elements.length > 0) {
@@ -48,6 +49,6 @@ Component({
         },
         unique: function (arr) {
             return Array.from(new Set(arr));
-        }
+        },
     }
 });

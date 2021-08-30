@@ -1,43 +1,74 @@
-<view class="container">
-  <view class="head">
-    <view class="back">
-      <image src="../../../public/icon/back.png"></image>
-    </view>
-    <view class="title">个人信息</view>
-    <view class="more"></view>
-  </view>
-  <view class="bg">
-    <image src="../../../public/img/bg.jpg"></image>
-  </view>
-  <view class="userInfo">
-    <view class="avatar">
-      <image src="../../../public/head_pic/avatar.jpg"></image>
-    </view>
-    <view class="info">
-      <view class="name">叁柒</view>
-      <view class="sex">
-        <image src="../../../public/icon/male.png"></image>
+<capsule title="个人信息" />
+<view class="top-pic">
+  <image src="../../../public/image/bg.jpg"></image>
+</view>
+<view class="userInfo">
+  <view>
+    <view class="left">
+      <view class="avatar">
+        <image src="{{info.avatar}}"></image>
+      </view>
+      <view class="info">
+        <view class="name">{{info.name}}</view>
+        <view class="job">计算机协会会长</view>
       </view>
     </view>
-    <view class="job">计算机协会会长</view>
+    <view class="right">
+      <view class="fans">
+        <image src="../../../public/icon/fan.png" />
+        <view>关注</view>
+      </view>
+      <view class="message" bindtap="goChat">
+        <image src="../../../public/icon/message.png" />
+      </view>
+    </view>
   </view>
-  <view class="title">个人信息</view>
-  <view class="list">
-    <view class="item">
-      <view class="key">姓名</view>
-      <view class="vla">叁柒</view>
+</view>
+<view class="container">
+  <view class="moreInfo">
+    <view class="fansInfo">
+      <view><span>{{info.fans}}</span>关注Ta的人</view>
+      <view><span>{{info.focus}}</span>Ta关注的人</view>
     </view>
-    <view class="item">
-      <view class="key">生日</view>
-      <view class="vla">七月初七</view>
+    <view class="departmentInfo">
+      <view class="department">信息工程系</view>
+      <view class="more">
+        <view>详细信息</view>
+        <image src="../../../public/icon/right.png" />
+      </view>
     </view>
-    <view class="item">
-      <view class="key">星座</view>
-      <view class="vla">狮子座</view>
+    <view class="dynamic">
+      <view class="title">动态</view>
     </view>
-    <view class="item">
-      <view class="key">兴趣爱好</view>
-      <view class="vla">吉他</view>
+  </view>
+</view>
+<view class="list">
+  <view class="item" wx:for="{{dynamic}}" wx:key="item">
+    <view class="head">
+      <view class="info">
+        <view class="avatar">
+          <image src="{{info.avatar}}" />
+        </view>
+        <view>
+          <view class="name">{{info.name}}</view>
+          <view class="date">{{item.create_time}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="main">{{item.value}}</view>
+    <view class="btns">
+      <view class="share">
+        <image src="../../../public/icon/card-share.png" />
+        <view>分享</view>
+      </view>
+      <view class="comment">
+        <image src="../../../public/icon/card-comment.png" />
+        <view>评论</view>
+      </view>
+      <view class="praise">
+        <image src="../../../public/icon/card-praise.png" />
+        <view>点赞</view>
+      </view>
     </view>
   </view>
 </view>

@@ -43,5 +43,11 @@ module.exports = {
     model.getId({ open_id }).then((resp: any) => {
       res.send({ ret: 200, data: resp.id })
     })
+  },
+  getAvatar(req: any, res: any) {
+    let data = req.body
+    model.getAvatar(data).then((resp: any) => {
+      res.send(resp)
+    })
   }
 }

@@ -1,5 +1,5 @@
 export { }
-const {  ajax } = require('../../../utils/util')
+const { ajax } = require('../../../utils/util')
 const { io, monitor } = getApp().globalData
 Page({
   data: {
@@ -11,6 +11,12 @@ Page({
       create_time: 0,
       fid: 0
     },
+    info: {
+      s_avatar: '',
+      a_avatar: '',
+      a_name: ''
+    },
+    uid: 0,
     message: [] as string[]
   },
 
@@ -42,11 +48,21 @@ Page({
   },
 
   onLoad(e) {
+    let uid = wx.getStorageSync('uid')
     this.setData({
       ['data.accept']: e.accept,
       ['data.send']: e.send,
-      ['data.fid']: e.fid
+      ['data.fid']: e.fid,
     }, () => {
+      let send = uid == this.data.data.send ? this.data.data.send : this.data.data.accept
+      let accept = uid == this.data.data.send ? this.data.data.accept : this.data.data.send
+      ajax('message/getAvatar', { uid: send, accept }).then((res: any) => {
+        this.setData({
+          ['info.s_avatar']: res.data.data.s_avatar,
+          ['info.a_avatar']: res.data.data.a_avatar,
+          ['info.a_name']: res.data.data.a_name
+        })
+      })
       ajax('message/updateUnread', { fid: this.data.data.fid, send: this.data.data.send })
     })
     /**
@@ -54,6 +70,7 @@ Page({
      */
     monitor((res: any) => {
       let msg = JSON.parse(res)
+      console.log(msg)
       if (msg.send === this.data.data.send && msg.accept === this.data.data.accept) {
         this.data.message.push(msg)
         this.setData({

@@ -86,6 +86,7 @@ App<IAppOption>({
       console.log('监听到 WebSocket 连接已打开！');
     })
     io.onOpen(() => {
+      this.globalData.wlecome({ send: this.globalData.uid, type: 'welcome' })
       console.log('连接打开成功');
     });
   },

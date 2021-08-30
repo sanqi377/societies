@@ -149,6 +149,12 @@
           "pathName": "pages/societies/publish/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/user/info/index",
+          "pathName": "pages/user/info/index",
+          "query": "uid=19",
+          "scene": null
         }
       ]
     }

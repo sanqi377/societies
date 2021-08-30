@@ -65,5 +65,12 @@ module.exports = {
     model.getInfo(uid).then((resp: any) => {
       res.send(resp)
     })
+  },
+  getSession(req: any, res: any) {
+    let data = req.body
+    model.getSession(data).then((resp: any) => {
+      console.log(1)
+      if(resp) res.send({ ret: 200, data: resp.id })
+    })
   }
 }

@@ -1,13 +1,48 @@
 <view class="header">
 </view>
 <view class="tabs">
-  <s-tabs active="{{1}}">
-    <s-tab title="关注">关注</s-tab>
+  <s-tabs active="{{1}}" bind:handle="handle">
+    <s-tab title="关注">
+      <view class="dynamic-card" wx:for="{{list}}" wx:for-index="idx" wx:key="item">
+        <view class="head">
+          <view class="info">
+            <view class="avatar" data-uid="{{item.uid}}" bindtap="goInfo">
+              <image src="{{item.avatar}}" />
+            </view>
+            <view>
+              <view class="name">{{item.name}}</view>
+              <view class="date">{{item.create_time}}</view>
+            </view>
+          </view>
+          <view style="display: {{item.fans ? 'flex' : 'none'}}" class="fan" data-index="{{idx}}"
+            data-be_subscribe="{{item.uid}}" bindtap="cancelSubscribe">
+            <view style="border: 1px solid #ccc;background-color:#fff;color: #000;">
+              <span>已关注</span>
+            </view>
+          </view>
+        </view>
+        <view class="main">{{item.value}}</view>
+        <view class="btns">
+          <view class="share">
+            <image src="../../../public/icon/card-share.png" />
+            <view>分享</view>
+          </view>
+          <view class="comment">
+            <image src="../../../public/icon/card-comment.png" />
+            <view>评论</view>
+          </view>
+          <view class="praise">
+            <image src="../../../public/icon/card-praise.png" />
+            <view>点赞</view>
+          </view>
+        </view>
+      </view>
+    </s-tab>
     <s-tab title="推荐">
       <view class="dynamic-card" wx:for="{{list}}" wx:for-index="idx" wx:key="item">
         <view class="head">
           <view class="info">
-            <view class="avatar">
+            <view class="avatar" data-uid="{{item.uid}}" bindtap="goInfo">
               <image src="{{item.avatar}}" />
             </view>
             <view>
