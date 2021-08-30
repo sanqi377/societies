@@ -45,7 +45,7 @@ module.exports = {
     let admin = await db('s_users').where({ id: info.admin }).find()
     info.admin = admin
     return info
-    
+
   },
 
   /**
@@ -139,5 +139,38 @@ module.exports = {
    */
   updateSocieties(data: any) {
     return db('s_societies').where({ id: data.id }).update(data)
+  },
+
+  /**
+   * 获取社团职位列表
+   *
+   * @param {number} uid
+   */
+  async getSocietiesJob(societies: number) {
+    let job = await db('s_societies_job').where({ societies }).select()
+    for (let key in job) {
+      let name = await db('s_users').where({ id: job[key].uid }).find()
+      job[key].name = name.name
+    }
+    return job
+  },
+
+  /**
+   * 获取社团用户列表
+   *
+   * @param {number} societies
+   * @return {*} 
+   */
+  async getSocietiesUsers(societies: number) {
+    let member = await db('s_societies_member').where({ societies }).select()
+    for (let key in member) {
+      let name = await db('s_users').where({ id: member[key].uid }).find()
+      member[key].name = name.name
+    }
+    return member
+  },
+
+  addSocietiesJob(data: any) {
+    return db('s_societies_job').insert(data)
   }
 }

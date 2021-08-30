@@ -199,8 +199,35 @@ module.exports = {
     } else {
       data.welcome_status = 0
     }
-    model.updateSocieties(data).then((resp:any)=>{
-      res.send({ret:200,data:{msg:"更新成功"}})
+    model.updateSocieties(data).then((resp: any) => {
+      res.send({ ret: 200, data: { msg: "更新成功" } })
+    })
+  },
+
+  /**
+   * 获取社团职位列表
+   */
+  getSocietiesJob(req: any, res: any) {
+    let { societies } = req.body
+    model.getSocietiesJob(societies).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
+    })
+  },
+  /**
+   * 获取社团用户列表
+   */
+  getSocietiesUsers(req: any, res: any) {
+    let { societies } = req.body
+    model.getSocietiesUsers(societies).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
+    })
+  },
+  addSocietiesJob(req: any, res: any) {
+    let { uid, societies, job, create_time } = req.body
+    model.addSocietiesJob({ uid, societies, job, create_time }).then((resp: any) => {
+      if (resp) {
+        res.send({ ret: 200, data: { msg: '增加成功' } })
+      }
     })
   }
 }

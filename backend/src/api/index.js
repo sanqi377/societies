@@ -176,6 +176,24 @@ const api = {
       return ajax.post("societies/getSocietiesInfo", param);
     },
     /**
+     * 获取社团任职
+     */
+     getSocietiesJob: (param) => {
+      return ajax.post("societies/getSocietiesJob", param);
+    },
+    /**
+     * 获取社团用户列表
+     */
+     getSocietiesUsers: (param) => {
+      return ajax.post("societies/getSocietiesUsers", param);
+    },
+    /**
+     * 增加社团职位
+     */
+     addSocietiesJob: (param) => {
+      return ajax.post("societies/addSocietiesJob", param);
+    },
+    /**
      * 添加 / 修改公告
      */
     addNotice: (param) => {
