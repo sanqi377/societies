@@ -201,6 +201,11 @@ export default {
             });
         },
         onSubmit() {
+          this.department.forEach(el => {
+            if(this.form.department==el.name){
+              this.form.department=el.id
+            }
+          });
             const loading = this.$loading({ lock: true });
             this.$api.societies.updateSocieties(this.form).then((res) => {
                 loading.close();
