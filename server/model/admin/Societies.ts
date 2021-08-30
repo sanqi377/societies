@@ -42,6 +42,8 @@ module.exports = {
     info.dynamic = dynamic.length
     let notice = await db('s_notice').where({ id: info.notice_id }).find()
     info.notice = notice
+    let admin=await db('s_users').where({id:info.admin}).find()
+    info.admin=admin
     return info
   },
 
@@ -128,5 +130,13 @@ module.exports = {
    */
   applyResult(data: any) {
     return db('s_apply_log').where({ id: data.id, }).update({ status: data.status })
+  },
+
+  /**
+   * 更新社团信息
+   * @param data 
+   */
+  updateSocieties(data:any){
+    return db('s_societies').where({id:data.id}).update(data)
   }
 }

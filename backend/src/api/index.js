@@ -14,6 +14,25 @@ const api = {
     delect: (param) => {
       return ajax.post("users/delect", param);
     },
+    /**
+     * 获取企业微信token
+     * @param {*} param
+     * @returns
+     */
+    get_suite_token: () => {
+      return ajax.post(
+        "https://qyapi.weixin.qq.com/cgi-bin/service/get_suite_token",
+        {
+          suite_id: "wwddddccc7775555aaa",
+          suite_secret: "ldAE_H9anCRN21GKXVfdAAAAAAAAAAAAAAAAAA",
+          suite_ticket:
+            "Cfp0_givEagXcYJIztF6sfbdmIZCmpaR8ZBsvJEFFNBrWmnD5-CGYJ3_NhYexMyw",
+        }
+      );
+    },
+    sendNews:(param)=>{
+      return ajax.post(" https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN",param)
+    }
   },
   system: {
     getMenu: (param) => {
@@ -38,7 +57,7 @@ const api = {
       return ajax.post("system/getDefaultEditor");
     },
     getAllMenu: (param) => {
-      return ajax.post("system/getallmenu",param);
+      return ajax.post("system/getallmenu", param);
     },
   },
   menu: {
@@ -48,9 +67,9 @@ const api = {
     menuSave: (param) => {
       return ajax.post("menu/menuSave", param);
     },
-    addMenu:(param)=>{
+    addMenu: (param) => {
       return ajax.post("menu/addMenu", param);
-    }
+    },
   },
   article: {
     getClassification: () => {
@@ -176,7 +195,7 @@ const api = {
     },
     /**
      * 获取社团分类
-     * @returns 
+     * @returns
      */
     getClassification: () => {
       return ajax.post("societies/getClassification");
@@ -184,30 +203,42 @@ const api = {
 
     /**
      * 添加社团分类
-     * @returns 
+     * @returns
      */
     addClassification: (param) => {
-      return ajax.post("societies/addClassification",param);
+      return ajax.post("societies/addClassification", param);
     },
     /**
      * 删除社团分类
-     * @returns 
+     * @returns
      */
     deleteClassification: (param) => {
-      return ajax.post("societies/deleteclassification",param);
+      return ajax.post("societies/deleteclassification", param);
     },
     /**
      * 获取当前申请人数
      */
-    getApply:(param)=>{
-      return ajax.post("societies/getApply",param);
+    getApply: (param) => {
+      return ajax.post("societies/getApply", param);
     },
     /**
      * 同意加入社团
      */
-    applyResult:(param)=>{
-      return ajax.post("societies/applyResult",param);
-    }
+    applyResult: (param) => {
+      return ajax.post("societies/applyResult", param);
+    },
+    /***
+     * 获取所有院系
+     */
+     getDepartment:()=>{
+       return ajax.post("societies/getDepartment")
+     },
+     /**
+      * 更新社团信息
+      */
+      updateSocieties:(param)=>{
+        return ajax.post("societies/updateSocieties",param)
+      }
   },
   dashboard: {
     trafficRank: () => {

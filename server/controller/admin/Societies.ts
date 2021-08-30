@@ -171,18 +171,36 @@ module.exports = {
    * 获取当前申请社团的用户
    */
   getApply(req: any, res: any) {
-    let { id }=req.body
-    model.getApply(id).then((resp:any)=>{
-      res.send({ret:200,data:resp})
+    let { id } = req.body
+    model.getApply(id).then((resp: any) => {
+      res.send({ ret: 200, data: resp })
     })
   },
   /**
    * 同意用户加入
    */
-  applyResult(req:any,res:any){
-    let data=req.body
-    model.applyResult(data).then((resp:any)=>{
-      res.send({ret:200,data:{msg:'操作成功'}})
+  applyResult(req: any, res: any) {
+    let data = req.body
+    model.applyResult(data).then((resp: any) => {
+      res.send({ ret: 200, data: { msg: '操作成功' } })
+    })
+  },
+
+  /**
+   * 更新社团信息
+   */
+  updateSocieties(req: any, res: any) {
+    let data = req.body
+    delete data.notice
+    delete data.fans
+    delete data.dynamic
+    if (data.welcome_status) {
+      data.welcome_status = 1
+    } else {
+      data.welcome_status = 0
+    }
+    model.updateSocieties(data).then((resp:any)=>{
+      res.send({ret:200,data:{msg:"更新成功"}})
     })
   }
 }
