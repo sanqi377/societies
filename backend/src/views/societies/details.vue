@@ -8,7 +8,9 @@
           </div>
           <div class="title">
             <h4>{{ data.name }}</h4>
-            <i class="el-icon-_fire"></i>
+            <i class="el-icon-_fire">
+            {{data.hots||0}}
+            </i>
           </div>
         </div>
         <div class="right">
@@ -17,7 +19,7 @@
               ><i class="el-icon-_feedback"></i>
               粉丝数量
             </el-tag>
-            <div class="num">15</div>
+            <div class="num">{{data.fans||0}}</div>
           </div>
           <div class="member">
             <el-tag size="small" class="ele-tag-round"
@@ -35,7 +37,7 @@
           <div slot="header" class="clearfix">
             <span>当前公告</span>
           </div>
-          <div class="notice-content">当前公告</div>
+          <div class="notice-content">{{data.notice.content}}</div>
         </el-card>
       </el-col>
       <el-col :span="12">
@@ -60,8 +62,8 @@
         <el-col :span="6">
           <el-card class="fun-btn"
             ><div class="app-link-block" @click="newp = true">
-              <i class="app-link-icon el-icon-user"></i>
-              <div class="app-link-title">用户</div>
+              <i class="app-link-icon el-icon-discount"></i>
+              <div class="app-link-title">纳新管理</div>
             </div>
           </el-card>
         </el-col>
