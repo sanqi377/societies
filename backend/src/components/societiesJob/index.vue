@@ -161,7 +161,7 @@ export default {
          * 删除
          */
         remove(row) {
-            this.$api.societies.deleteNotice({ id: row.id }).then((res) => {
+            this.$api.societies.deleteJob({ id: row.id }).then((res) => {
                 this.$message({
                     type: res.type,
                     message: res.msg,
@@ -173,6 +173,9 @@ export default {
         show: function () {
             this.getSocietiesUsers();
             this.getSocietiesJob();
+        },
+        dialogFormVisible: function (e) {
+            if (!e) this.form = {};
         },
     },
 };

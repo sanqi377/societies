@@ -34,7 +34,6 @@ module.exports = {
     */
   async getSocietiesInfo(id: number) {
     let info = await db('s_societies').where({ id }).find()
-    console.log(info)
     let department = await db('s_department').where({ id: info.department }).find()
     info.department = department.name
     let fans = await db('s_subscribe').where({ be_subscribe: id }).select()
@@ -130,8 +129,13 @@ module.exports = {
   /**
    * 同意用户加入社团
    */
-  applyResult(data: any) {
-    return db('s_apply_log').where({ id: data.id, }).update({ status: data.status })
+  async applyResult(data: any) {
+    await db('s_apply_log').where({ id: data.id, }).update({ status: data.status })
+    let logs = await db('s_apply_log').where({ id: data.id, }).find()
+    if (logs) {
+      await db('s_societies_member').insert({ uid: logs.uid, societies: logs.societies })
+    }
+    return ({ ret: 200, data: { msg: '操作成功' } })
   },
 
   /**
@@ -170,8 +174,30 @@ module.exports = {
     }
     return member
   },
-
-  addSocietiesJob(data: any) {
-    return db('s_societies_job').insert(data)
+  /**
+   * 新增社团职位
+   *
+   * @param {*} data
+   * @return {*} 
+   */
+  async addSocietiesJob(data: any) {
+    let msg: string = ''
+    if (data.id) {
+      db('s_societies_job').where({ id: data.id }).update(data)
+      msg = '修改成功'
+    } else {
+      delete data.id
+      db('s_societies_job').insert(data)
+      msg = '增加成功'
+    }
+    return ({ ret: 200, data: { msg } })
+  },
+  /**
+   * 删除社团职位
+   *
+   * @param {number} id
+   */
+  deleteJob(id: number) {
+    return db('s_societies_job').where({ id }).delete()
   }
 }

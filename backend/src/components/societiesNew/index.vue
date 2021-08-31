@@ -104,7 +104,6 @@ export default {
         },
         agree(data) {
             this.loading = true;
-
             this.$api.societies
                 .applyResult({ id: data.id, status: 1 })
                 .then((res) => {

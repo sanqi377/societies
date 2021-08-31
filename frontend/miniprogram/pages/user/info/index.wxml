@@ -10,7 +10,7 @@
       </view>
       <view class="info">
         <view class="name">{{info.name}}</view>
-        <view class="job">计算机协会会长</view>
+        <view class="job">{{info.job}}</view>
       </view>
     </view>
     <view class="right">

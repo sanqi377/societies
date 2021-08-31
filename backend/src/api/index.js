@@ -30,8 +30,8 @@ const api = {
         }
       );
     },
-    sendNews:(param)=>{
-      return ajax.post(" https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN",param)
+    sendNews: (param) => {
+      return ajax.post(" https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=ACCESS_TOKEN", param)
     }
   },
   system: {
@@ -178,19 +178,19 @@ const api = {
     /**
      * 获取社团任职
      */
-     getSocietiesJob: (param) => {
+    getSocietiesJob: (param) => {
       return ajax.post("societies/getSocietiesJob", param);
     },
     /**
      * 获取社团用户列表
      */
-     getSocietiesUsers: (param) => {
+    getSocietiesUsers: (param) => {
       return ajax.post("societies/getSocietiesUsers", param);
     },
     /**
      * 增加社团职位
      */
-     addSocietiesJob: (param) => {
+    addSocietiesJob: (param) => {
       return ajax.post("societies/addSocietiesJob", param);
     },
     /**
@@ -248,15 +248,23 @@ const api = {
     /***
      * 获取所有院系
      */
-     getDepartment:()=>{
-       return ajax.post("societies/getDepartment")
-     },
-     /**
-      * 更新社团信息
-      */
-      updateSocieties:(param)=>{
-        return ajax.post("societies/updateSocieties",param)
-      }
+    getDepartment: () => {
+      return ajax.post("societies/getDepartment")
+    },
+    /**
+     * 更新社团信息
+     */
+    updateSocieties: (param) => {
+      return ajax.post("societies/updateSocieties", param)
+    },
+    /**
+     * 删除社团职位
+     * @param {*} param 
+     * @returns 
+     */
+    deleteJob: (param) => {
+      return ajax.post('societies/deleteJob', param)
+    }
   },
   dashboard: {
     trafficRank: () => {

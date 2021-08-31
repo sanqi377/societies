@@ -72,6 +72,7 @@ module.exports = {
     let info = await db('s_users').where({ id: uid }).find()
     let dynamic = await db('s_dynamic').where({ uid }).select()
     let societies = await db('s_societies_member').where({ uid }).select()
+    let job = await db('s_societies_job').where({ uid }).find()
     let infos = {
       name: '',
       avatar: '',
@@ -79,8 +80,10 @@ module.exports = {
       focus: 0,
       fans: 0,
       dynamic: 0,
-      societies: 0
+      societies: 0,
+      job: ''
     }
+    infos.job = job ? job.job : '暂无职务'
     infos.name = info.name
     infos.avatar = info.avatar
     infos.student_id = info.student_id

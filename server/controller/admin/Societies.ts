@@ -182,7 +182,7 @@ module.exports = {
   applyResult(req: any, res: any) {
     let data = req.body
     model.applyResult(data).then((resp: any) => {
-      res.send({ ret: 200, data: { msg: '操作成功' } })
+      res.send(resp)
     })
   },
 
@@ -222,11 +222,31 @@ module.exports = {
       res.send({ ret: 200, data: resp })
     })
   },
+  /**
+   * 新增社团职位
+   *
+   * @param {*} req
+   * @param {*} res
+   */
   addSocietiesJob(req: any, res: any) {
-    let { uid, societies, job, create_time } = req.body
-    model.addSocietiesJob({ uid, societies, job, create_time }).then((resp: any) => {
+    let { uid, id, societies, job, create_time } = req.body
+    model.addSocietiesJob({ id, uid, societies, job, create_time }).then((resp: any) => {
       if (resp) {
-        res.send({ ret: 200, data: { msg: '增加成功' } })
+        res.send(resp)
+      }
+    })
+  },
+  /**
+   * 删除社团职位
+   *
+   * @param {*} req
+   * @param {*} res
+   */
+  deleteJob(req: any, res: any) {
+    let { id } = req.body
+    model.deleteJob(id).then((resp: any) => {
+      if (resp) {
+        res.send({ ret: 200, data: { type: 'success', msg: '删除成功' } })
       }
     })
   }

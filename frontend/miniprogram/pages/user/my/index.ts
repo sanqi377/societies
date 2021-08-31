@@ -14,7 +14,7 @@ Page({
   },
 
   /**
-   * 获取关注粉丝
+   * 获取用户信息
    */
   getInfo() {
     ajax('user/getInfo', { uid: app.globalData.uid }).then((res: any) => {
