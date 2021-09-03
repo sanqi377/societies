@@ -119,10 +119,7 @@
                 </el-col>
                 <el-col :span="6">
                     <el-card class="fun-btn">
-                        <div
-                            class="app-link-block"
-                            @click="$router.push('/role/index')"
-                        >
+                        <div class="app-link-block" @click="user = true">
                             <i class="app-link-icon el-icon-user"></i>
                             <div class="app-link-title">用户管理</div>
                         </div>
@@ -157,6 +154,15 @@
                 }
             "
         />
+        <societiesUser
+            :show="user"
+            :id="data.id"
+            v-on:handleClose="
+                (e) => {
+                    user = false;
+                }
+            "
+        />
     </div>
 </template>
 
@@ -164,6 +170,7 @@
 import societiesNotic from "../../components/societiesNotic/index";
 import societiesNew from "../../components/societiesNew/index";
 import societiesJob from "../../components/societiesJob/index";
+import societiesUser from "../../components/societiesUser/index";
 export default {
     name: "SocDetails",
     data() {
@@ -171,6 +178,7 @@ export default {
             notic: false,
             newp: false,
             job: false,
+            user: false,
             data: {},
             department: [],
             form: {},
@@ -216,7 +224,7 @@ export default {
             });
         },
     },
-    components: { societiesNotic, societiesNew, societiesJob },
+    components: { societiesNotic, societiesNew, societiesJob, societiesUser },
 };
 </script>
 

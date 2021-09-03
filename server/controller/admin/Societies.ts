@@ -216,9 +216,9 @@ module.exports = {
   /**
    * 获取社团用户列表
    */
-  getSocietiesUsers(req: any, res: any) {
-    let { societies } = req.body
-    model.getSocietiesUsers(societies).then((resp: any) => {
+  getUserList(req: any, res: any) {
+    let { id } = req.body
+    model.getUserList(id).then((resp: any) => {
       res.send({ ret: 200, data: resp })
     })
   },

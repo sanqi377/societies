@@ -166,13 +166,16 @@ module.exports = {
    * @param {number} societies
    * @return {*} 
    */
-  async getSocietiesUsers(societies: number) {
-    let member = await db('s_societies_member').where({ societies }).select()
+  async getUserList(id: number) {
+    let member = await db('s_societies_member').where({ societies: id }).select()
+    let infos = []
     for (let key in member) {
-      let name = await db('s_users').where({ id: member[key].uid }).find()
-      member[key].name = name.name
+      let info = await db('s_users').where({ id: member[key].uid }).find()
+      let departments = await db('s_department').where({ id: Number(info.departments) }).find()
+      info.departments = departments.name
+      infos.push(info)
     }
-    return member
+    return infos
   },
   /**
    * 新增社团职位

@@ -184,8 +184,8 @@ const api = {
     /**
      * 获取社团用户列表
      */
-    getSocietiesUsers: (param) => {
-      return ajax.post("societies/getSocietiesUsers", param);
+    getUserList: (param) => {
+      return ajax.post("societies/getUserList", param);
     },
     /**
      * 增加社团职位
