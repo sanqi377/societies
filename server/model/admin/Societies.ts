@@ -168,10 +168,12 @@ module.exports = {
    */
   async getUserList(id: number) {
     let member = await db('s_societies_member').where({ societies: id }).select()
+    console.log(member,1)
     let infos = []
     for (let key in member) {
       let info = await db('s_users').where({ id: member[key].uid }).find()
       let departments = await db('s_department').where({ id: Number(info.departments) }).find()
+      console.log(departments,2)
       info.departments = departments.name
       infos.push(info)
     }

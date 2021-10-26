@@ -59,7 +59,7 @@ Page({
    */
   back() {
     wx.switchTab({
-      url: '/pages/index/index'
+      url: '/pages/index/index/index'
     })
   }
 })

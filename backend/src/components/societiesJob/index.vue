@@ -129,7 +129,7 @@ export default {
          */
         getSocietiesUsers() {
             this.$api.societies
-                .getSocietiesUsers({ societies: this.id })
+                .getUserList({ societies: this.id })
                 .then((res) => {
                     this.users = res;
                 });

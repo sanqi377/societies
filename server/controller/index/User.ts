@@ -2,6 +2,7 @@ var model = require(__filename.replace(/controller/, 'model'))
 var request = require('request')
 var { createJwtToken } = require('../../util/Jwt')
 module.exports = {
+
   /**
    * 用户登录接口
    */
@@ -19,6 +20,7 @@ module.exports = {
       })
     })
   },
+
   /**
    * 用户注册接口
    */
@@ -35,6 +37,7 @@ module.exports = {
       })
     })
   },
+
   /**
    * 关注
    */
@@ -44,6 +47,7 @@ module.exports = {
       res.send(resp)
     })
   },
+
   /**
    * 取消关注
    */
@@ -66,11 +70,12 @@ module.exports = {
       res.send(resp)
     })
   },
+
   getSession(req: any, res: any) {
     let data = req.body
     model.getSession(data).then((resp: any) => {
       console.log(1)
-      if(resp) res.send({ ret: 200, data: resp.id })
+      if (resp) res.send({ ret: 200, data: resp.id })
     })
   }
 }

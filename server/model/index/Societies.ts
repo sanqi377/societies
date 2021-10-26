@@ -35,8 +35,11 @@ module.exports = {
    */
   async getSocietiesInfo(id: number, uid: number) {
     let info = await db('s_societies').where({ id }).find()
+    console.log(info)
     let department = await db('s_department').where({ id: info.department }).find()
+    console.log(department)
     info.department = department.name
+
     let fans = await db('s_subscribe').where({ subscribe: uid, be_subscribe: info.admin }).find()
     let number = await db('s_societies_member').where({ societies: info.id }).select()
     info.number = number.length
