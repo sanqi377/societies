@@ -33,6 +33,23 @@ class Mysql {
   }
 
   /**
+   * 内连接查询
+   * @param arr 
+   * @returns 
+   */
+  native(sql: string) {
+    console.log(sql)
+    return new Promise((resolve, reject) => {
+      connection.query(sql, (err: any, res: any) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(res)
+      })
+    })
+  }
+
+  /**
    * 拼接 where 条件
    * @param arr 
    * @returns 

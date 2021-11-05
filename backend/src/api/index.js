@@ -1,6 +1,14 @@
 import ajax from "./axios";
 
 const api = {
+  /**
+   * 动态管理相关 api
+   */
+  dynamic: {
+    getDynamic: () => {
+      return ajax.post("dynamic/getDynamic");
+    }
+  },
   user: {
     login: (param) => {
       return ajax.post("users/login", param);
